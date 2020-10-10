@@ -1,0 +1,28 @@
+@import '../../../theme/fonts.scss';
+.complex-select-modal__title {
+    color: #ddd;
+    padding: 10px;
+    ion-title {
+        font-size: 15px;
+        font-family: 'TitilliumWeb';
+    }
+}
+
+.complex-select-modal__warning {
+    background-color: #beb17d;
+    color: #52310c;
+    padding: 10px;
+    ion-title {
+        font-size: 15px;
+        font-family: 'TitilliumWeb';
+    }
+}
+
+.complex-select-modal__options {
+    background-color: #222428;
+}
+
+.complex-select-modal__button--ok {
+    width: 70px;
+    margin-left: 20px;
+}

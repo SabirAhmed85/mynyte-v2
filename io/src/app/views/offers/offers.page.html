@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Offers
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollbar>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Offers</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div class='main-offers row'>
+        <app-offer-listing-item class='col-12' *ngFor='let offer of offers' [offer]="offer" (offerClicked)='goToOffer(offer)'></app-offer-listing-item>
+    </div>
+
+</ion-content>

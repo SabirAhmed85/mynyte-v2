@@ -1,0 +1,7 @@
+@import "./variables.scss";
+.card {
+    color: #555444;
+    &.bg-primary {
+        background-color: $ion-card-background-primary !important;
+    }
+}

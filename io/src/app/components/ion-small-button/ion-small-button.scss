@@ -1,0 +1,12 @@
+.ion-small-button {
+    ion-icon {
+        margin-right: 5px;
+        @at-root .ion-small-button.align-right ion-icon {
+            margin-right: 0;
+            margin-left: 5px;
+        }
+    }
+    span {
+        margin-top: 2px;
+    }
+}

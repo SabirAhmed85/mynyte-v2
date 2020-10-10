@@ -1,0 +1,9 @@
+<div class='feed-main-header'>
+    <input class='feed-main-header__search-input' type='text' *ngIf='!showWhatsOpenScreen' id='mainFeedSearch' class='m-2 p-2' (focus)='headerSearchInputWasFocused()' [(ngModel)]='searchString' (ngModelChange)='searchInputWasChanged(searchString)' placeholder='Search for your something'
+    />
+    <p class='feed-main-header__label' *ngIf='!!showWhatsOpenScreen'>See What's Open</p>
+    <div class='feed-main-header__icon'>
+        <ion-icon *ngIf='!showSearchScreen && !showWhatsOpenScreen' name='happy' (click)='whatsOpenButtonWasClicked()'></ion-icon>
+        <ion-icon *ngIf='!!showSearchScreen || !!showWhatsOpenScreen' name='close' (click)='closeButtonWasClicked()'></ion-icon>
+    </div>
+</div>

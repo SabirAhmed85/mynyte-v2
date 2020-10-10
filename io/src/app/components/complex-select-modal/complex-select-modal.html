@@ -1,0 +1,26 @@
+<ion-header class='complex-select-modal__title'>
+    <ion-title>{{title}}</ion-title>
+</ion-header>
+<ion-header color='warning' class='complex-select-modal__warning modal-warning' *ngIf='noOptionsSelected'>
+    <ion-title>No options selected</ion-title>
+</ion-header>
+<ion-content>
+    <ion-list class='complex-select-modal__options'>
+        <ion-item color='light'>
+            <ion-label>{{allOptionsLabel}}</ion-label>
+            <ion-checkbox [(ngModel)]="selectAll" (click)="selectAllClicked()"></ion-checkbox>
+        </ion-item>
+        <ion-item color='light' *ngFor="let option of options">
+            <ion-label>{{ option.name }}</ion-label>
+            <ion-checkbox [(ngModel)]="option.selected" (click)="toggleSelect(option.selected)"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-row>
+        <ion-col class='complex-select-modal__buttons'>
+            <ion-button class='ion-float-right complex-select-modal__button--ok' color="primary" (click)="selectAndDismissWasClicked()">Ok</ion-button>
+            <ion-button class='ion-float-right complex-select-modal__button--dismiss' color="dark" (click)="dismiss()">Cancel</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

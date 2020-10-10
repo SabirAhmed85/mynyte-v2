@@ -1,0 +1,15 @@
+<div>
+    <app-feed-search-listing-item class='col-12' *ngFor='let listing of searchListings' [listing]='listing'></app-feed-search-listing-item>
+
+    <div *ngIf='!!loading'>
+        Searching...
+    </div>
+
+    <div *ngIf='!loading && searchListings !== null && searchListings.length === 0'>
+        No Listings matching your search
+    </div>
+
+    <div *ngIf='!loading && searchListings === null'>
+        Search for a business, event or offer in Bedford
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class='card offer-listing-item ion-activatable ripple-parent' (click)='offerWasClicked(offer)' [class.bg-primary]='offer.offerTypeId === 3'>
+    <div class='offer-listing-item__title'>
+        OfferListingItem {{offer.title}}
+    </div>
+
+    <div class='offer-listing-item__description'>
+        {{offer.description}}
+    </div>
+
+    <app-listing-item-bottom-bar [item]='offer' itemType='Offer'></app-listing-item-bottom-bar>
+    <ion-ripple-effect></ion-ripple-effect>
+</div>

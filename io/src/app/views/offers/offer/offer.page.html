@@ -1,0 +1,24 @@
+<ion-header [translucent]='true'>
+    <ion-toolbar>
+        <ion-buttons slot='start'>
+            <ion-back-button text='' defaultHref='/offers' icon='chevron-back-outline'></ion-back-button>
+        </ion-buttons>
+
+        <ion-title class='ion-title-with-buttons'>
+            {{offer.title}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]='true'>
+    <ion-header collapse='condense'>
+        <ion-toolbar>
+            <ion-title size='large'>Offer</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div class='offer-detail-container'>
+        <p class='offer-detail-container__title'>{{offer.title}}</p>
+        <p class='offer-detail-container__description'>{{offer.description}}</p>
+    </div>
+</ion-content>

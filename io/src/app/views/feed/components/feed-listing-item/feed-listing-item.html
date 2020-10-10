@@ -1,0 +1,7 @@
+<div class='card feed-listing-item' (click)='listingWasClicked(listing)'>
+    <div class='feed-listing-item__title'>
+        FeedListingItem {{listing.title}}
+    </div>
+
+    <app-listing-item-bottom-bar [item]='listing' [itemType]='listing.itemType'></app-listing-item-bottom-bar>
+</div>

@@ -1,0 +1,19 @@
+<ion-list lines='full' class='listing-detail__menu'>
+
+    <app-listing-page-menu-item *ngIf='listing.listingType === "business" || listing.listingType === "event"' [listing]='listing' icon='cash-outline' labelText='See Offers' noteText='No Current Offers' showCounter='true' [counter]='listing.totalOffers' [disabled]='listing.totalOffers === 0'
+        (menuItemClicked)='goToListingItems("offers")'>
+    </app-listing-page-menu-item>
+
+    <app-listing-page-menu-item *ngIf='listing.businessType === "nightclub" || listing.businessType === "bar"' [listing]='listing' icon='calendar-outline' labelText='See Events' noteText='No Upcoming Events' showCounter='true' [counter]='listing.totalEvents'
+        [disabled]='listing.totalEvents === 0' (menuItemClicked)='goToListingItems("events")'>
+    </app-listing-page-menu-item>
+
+    <app-listing-page-menu-item *ngIf='listing.businessType === "restaurant"' [listing]='listing' icon='restaurant-outline' labelText='Book a Table' noteText='Not currently accepting bookings' [disabled]='!listing.restaurantSettings.acceptingTableBookings'
+        (menuItemClicked)='goToListingItems("book-table")'>
+    </app-listing-page-menu-item>
+
+    <app-listing-page-menu-item *ngIf='listing.businessType === "restaurant" || listing.businessType === "takeaway"' [listing]='listing' icon='book-outline' labelText='See Menu' noteText='Menu currently hidden' [disabled]='!!listing.restaurantSettings.hideCartMenu'
+        (menuItemClicked)='goToListingItems("menu")'>
+    </app-listing-page-menu-item>
+
+</ion-list>

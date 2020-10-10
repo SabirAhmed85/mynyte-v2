@@ -1,0 +1,14 @@
+.listing-item-bottom-bar {
+    border-top: 1px dotted #ddd;
+    margin: 0.25rem 0;
+    &.primary {
+        border-top-color: rgb(139, 96, 96);
+    }
+    .listing-item-bottom-bar__left-buttons {
+        padding-left: 0;
+    }
+    .listing-item-bottom-bar__right-buttons {
+        padding-right: 0;
+        text-align: right;
+    }
+}

@@ -1,0 +1,13 @@
+<div class='feed-search-select-container'>
+    <ion-label class='feed-search-select-container__label'>{{title}}</ion-label>
+    <ion-item class='feed-search-select-container__select rounded-right' color='dark' (click)="openSelectModalWasClicked()">
+        <span class='feed-search-select-container__value'>
+            <ng-container *ngFor="let selectedOption of selectedOptions; let isLast=last">
+                {{selectedOption.name}}{{isLast ? '' : ', '}}
+            </ng-container>
+        </span>
+        <span class='feed-search-select-container__icon float-right'>
+            <ion-icon name="caret-down-outline"></ion-icon>
+        </span>
+    </ion-item>
+</div>

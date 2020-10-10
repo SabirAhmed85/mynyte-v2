@@ -1,0 +1,15 @@
+<ion-item [attr.button]='!disabled' (click)='menuItemWasClicked()' class='listing-detail__item' [class.listing-detail__item--disabled]='!!disabled'>
+    <ion-label>
+        <ion-icon class='listing-detail__icon' [name]='icon'></ion-icon>
+        <div class='listing-detail__text' [class.listing-detail__text--with-note]='!!disabled'>
+            <span class='listing-detail__label' [class.listing-detail__label--with-note]='!!disabled'>
+                {{labelText}}
+            </span>
+            <span *ngIf='disabled' class='listing-detail__note'>
+                {{noteText}}
+            </span>
+        </div>
+        <ion-icon class='listing-detail__icon-right' name='chevron-forward-outline' [class.listing-detail__icon-right--hidden]='!!disabled'></ion-icon>
+        <span *ngIf='!!showCounter' class='listing-detail__counter'>({{counter}})</span>
+    </ion-label>
+</ion-item>

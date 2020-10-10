@@ -1,0 +1,32 @@
+.feed-search-select-container__select {
+    color: #a97a7a;
+    background-color: #f4f5f8;
+    padding-left: 5px;
+    padding-right: 15px;
+    margin: 0.25rem 0;
+    &::part(icon) {
+        color: #a97a7a;
+        opacity: 0.8;
+        margin-top: 1px;
+    }
+}
+
+.feed-search-select-container__value {
+    white-space: nowrap;
+    max-width: calc(100% - 30px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.feed-search-select-container__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 43px;
+    background: #ddd;
+    padding: 11px;
+    ion-icon {
+        display: inline;
+    }
+}

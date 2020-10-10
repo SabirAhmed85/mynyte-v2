@@ -1,0 +1,24 @@
+.feed-search-select-container__select {
+    height: 45px;
+    margin: 4px 0;
+    .feed-search-select-container__value {
+        color: #a97a7a;
+        white-space: nowrap;
+        max-width: calc(100% - 30px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: -6px;
+    }
+    .feed-search-select-container__icon {
+        position: absolute;
+        top: -1px;
+        right: 0;
+        height: 100%;
+        width: 43px;
+        padding: 15px;
+        color: #b89394;
+        ion-icon {
+            display: inline;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<ion-header [translucent]='true'>
+    <ion-toolbar>
+        <ion-buttons slot='start'>
+            <ion-back-button text='' [defaultHref]='backPage' icon='chevron-back-outline'></ion-back-button>
+        </ion-buttons>
+
+        <ion-title class='ion-title-with-buttons'>
+            Book a Table at
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]='true'>
+    <ion-header collapse='condense'>
+        <ion-toolbar>
+            <ion-title size='large'>Book a Table at</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div class='main-events row'>
+        {{restaurantSettings.acceptingTableBookings}}
+    </div>
+</ion-content>

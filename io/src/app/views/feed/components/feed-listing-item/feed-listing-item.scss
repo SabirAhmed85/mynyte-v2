@@ -1,0 +1,13 @@
+@import '../../../../../theme/variables.scss';
+.feed-listing-item {
+    background-color: #343a40;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+    color: var(--ion-text-color);
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.5rem 0;
+    &:hover {
+        cursor: pointer;
+        background-color: #363636;
+    }
+}

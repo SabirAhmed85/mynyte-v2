@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot='start'>
+            <ion-back-button text='' defaultHref='/feed' icon='chevron-back-outline'></ion-back-button>
+        </ion-buttons>
+        <ion-title class='ion-title-with-buttons'>
+            Someting in something
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content scrollbar [fullscreen]="true" [class.no-scroll]='!!showSearchScreen || !!showWhatsOpenScreen'>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Something in somewhere</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <app-feed-main-search></app-feed-main-search>
+
+    <div class='main-feed-listings row'>
+        <app-feed-listing-item class='col-12' *ngFor='let listing of listings' [listing]="listing" (listingClicked)='goToListing(listing)'></app-feed-listing-item>
+    </div>
+</ion-content>

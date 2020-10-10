@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <app-feed-header></app-feed-header>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content scrollbar [fullscreen]="true" [class.no-scroll]='!!showSearchScreen || !!showWhatsOpenScreen'>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Feed</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <app-feed-main-search></app-feed-main-search>
+
+    <div class='main-feed-listings row'>
+        <app-feed-listing-item class='col-12' *ngFor='let listing of listings' [listing]="listing" (listingClicked)='goToListing(listing)'></app-feed-listing-item>
+    </div>
+
+    <div class='search-panel-overlay' *ngIf='!!showSearchScreen || !!showWhatsOpenScreen'>
+        <app-search-panel-search *ngIf='!!showSearchScreen'></app-search-panel-search>
+        <app-search-panel-whats-open *ngIf='!!showWhatsOpenScreen'></app-search-panel-whats-open>
+    </div>
+</ion-content>

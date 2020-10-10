@@ -1,0 +1,11 @@
+<div class='listing-item-bottom-bar row' [class.primary]='item.offerTypeId===3'>
+    <div class='listing-item-bottom-bar__left-buttons col-6'>
+        <app-ion-small-button *ngIf='showLikeOrWatch === "like"' classNames='listing-item-bottom-bar__icon-button' icon='heart-circle-outline' text='Like' (buttonClicked)='listingAction("like")'></app-ion-small-button>
+        <app-ion-small-button *ngIf='showLikeOrWatch === "watch"' classNames='listing-item-bottom-bar__icon-button' icon='eye' text='Watch' (buttonClicked)='listingAction("watch")'></app-ion-small-button>
+    </div>
+
+    <div class='listing-item-bottom-bar__right-buttons col-6'>
+        <app-ion-small-button classNames='listing-item-bottom-bar__icon-button' alignment='right' icon='share' text='Share' (buttonClicked)='listingAction("share")'></app-ion-small-button>
+        <app-ion-small-button *ngIf='showSend' classNames='listing-item-bottom-bar__icon-button' alignment='right' icon='chatbox-ellipses' text='Send' (buttonClicked)='listingAction("send")'></app-ion-small-button>
+    </div>
+</div>

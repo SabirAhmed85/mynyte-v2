@@ -1,0 +1,25 @@
+<ion-header [translucent]='true'>
+    <ion-toolbar>
+        <ion-buttons slot='start'>
+            <ion-back-button text='' defaultHref='/feed' icon='chevron-back-outline'></ion-back-button>
+        </ion-buttons>
+
+        <ion-title class='ion-title-with-buttons'>
+            {{listing.title}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content scrollbar [fullscreen]='true'>
+    <ion-header collapse='condense'>
+        <ion-toolbar>
+            <ion-title size='large'>Listing</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div class='listing-detail-container'>
+        <p class='listing-detail-container__title'>{{listing.title}}</p>
+        <p class='listing-detail-container__description'>{{listing.description}}</p>
+        <app-listing-page-menu [listing]='listing'></app-listing-page-menu>
+    </div>
+</ion-content>

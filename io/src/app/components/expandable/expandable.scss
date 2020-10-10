@@ -1,0 +1,12 @@
+.expand-wrapper {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    height: auto;
+    padding: 0 10px;
+    background: #4b4f52;
+    border-bottom: 1px solid #716d6d;
+}
+
+.collapsed {
+    max-height: 0 !important;
+}

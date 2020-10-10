@@ -1,0 +1,12 @@
+<div>
+    <app-feed-search-listing-item class='col-12' *ngFor='let listing of openListings' [listing]='listing'></app-feed-search-listing-item>
+
+    <div *ngIf='!!loading'>
+        Checking What's Open...
+    </div>
+
+    <div *ngIf='!loading && openListings !== null && openListings.length === 0'>
+        No open Listings
+    </div>
+
+</div>

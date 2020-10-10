@@ -1,0 +1,14 @@
+.offer-listing-item {
+    border: 1px solid #ddd;
+    margin: 0.5rem 1rem;
+    padding: 0.25rem 0.5em 0;
+    position: relative;
+    overflow: hidden;
+    &:hover {
+        cursor: pointer;
+    }
+    .offer-listing-item__title {
+        font-weight: bold;
+        font-style: italic;
+    }
+}

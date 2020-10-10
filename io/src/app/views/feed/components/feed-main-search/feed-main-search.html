@@ -1,0 +1,20 @@
+<div class='feed-main-search'>
+    <div class='feed-main-search__header' (click)='mainSearchExpanded = !mainSearchExpanded'>
+        <span>Find your Night</span>
+        <ion-icon name='search'></ion-icon>
+    </div>
+    <app-expandable expandHeight="160px" [expanded]="mainSearchExpanded">
+        <div class='row feed-main-search__content'>
+            <div class='feed-main-search__select feed-main-search__select--left col-6 col-sm-4'>
+                <app-search-select title='My Town' [options]='feedSearchOptions.town.options' [selectedOption]='feedSearchOptions.town.selectedOption' (openSelectModalClicked)='openSelectModal("town")'></app-search-select>
+            </div>
+            <div class='feed-main-search__select feed-main-search__select--right col-6 col-sm-4'>
+                <app-search-select-multiple title='My Music' [selectedOptions]='feedSearchOptions.music.selectedOptions' (openSelectModalClicked)='openSelectModal("music")'></app-search-select-multiple>
+            </div>
+
+            <div class='feed-main-search__button-container col-12 col-sm-4 px-0 pl-sm-3 mt-1 mt-sm-4'>
+                <ion-button expand='block' (click)='goToSearch()'>Find my Night</ion-button>
+            </div>
+        </div>
+    </app-expandable>
+</div>

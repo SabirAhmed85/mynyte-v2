@@ -1,0 +1,30 @@
+.feed-main-search__header {
+    padding: 14px 10px 12px;
+    font-size: 16px;
+    border-bottom: 1px solid #585555;
+    background: #343a40;
+    ion-icon {
+        float: right;
+        font-size: 25px;
+    }
+}
+
+.feed-main-search__content {
+    margin: 1rem 0;
+    .feed-main-search__select {
+        padding-left: 0;
+        &.feed-main-search__select--right {
+            padding-right: 0;
+        }
+    }
+    .feed-main-search__button-container {
+        margin-bottom: 0.25rem;
+        ion-button {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            height: 45px;
+        }
+    }
+}
