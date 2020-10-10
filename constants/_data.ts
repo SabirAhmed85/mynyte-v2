@@ -1,0 +1,2 @@
+import { Offer } from '../models';
+
