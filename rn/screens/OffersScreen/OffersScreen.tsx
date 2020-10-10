@@ -3,16 +3,17 @@ import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react
 
 import { useTheme } from '../../config/ThemeManager';
 import styles from './OffersScreen.style';
+import { Text, OpaqueView, ScrollView, View, SafeAreaView } from '../../components/Themed';
 
 import { Offer, OfferCategory } from '../../models';
 
 import OfferCard from '../../components/OfferCard/OfferCard';
-import { Text, OpaqueView, ScrollView, View, Button } from '../../components/Themed';
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AppLoading } from 'expo';
 import { ScreenLoadingComponent } from '../../components/ScreenLoadingComponent/ScreenLoadingComponent';
 import { ActionButton } from '../../components/ActionButton/ActionButton';
+import { FlatList } from 'react-native';
 
 const reducer = (offerCategories: OfferCategory[], action: React.ReducerAction<React.Reducer<any, any>>) => {
   switch (action.type) {
@@ -70,48 +71,50 @@ export default function OffersScreen() {
     });
   }, []);
 
-  return (
-    <ScrollView style={{ flex: 1, padding: 0 }}>
-      {!loaded ?
-        (<ScreenLoadingComponent />) :
-        (
-          <React.Fragment>
-            <View style={{ width: '100%', paddingLeft: 15, paddingTop: 7, paddingBottom: 8, backgroundColor: theme.headerNotificationBg }}>
-              <Text>
-                Showing upcoming offers in Bedford
-              </Text>
-            </View>
-            <OpaqueView style={{ paddingTop: 8, paddingLeft: 15, paddingRight: 15, paddingBottom: 15 }}>
-              <OpaqueView style={{ flexDirection: 'row', borderBottomColor: theme.listItemBorderColor, borderBottomWidth: 1, marginBottom: 10 }}>
-                {offerCategories.map((category: OfferCategory, key: number) => (
-                  <ActionButton key={key}
-                    containerStyle={{ borderBottomColor: theme.primaryActiveBackground, borderBottomWidth: visibleOfferCategory === category.name ? 2 : 0 }}
-                    icon={offerCategoryButtonConfig[category.name]}
-                    iconSize='large'
-                    color={theme.tertiaryText}
-                    active={visibleOfferCategory === category.name}
-                    activeColor={theme.primaryActiveColorHighlight}
-                    disabledColor={theme.disabledText}
-                    title={category.name.replace(' Deals', '')}
-                    onPress={() => {
-                      if (visibleOfferCategory !== category.name) {
-                        setVisibleOfferCategory(category.name);
-                      }
-                    }} />
-                ))}
-              </OpaqueView>
+  return !loaded ?
+    (
+      <ScrollView style={{ flex: 1, padding: 0 }}>
+        <ScreenLoadingComponent />
+      </ScrollView>
+    ) :
+    (
+      <SafeAreaView>
+        {offerCategories.map((category: OfferCategory, key: number) => (
+          <FlatList key={key}
+            ListHeaderComponent={
               <React.Fragment>
-                {offerCategories.map((category: OfferCategory, categoryKey: number) => (
-                  <OpaqueView key={categoryKey} style={{ display: (visibleOfferCategory === category.name) ? 'flex' : 'none' }}>
-                    {category.offers.map((offer: Offer, key: number) => (
-                      <OfferCard key={key} offer={offer} />
-                    ))}
-                  </OpaqueView>
-                ))}
+                <View style={{ width: '100%', paddingLeft: 15, paddingTop: 7, paddingBottom: 8, backgroundColor: theme.headerNotificationBg }}>
+                  <Text>
+                    Showing upcoming offers in Bedford
+                  </Text>
+                </View>
+                <OpaqueView style={{ marginTop: 8, marginLeft: 15, marginRight: 15, flexDirection: 'row', borderBottomColor: theme.listItemBorderColor, borderBottomWidth: 1, marginBottom: 10 }}>
+                  {offerCategories.map((category: OfferCategory, key: number) => (
+                    <ActionButton key={key}
+                      containerStyle={{ borderBottomColor: theme.primaryActiveBackground, borderBottomWidth: visibleOfferCategory === category.name ? 2 : 0 }}
+                      icon={offerCategoryButtonConfig[category.name]}
+                      iconSize='large'
+                      color={theme.tertiaryText}
+                      active={visibleOfferCategory === category.name}
+                      activeColor={theme.primaryActiveColorHighlight}
+                      disabledColor={theme.disabledText}
+                      title={category.name.replace(' Deals', '')}
+                      onPress={() => {
+                        if (visibleOfferCategory !== category.name) {
+                          setVisibleOfferCategory(category.name);
+                        }
+                      }} />
+                  ))}
+                </OpaqueView>
               </React.Fragment>
-            </OpaqueView>
-          </React.Fragment>
-        )}
-    </ScrollView>
-  );
+            }
+            style={{ display: (visibleOfferCategory === category.name) ? 'flex' : 'none' }}
+            data={category.offers}
+            keyExtractor={(item) => `${item._id}${item.name}`}
+            renderItem={(data) =>
+              <OfferCard key={data.index} containerStyle={{marginRight: 15}} offer={data.item} />
+            } />
+        ))}
+      </SafeAreaView>
+    )
 }

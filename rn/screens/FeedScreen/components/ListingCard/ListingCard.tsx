@@ -22,7 +22,7 @@ export default function ListingCard(props: { listing: Listing, screenWidth: numb
 
   const listing = props.listing;
   const dimensionsWidth = props.screenWidth;
-  const imgHeight = Math.round(dimensionsWidth * 9 / 16);
+  const imgHeight = Math.round((dimensionsWidth / 960) * 640);
   const imgWidth = dimensionsWidth;
 
   return (

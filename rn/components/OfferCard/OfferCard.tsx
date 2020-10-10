@@ -8,11 +8,13 @@ import { nativeElemsStyles, styles } from './OfferCard.style';
 
 import { Offer } from '../../models';
 import ListingItemBottomBar from '../ListingItemBottomBar/ListingItemBottomBar';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleProp, ViewStyle } from 'react-native';
 
 type OfferCardProps = {
   offer: Offer;
   showBusinessName?: boolean;
+  containerStyle?: StyleProp<ViewStyle>;
 };
 
 export default function OfferCard(props: OfferCardProps) {
@@ -22,12 +24,12 @@ export default function OfferCard(props: OfferCardProps) {
   const offerIsExclusive = (Number(offer._id) % 2) === 0;
 
   const offerClick = () => {
-    nav.navigate('Offers', { screen: 'OfferScreen', params: { id: offer._id, offerName: offer.title } });
+    nav.navigate('Offers', { screen: 'OfferScreen', params: { id: offer._id, offerName: offer.name } });
   };
 
   return (
-    <Card containerStyle={nativeElemsStyles(theme).container}>
-      <TouchableWithoutFeedback onPress={offerClick}>
+    <Card containerStyle={[nativeElemsStyles(theme).container, props.containerStyle]}>
+      <TouchableOpacity activeOpacity={0.5} onPress={offerClick}>
         <OpaqueView style={styles(theme).titleContainer}>
           
           {offer.offerFoodStyle &&
@@ -47,8 +49,8 @@ export default function OfferCard(props: OfferCardProps) {
           }
         </OpaqueView>
 
-      </TouchableWithoutFeedback>
-      <ListingItemBottomBar listing={offer} />
+      </TouchableOpacity>
+      <ListingItemBottomBar listing={offer} borderTop={false} />
     </Card>
   );
 }

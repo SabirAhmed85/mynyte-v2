@@ -5,7 +5,7 @@
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/images/icon.png",
-        "scheme": "myapp",
+        "scheme": "mynyte",
         "userInterfaceStyle": "automatic",
         "splash": {
             "image": "./assets/images/splash.png",
@@ -26,7 +26,20 @@
             "favicon": "./assets/images/favicon.png"
         },
         "android": {
-            "package": "com.mynyte.mynyte"
+            "package": "com.mynyte.mynyte",
+            "intentFilters": [{
+                "action": "VIEW",
+                "autoVerify": true,
+                "data": [{
+                    "scheme": "https",
+                    "host": "*.mynyte.io",
+                    "pathPrefix": "/records"
+                }],
+                "category": [
+                    "BROWSABLE",
+                    "DEFAULT"
+                ]
+            }]
         }
     }
 }

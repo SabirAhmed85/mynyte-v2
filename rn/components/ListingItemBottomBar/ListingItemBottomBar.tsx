@@ -29,10 +29,11 @@ const BottomBarButton = (props: BottomBarButtonProps) => (
 );
 
 BottomBarButton.defaultProps = {
-  active: false
+  active: false,
 };
 
-const ListingItemBottomBar = ({ listing }: { listing: Listing | Offer }) => {
+const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boolean }) => {
+  const { listing, borderTop } = props;
   const [state, setState] = React.useState(listing as Listing | Offer);
   const watchableListings = ['Offer', 'Event', 'Movie'];
 
@@ -62,7 +63,9 @@ const ListingItemBottomBar = ({ listing }: { listing: Listing | Offer }) => {
 
   return (
     <NativeView>
-      <Card.Divider style={barStyles.cardDivider} />
+      {!!borderTop &&
+        <Card.Divider style={barStyles.cardDivider} />
+      }
       <NativeView style={{ flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 5, paddingRight: 5 }}>
         <NativeView style={{ width: '50%', alignItems: 'flex-start' }}>
           {watchableListings.includes(listing.listingType) &&
@@ -93,6 +96,10 @@ const ListingItemBottomBar = ({ listing }: { listing: Listing | Offer }) => {
       </NativeView>
     </NativeView>
   )
+};
+
+ListingItemBottomBar.defaultProps = {
+  borderTop: true
 };
 
 export default ListingItemBottomBar;

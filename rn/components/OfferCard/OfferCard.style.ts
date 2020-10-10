@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 const nativeElemsStyles = (theme: any) => ({
   container: {
-    width: '100%',
     padding: 0,
-    margin: 0,
+    marginTop: 0,
+    marginLeft: 15,
     marginBottom: 15,
     backgroundColor: theme.cardBackground,
     borderColor: theme.cardBorderColor,
@@ -18,9 +18,8 @@ const styles = (theme: any) =>
     titleContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      borderBottomColor: '#565555',
-      borderBottomWidth: 1,
-      backgroundColor: '#545252',
+      borderBottomColor: '#4c4a4a',
+      borderBottomWidth: 2,
       paddingTop: 9,
       paddingLeft: 10,
       paddingRight: 10,

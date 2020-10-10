@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text as DefaultText, View as DefaultView, ScrollView as DefaultScrollView, StyleProp, TextStyle } from 'react-native';
+import { Text as DefaultText, View as DefaultView, ScrollView as DefaultScrollView, SafeAreaView as DefaultSafeAreaView } from 'react-native';
 import { Button as DefaultButton } from 'react-native-elements';
 
 import { ThemeColors } from '../constants/Colors';
@@ -87,6 +87,12 @@ export function View(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+}
+
+export function SafeAreaView(props: ViewProps) {
+  const { style, lightColor, darkColor, ...otherProps } = props;
+  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+  return <DefaultSafeAreaView style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
 export function OpaqueView(props: ViewProps) {

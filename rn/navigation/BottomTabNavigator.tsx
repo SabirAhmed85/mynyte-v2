@@ -16,7 +16,8 @@ import CovidScreen from '../screens/CovidScreen/CovidScreen';
 import MoreScreen from '../screens/More';
 import MyNyteScreen from '../screens/MyNyteScreen/MyNyteScreen';
 import FeedListingOffersScreen from '../screens/FeedScreen/FeedListingScreen/FeedListingOffersScreen/FeedListingOffersScreen';
-import { RouteProp, useNavigation } from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
+import { BackButton } from '../components/BackButton/BackButton';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -118,13 +119,7 @@ function OffersNavigator() {
         options={(route) => ({
           headerTitle: route.route.params.offerName,
           headerLeft: () => (
-            <FontAwesome5
-              name='times'
-              size={24}
-              style={{ marginLeft: 15 }}
-              onPress={() => route.navigation.navigate('Offers', { screen: 'OffersScreen', params: {} })}
-              color='#fff'
-            />
+            <BackButton navigation={route.navigation} />
           ),
         })}
       />
@@ -276,21 +271,7 @@ function FeedNavigator() {
         options={(route) => ({
           headerTitle: route.route.params.listingName?.replace(/~and~/g, ' & ').replace(/-/g, ' '),
           headerLeft: () => (
-            <TouchableOpacity
-              activeOpacity={0.7}
-              containerStyle={{ height: '100%' }}
-              style={{ width: 50, height: '100%', flexDirection: 'row', alignItems: 'center' }}
-              onPress={() => route.navigation.dangerouslyGetState().routes.length === 1 ?
-                route.navigation.reset({ index: 0, routes: [{ name: 'FeedScreen', params: {} }] }) :
-                route.navigation.goBack()
-              }>
-              <FontAwesome5
-                name='times'
-                size={24}
-                style={{ marginLeft: 15 }}
-                color='#fff'
-              />
-            </TouchableOpacity>
+            <BackButton navigation={route.navigation} />
           ),
         })}
       />

@@ -108,7 +108,7 @@ export const ThemeColors: any = {
   },
   cardBackground: {
     light: '#ffffff',
-    dark: '#464646'
+    dark: '#414141'
   },
   cardBackgroundInverse: {
     light: '#e5e5e5',
@@ -116,7 +116,7 @@ export const ThemeColors: any = {
   },
   cardBorderColor: {
     light: '#e5e5e5',
-    dark: '#525050'
+    dark: '#4c4a4a'
   },
   colors: {
     light: {

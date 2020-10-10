@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { FlatList } from 'react-native';
 
 import { useTheme } from '../../../../../config/ThemeManager';
+import { OpaqueView } from '../../../../../components/Themed';
 import styles from './ListingPageMenu.style';
 
 import { Listing } from '../../../../../models';
@@ -36,7 +36,7 @@ export default function ListingPageMenu(props: { listing: Listing }) {
 
   const listing = props.listing;
   const listingListingTypes = [listing.listingType1, listing.listingType2, listing.listingType3];
-  const data: ((listing: Listing) => MenuItemProps[]) = (listing: Listing) => ([    
+  const data: ((listing: Listing) => MenuItemProps[]) = (listing: Listing) => ([
     {
       title: 'Book a Table',
       icon: 'utensils',
@@ -106,7 +106,7 @@ export default function ListingPageMenu(props: { listing: Listing }) {
     }
   ]);
   let itemsToShow = data(listing);
-  
+
   if (!listingListingTypes.includes('Restaurant')) {
     itemsToShow = itemsToShow.filter(item => item.title !== 'Book a Table' && item.title !== 'A la Carte Menu');
   }
@@ -143,9 +143,12 @@ export default function ListingPageMenu(props: { listing: Listing }) {
   });
 
   return (
-    <FlatList
-      style={styles().containerAlt}
-      data={itemsToShow}
-      renderItem={(data) => (<MenuItem item={data.item} />)} />
+    <OpaqueView style={styles().containerAlt}>
+      {
+        itemsToShow.map((item, key) => (
+          <MenuItem key={key} item={item} />
+        ))
+      }
+    </OpaqueView>
   );
 }

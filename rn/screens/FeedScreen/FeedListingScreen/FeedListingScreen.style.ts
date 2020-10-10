@@ -11,7 +11,7 @@ const styles = (theme: any) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#4c4b4b',
+    backgroundColor: '#373737',
     padding: 15
   },
   pageMenuHeaderContainerAlt: {

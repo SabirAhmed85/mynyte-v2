@@ -3693,6 +3693,11 @@ expo-permissions@~9.3.0:
   resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-9.3.0.tgz#b90c7e9e411d306c1c7ba2bae18d5c53c201affd"
   integrity sha512-ylSJZVvEGJVFTKsFrUL2S6gCvFt+/o8TJ3xT4WaMjHe2/2Z7R8ng6NR47Kt54t7XBIV/SZ7DIY9uRiR7TPuNYA==
 
+expo-sharing@^8.4.1:
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/expo-sharing/-/expo-sharing-8.4.1.tgz#250e537d970af861a45fd194bd804e9389fdc25a"
+  integrity sha512-Qg6CJQPwE00lm3cZrq4spJT+ahsZa8z1g1FwItQ5FFIUTfli97P6i6g5q12jL5KWaGycbw+La/5/vgT40I9Oxg==
+
 expo-splash-screen@^0.6.1, expo-splash-screen@~0.6.1:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.6.2.tgz#2be7fc28ad62549e870c69f1fe133ebe756c524f"
@@ -6810,11 +6815,6 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-react-collapsible@^2.8.1:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/react-collapsible/-/react-collapsible-2.8.1.tgz#60f47a12203bb8477d4c0e221b109fa839fed66c"
-  integrity sha512-ykV+EpCBYC6UoOsZLtBxrs/kFVgJc2gFMU1/SS2JLG+LrMHSOERpWSG+fexyFYk44hdfJRmc/If+HlSjXcbCiw==
-
 react-devtools-core@^4.6.0:
   version "4.8.2"
   resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.8.2.tgz#4465f2e8de7795564aa20f28b2f3a9737586db23"
@@ -6846,13 +6846,6 @@ react-native-appearance@^0.3.4:
     fbemitter "^2.1.1"
     invariant "^2.2.4"
     use-subscription "^1.0.0"
-
-react-native-collapsible@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-1.5.3.tgz#d6bc7274ae8f40f7688cca23ededa263e6c81c63"
-  integrity sha512-Ciuy3yF8wcHeLxXFtx9vxoyrq8l+9EJqLM/ADw54gVwzTQc1/e2ojhQbVFPlxhDA+Pba2qezkaKfv5ifxg8hoQ==
-  dependencies:
-    prop-types "^15.6.2"
 
 react-native-elements@^2.3.2:
   version "2.3.2"
