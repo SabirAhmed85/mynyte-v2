@@ -4,6 +4,8 @@ export const styles = (theme: any) => StyleSheet.create({
     container: {
         overflow: 'hidden',
         backgroundColor: theme.searchPanelHeaderBg,
+        flex: 1,
+        width: '100%',
     },
     searchPanelHeader: {
         paddingTop: 20,

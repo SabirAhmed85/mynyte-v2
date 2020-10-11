@@ -1,9 +1,21 @@
-import React from 'react'
-import { Appearance } from 'react-native-appearance'
-import { getTheme } from '../constants/Colors'
+import React from 'react';
+import { Appearance } from 'react-native-appearance';
+import { getTheme } from '../constants/Colors';
+
+type ThemeManagerState = {
+  mode: string;
+};
 
 // set default colour scheme from OS
 const osTheme = Appearance.getColorScheme();
+const setMode = (theme: string, action: string) => {
+  if (action === 'set') {
+    return theme === 'light' ? 'light' : 'dark';
+  }
+  else {
+    return theme === 'light' ? 'dark' : 'light';
+  }
+}
 
 // initiate context
 export const ManageThemeContext: React.Context<any> = React.createContext({
@@ -16,37 +28,22 @@ export const ManageThemeContext: React.Context<any> = React.createContext({
 export const useTheme = () => React.useContext(ManageThemeContext);
 
 // initiate context provider
-export class ThemeManager extends React.Component<any, any> {
+export const ThemeManager = (props: { children: React.ReactChild[] }) => {
+  const [state, setState] = React.useState({ mode: setMode(osTheme, 'set') } as ThemeManagerState);
 
-  state = {
-    mode: osTheme === 'light' ? 'light' : 'dark'
-  };
-  
-  componentDidUpdate () {
-    console.log('theme updated');
+  const toggleTheme = async () => {
+    setState({ ...state, mode: setMode(state.mode, 'update') });
   }
 
-  toggleTheme = async () => {
-    this.state.mode === 'light'
-      ? this.setState({
-        mode: 'dark'
-      })
-      : this.setState({
-        mode: 'light'
-      })
-  }
-
-  render () {
-    return (
+  return (
       <ManageThemeContext.Provider value={{
-        mode: this.state.mode,
-        theme: getTheme(this.state.mode),
-        toggle: this.toggleTheme
+        mode: state.mode,
+        theme: getTheme(state.mode),
+        toggle: toggleTheme
       }}>
-        {this.props.children}
+        {props.children}
       </ManageThemeContext.Provider>
     )
-  }
 }
 
 export default ThemeManager;

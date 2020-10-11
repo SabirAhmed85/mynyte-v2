@@ -49,11 +49,13 @@ export default function FeedContainer(props: FeedContainerProps) {
   let mountedRef = React.useRef(true);
 
   React.useEffect(() => {
-    getListingsForFoodFeed().then((listings: Listing[]) => {
-      if (!mountedRef.current) return null;
-      dispatchTonightsListings({ type: 'add', item: listings });
-      setLoaded(true);
-    });
+    setTimeout(() => {
+      getListingsForFoodFeed().then((listings: Listing[]) => {
+        if (!mountedRef.current) return null;
+        dispatchTonightsListings({ type: 'add', item: listings });
+        setLoaded(true);
+      });
+      }, 200);
 
     return () => {
       mountedRef.current = false;
