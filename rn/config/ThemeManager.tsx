@@ -28,7 +28,7 @@ export const ManageThemeContext: React.Context<any> = React.createContext({
 export const useTheme = () => React.useContext(ManageThemeContext);
 
 // initiate context provider
-export const ThemeManager = (props: { children: React.ReactChild[] }) => {
+export const ThemeManager = (props: { children: any }) => {
   const [state, setState] = React.useState({ mode: setMode(osTheme, 'set') } as ThemeManagerState);
 
   const toggleTheme = async () => {

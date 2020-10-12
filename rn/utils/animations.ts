@@ -1,3 +1,5 @@
+// Brought in for 'Shared Element Transition'
+
 import {Easing, Animated, Platform, LayoutAnimation, EasingFunction} from 'react-native';
 
 type TimingAnimationProps = {

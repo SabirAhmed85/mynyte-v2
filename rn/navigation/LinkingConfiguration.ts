@@ -21,7 +21,7 @@ export default {
               OfferScreen: {
                 path: 'offers/:id/:offerName',
                 parse: {
-                  id: (id: number) => `${id}`,
+                  id: (id: string) => `${id}`,
                   offerName: (offerName: string) => `${offerName}`,
                 },
                 stringify: {

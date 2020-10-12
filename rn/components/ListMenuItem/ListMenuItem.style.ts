@@ -7,7 +7,7 @@ const styles = () =>
       marginLeft: 8,
       marginRight: 8,
       marginBottom: 5,
-      backgroundColor: '#424242',
+      backgroundColor: '#494949',
       borderRadius: 5,
       flexDirection: 'row',
       height: 68,

@@ -102,9 +102,9 @@ export default function OffersScreen() {
                         title={category.name.replace(' Deals', '')}
                         withIndicator={true}
                         onPress={() => {
-                          if (visibleOfferCategory !== category.name) {
+                          if (visibleOfferCategory !== category.name) {  
                             setVisibleOfferCategory(category.name);
-                          }
+                          };
                         }} />
                     ))}
                   </OpaqueView>

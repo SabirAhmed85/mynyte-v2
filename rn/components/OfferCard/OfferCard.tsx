@@ -9,7 +9,8 @@ import { nativeElemsStyles, styles } from './OfferCard.style';
 import { Offer } from '../../models';
 import ListingItemBottomBar from '../ListingItemBottomBar/ListingItemBottomBar';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { StyleProp, ViewStyle } from 'react-native';
+import { Image, StyleProp, ViewStyle } from 'react-native';
+import { OfferContext } from '../../config/OfferProvider';
 
 type OfferCardProps = {
   offer: Offer;
@@ -18,6 +19,7 @@ type OfferCardProps = {
 };
 
 export default function OfferCard(props: OfferCardProps) {
+  const { selectOffer } = React.useContext(OfferContext);
   const { theme } = useTheme();
   const nav = useNavigation();
   const { offer, showBusinessName } = props;
@@ -31,22 +33,29 @@ export default function OfferCard(props: OfferCardProps) {
     <Card containerStyle={[nativeElemsStyles(theme).container, props.containerStyle]}>
       <TouchableOpacity activeOpacity={0.5} onPress={offerClick}>
         <OpaqueView style={styles(theme).titleContainer}>
-          
+
           {offer.offerFoodStyle &&
             <Card.Title style={styles(theme).title}>{offer.offerFoodStyle}</Card.Title>
           }
 
-          {offerIsExclusive &&
-            <PrimaryText style={styles(theme).note}>MyNyte Exclusive</PrimaryText>
-          }
+          <OpaqueView style={{ flexDirection: 'row', alignItems: 'center' }}>
+            {offerIsExclusive &&
+              <PrimaryText style={styles(theme).note}>MyNyte Exclusive</PrimaryText>
+            }
+
+            <Image style={{ width: 45, height: 45, borderRadius: 45, borderColor: '#555', borderWidth: 1 }} source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${offer.currentCoverPhotoName}` }} />
+          </OpaqueView>
 
         </OpaqueView>
-        <OpaqueView style={styles(theme).offerBody}>
-          <Text style={styles(theme).description}>{offer.description}</Text>
+        <OpaqueView style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
-          {!!showBusinessName &&
-            <Text>At: {offer.businessName}</Text>
-          }
+          <OpaqueView style={styles(theme).offerBody}>
+            <Text style={styles(theme).description}>{offer.description}</Text>
+
+            {!!showBusinessName &&
+              <Text>At: {offer.businessName}</Text>
+            }
+          </OpaqueView>
         </OpaqueView>
 
       </TouchableOpacity>

@@ -10,6 +10,8 @@ import ThemeManager, { useTheme } from './config/ThemeManager';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+import ListingProvider from './config/ListingProvider';
+import OfferProvider from './config/OfferProvider';
 
 const FadeInView = (props: any) => {
   const fadeAnim = React.useRef(new Animated.Value(1)).current  // Initial value for opacity: 0
@@ -61,8 +63,12 @@ export default function App() {
         </FadeInView>
         <AppearanceProvider>
           <ThemeManager>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar />
+            <ListingProvider>
+              <OfferProvider>
+                <Navigation colorScheme={colorScheme} />
+                <StatusBar />
+              </OfferProvider>
+            </ListingProvider>
           </ThemeManager>
         </AppearanceProvider>
       </SafeAreaProvider>

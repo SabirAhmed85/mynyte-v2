@@ -25,8 +25,12 @@ export default function FeedHeader(props: FeedScreenProps) {
             <OpaqueView style={{ flexDirection: 'row' }}>
                 {feedType === 'tonight' &&
                     <React.Fragment>
-                        <Button type='clear' buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.searchPanelHeaderBg }} icon={<FontAwesome5 name='filter' size={17} color={theme.disabledText} />}></Button>
                         <Button type='clear'
+                            titleStyle={{ color: theme.disabledText }}
+                            buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.searchPanelHeaderBg }}
+                            icon={<FontAwesome5 name='filter' size={17} color={theme.disabledText} />}></Button>
+                        <Button type='clear'
+                            titleStyle={{ color: theme.disabledText }}
                             containerStyle={{ marginLeft: 8 }}
                             buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.searchPanelHeaderBg }}
                             icon={<FontAwesome5 name='times' size={17} color={theme.disabledText} />}

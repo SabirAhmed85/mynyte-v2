@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { Animated, Image, StyleProp, ViewStyle } from 'react-native';
+import { Animated, Image, PanResponder, StyleProp, ViewStyle } from 'react-native';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import { Picker } from '@react-native-community/picker';
-import { Button, ColorlessText, DisabledText, PrimaryText, SecondaryText, TertiaryText, Text, View } from '../../../../components/Themed';
+import { Button, ColorlessText, PrimaryText, TertiaryText, Text, View } from '../../../../components/Themed';
 
 import { useTheme } from '../../../../config/ThemeManager';
 import { OpaqueView } from '../../../../components/Themed';
-import { styles } from './FeedSearch.style';
+import { styles, stylesObjects } from './FeedSearch.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ActionButton } from '../../../../components/ActionButton/ActionButton';
 import { FadeInPanel } from '../../../../components/FadeInPanel/FadeInPanel';
@@ -61,10 +61,11 @@ const ExpandingContent = (props: any) => {
 export default function FeedSearch(props: FeedSearchProps) {
     const { theme } = useTheme();
     const [searchCollapsed, setSearchCollapsed] = React.useState(props.searchCollapsed);
-    const icons = {
-        'up': 'thumbs-up',
-        'down': 'eye'
-    };
+    const [cats, dispatchCategories] = React.useReducer(reducer, [{}] as FeedCategory[]);
+    const [visibleFeedCategory, setVisibleFeedCategory] = React.useState({} as FeedCategory);
+    const [panelLeftValue, setPanelLeftValue] = React.useState(new Animated.Value(0));
+    const [panelLeft, setPanelLeft] = React.useState(0);
+    const [minLeft, setMinLeft] = React.useState(visibleFeedCategory.items ? (visibleFeedCategory.items.length - 2) * 150 * -1 : 0);
     // let icon = (state.expanded) ? icons['up'] : icons['down'];
     const categories: FeedCategory[] = [
         {
@@ -144,8 +145,7 @@ export default function FeedSearch(props: FeedSearchProps) {
             ]
         }
     ];
-    const [cats, dispatchCategories] = React.useReducer(reducer, [{}] as FeedCategory[]);
-    const [visibleFeedCategory, setVisibleFeedCategory] = React.useState({} as FeedCategory);
+
     React.useEffect(() => {
         dispatchCategories({ item: categories });
         setVisibleFeedCategory(categories[0]);
@@ -155,51 +155,121 @@ export default function FeedSearch(props: FeedSearchProps) {
         if (props.searchCollapsed !== searchCollapsed) {
             setSearchCollapsed(props.searchCollapsed);
         }
-    }, [props]);
+        console.log(categories[0], visibleFeedCategory.items);
+        setMinLeft(categories[0].items ? (categories[0].items.length - 2) * 150 * -1 : 0);
+        console.log(minLeft, visibleFeedCategory, categories[0].items.length);
+    }, [props, visibleFeedCategory]);
 
     const image = 'boxing-sport.jpeg';
 
     const getFeedSearchImageName = (name: string) => {
-        if (name === 'italian-food.jpg') {
-            return require(`../../../../assets/images/feed-search/italian-food.jpg`);
-        }
-        else if (name === 'indian-food.jpg') {
-            return require(`../../../../assets/images/feed-search/indian-food.jpg`);
-        }
-        else if (name === 'chinese-food.jpg') {
-            return require(`../../../../assets/images/feed-search/chinese-food.jpg`);
-        }
-        else if (name === 'action-movie.jpg') {
-            return require(`../../../../assets/images/feed-search/action-movie.jpg`);
-        }
-        else if (name === 'comedy-movie.jpg') {
-            return require(`../../../../assets/images/feed-search/comedy-movie.jpg`);
-        }
-        else if (name === 'horror-movie.jpg') {
-            return require(`../../../../assets/images/feed-search/horror-movie.jpg`);
-        }
-        else if (name === 'indian-takeaway.jpg') {
-            return require(`../../../../assets/images/feed-search/indian-takeaway.jpg`);
-        }
-        else if (name === 'chinese-takeaway.jpg') {
-            return require(`../../../../assets/images/feed-search/chinese-takeaway.jpg`);
-        }
-        else if (name === 'pizza-takeaway.jpg') {
-            return require(`../../../../assets/images/feed-search/pizza-takeaway.jpg`);
-        }
-        else if (name === 'football-sport.jpg') {
-            return require(`../../../../assets/images/feed-search/football-sport.jpg`);
-        }
-        else if (name === 'rugby-sport.jpg') {
-            return require(`../../../../assets/images/feed-search/rugby-sport.jpg`);
-        }
-        else if (name === 'boxing-sport.jpeg') {
-            return require(`../../../../assets/images/feed-search/boxing-sport.jpeg`);
+        switch (name) {
+            case 'italian-food.jpg':
+                return require(`../../../../assets/images/feed-search/italian-food.jpg`);
+            case 'indian-food.jpg':
+                return require(`../../../../assets/images/feed-search/indian-food.jpg`);
+            case 'chinese-food.jpg':
+                return require(`../../../../assets/images/feed-search/chinese-food.jpg`);
+            case 'italian-food.jpg':
+                return require(`../../../../assets/images/feed-search/italian-food.jpg`);
+            case 'italian-food.jpg':
+                return require(`../../../../assets/images/feed-search/italian-food.jpg`);
+            case 'indian-food.jpg':
+                return require(`../../../../assets/images/feed-search/indian-food.jpg`);
+            case 'chinese-food.jpg':
+                return require(`../../../../assets/images/feed-search/chinese-food.jpg`);
+            case 'italian-food.jpg':
+                return require(`../../../../assets/images/feed-search/italian-food.jpg`);
+            case 'action-movie.jpg':
+                return require(`../../../../assets/images/feed-search/action-movie.jpg`);
+            case 'comedy-movie.jpg':
+                return require(`../../../../assets/images/feed-search/comedy-movie.jpg`);
+            case 'horror-movie.jpg':
+                return require(`../../../../assets/images/feed-search/horror-movie.jpg`);
+            case 'indian-takeaway.jpg':
+                return require(`../../../../assets/images/feed-search/indian-takeaway.jpg`);
+            case 'chinese-takeaway.jpg':
+                return require(`../../../../assets/images/feed-search/chinese-takeaway.jpg`);
+            case 'pizza-takeaway.jpg':
+                return require(`../../../../assets/images/feed-search/pizza-takeaway.jpg`);
+            case 'football-sport.jpg':
+                return require(`../../../../assets/images/feed-search/football-sport.jpg`);
+            case 'rugby-sport.jpg':
+                return require(`../../../../assets/images/feed-search/rugby-sport.jpg`);
+            case 'boxing-sport.jpeg':
+                return require(`../../../../assets/images/feed-search/boxing-sport.jpeg`);
         }
     }
 
+    const panResponder = PanResponder.create({
+        onStartShouldSetPanResponder: () => false,
+        onMoveShouldSetPanResponder: (evt, gestureState) => !(gestureState.dx < 4 && gestureState.dx > -4),
+        onStartShouldSetPanResponderCapture: () => false,
+        onMoveShouldSetPanResponderCapture: (evt, gestureState) => !(gestureState.dx < 4 && gestureState.dx > -4),
+        onPanResponderMove: (evt, gestureState) => {
+            const val = panelLeft + gestureState.dx;
+            panelLeftValue.setValue(val);
+            console.log('hey');
+            if (gestureState.dx > 40) {
+                
+            } else if (gestureState.dx < -40) {
+                
+            }
+        },
+
+        onPanResponderRelease: (evt, gestureState) => {
+            console.log('release', gestureState.dx);
+            if (
+                gestureState.dx < 40 &&
+                gestureState.dx > -40
+            ) {
+                Animated.spring(
+                    panelLeftValue,
+                    {
+                        toValue: panelLeft,
+                        speed: 2,
+                        bounciness: 10,
+                        useNativeDriver: false
+                    }
+                ).start();
+            } else if (gestureState.dx > 40) {
+                moveRight();
+            } else if (gestureState.dx < -40) {
+                moveLeft();
+            }
+        },
+    });
+
+    const moveLeft = () => {
+        const leftDestination = (panelLeft > minLeft) ? panelLeft - 150 : panelLeft;
+        setPanelLeft(leftDestination);
+        Animated.spring(
+            panelLeftValue,
+            {
+                toValue: leftDestination,
+                speed: 1,
+                bounciness: 4,
+                useNativeDriver: false
+            }
+        ).start(() => {});
+    }
+
+    const moveRight = () => {
+        const leftDestination = (panelLeft < 0) ? panelLeft + 150 : panelLeft;
+        setPanelLeft(leftDestination)
+        Animated.spring(
+            panelLeftValue,
+            {
+                toValue: leftDestination,
+                speed: 1,
+                bounciness: 4,
+                useNativeDriver: false
+            }
+        ).start(() => {});
+    }
+
     return (
-        <FadeInPanel style={styles(theme).container} duration={150} >
+        <FadeInPanel style={stylesObjects(theme).container} duration={150} >
             <TouchableOpacity activeOpacity={0.6} onPress={() => setSearchCollapsed(!searchCollapsed)}>
                 <OpaqueView style={styles(theme).searchPanelHeader}>
                     <OpaqueView style={{ flexDirection: 'row', alignSelf: 'flex-start' }}>
@@ -232,18 +302,21 @@ export default function FeedSearch(props: FeedSearchProps) {
                             containerStyle={{ flex: 1, borderRadius: 0 }} />
                     ))}
                 </OpaqueView>
-                <OpaqueView style={{ flexDirection: 'row', paddingTop: 10, paddingLeft: 2 }}>
-                    {visibleFeedCategory.items &&
-                        visibleFeedCategory.items.map((item, key) => (
-                            <OpaqueView key={key} style={{ flexDirection: 'column', width: 135, backgroundColor: theme.background, borderColor: theme.searchPanelInnerBorderColor, borderWidth: 1, marginLeft: 9, marginRight: 7, marginTop: 7, marginBottom: 10 }}>
-                                <Image
-                                    source={getFeedSearchImageName(item.image)}
-                                    resizeMode='cover'
-                                    style={{ width: '100%', height: 90 }} />
-                                <Text style={{ paddingLeft: 10, paddingRight: 10, paddingTop: 6, paddingBottom: 8 }}>{item.name}</Text>
-                            </OpaqueView>
-                        )
-                        )}
+                <OpaqueView style={{ overflow: 'hidden', marginLeft: 10, minHeight: 155 }}>
+
+                    <Animated.View {...panResponder.panHandlers} style={{ paddingTop: 10, flexDirection: 'row', position: 'absolute', transform: [{ translateX: panelLeftValue }] }}>
+                        {visibleFeedCategory.items &&
+                            visibleFeedCategory.items.map((item, key) => (
+                                <TouchableOpacity onPress={() => { alert('nav');}} activeOpacity={0.8} key={key} style={{ flexDirection: 'column', width: 135, backgroundColor: theme.background, borderColor: theme.searchPanelInnerBorderColor, borderWidth: 1, marginRight: 15, marginTop: 7, marginBottom: 10 }}>
+                                    <Image
+                                        source={getFeedSearchImageName(item.image)}
+                                        resizeMode='cover'
+                                        style={{ width: '100%', height: 90 }} />
+                                    <Text style={{ paddingLeft: 10, paddingRight: 10, paddingTop: 6, paddingBottom: 8 }}>{item.name}</Text>
+                                </TouchableOpacity>
+                            )
+                            )}
+                    </Animated.View>
                 </OpaqueView>
             </ExpandingContent>
             {/*

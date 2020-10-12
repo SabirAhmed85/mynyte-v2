@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { useTheme } from '../../../../../../config/ThemeManager';
-import { OpaqueView, TertiaryText, Button, DisabledText, SecondaryText } from '../../../../../../components/Themed';
-import styles from './MenuItem.style';
+import { useTheme } from '../../config/ThemeManager';
+import { OpaqueView, TertiaryText, Button, DisabledText, SecondaryText } from '../Themed';
+import styles from './ListMenuItem.style';
 
 import { FontAwesome5 } from '@expo/vector-icons';
 import { TouchableHighlight } from 'react-native-gesture-handler';
@@ -60,7 +60,7 @@ const ItemMainContent = (item: ItemMainContentProps) => (
   </OpaqueView>
 );
 
-export default function MenuItem(props: { item: MenuItemProps }) {
+export default function ListMenuItem(props: { item: MenuItemProps }) {
   const nav = useNavigation()
   const { theme } = useTheme();
   const { item } = props;
@@ -72,22 +72,21 @@ export default function MenuItem(props: { item: MenuItemProps }) {
       {!!item.clickable && item.clickNavigation ?
         (
           <TouchableHighlight
-            activeOpacity={0.8}
-            underlayColor='#404040'
+            underlayColor='#4d4d4d'
             onPress={() => {nav.navigate('Feed', { ...item.clickNavigation })}}
             style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 15, height: '100%' }}
-            containerStyle={{ height: '100%', width: !!props.item.shareable ? screenWidth - 85 : '100%' }}>
+            containerStyle={{ height: '100%', flex: 1 }}>
             <ItemMainContent {...item}></ItemMainContent>
           </TouchableHighlight>
         ) :
         (
-          <OpaqueView style={{ flexDirection: 'row', alignItems: 'center', width: '85%', paddingLeft: 15 }}>
+          <OpaqueView style={{ flexDirection: 'row', alignItems: 'center', flex: 1, paddingLeft: 15 }}>
             <ItemMainContent {...item}></ItemMainContent>
           </OpaqueView>
         )
       }
       {!!props.item.shareable && !!props.item.clickable &&
-        <Button type='clear' icon={MenuItemShareButton(theme.secondaryText)} containerStyle={{ alignItems: 'flex-end', marginRight: 11, borderRadius: 16 }}></Button>
+        <Button type='clear' icon={MenuItemShareButton(theme.secondaryText)} containerStyle={{ alignItems: 'flex-end', marginRight: 11, marginLeft: 11, borderRadius: 16 }}></Button>
       }
     </OpaqueView>
   )

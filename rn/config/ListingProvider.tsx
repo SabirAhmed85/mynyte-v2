@@ -10,7 +10,7 @@ export const ListingContext: React.Context<any> = React.createContext({
     selectListing: () => {}
 });
 
-export const ListingProvider = (props: { children: React.ReactChild}) => {
+export const ListingProvider = (props: { children: any }) => {
     const [state, setState] = React.useState({ selectedListing: null } as ListingProviderState);
 
     const handleSelectListing = async (listing: Listing) => {

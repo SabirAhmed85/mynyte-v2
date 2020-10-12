@@ -7,7 +7,7 @@ import styles from './ListingPageMenu.style';
 
 import { Listing } from '../../../../../models';
 
-import MenuItem from './MenuItem/MenuItem';
+import ListMenuItem from '../../../../../components/ListMenuItem/ListMenuItem';
 
 interface MenuItemProps extends ItemMainContentProps {
   shareable?: boolean;
@@ -146,7 +146,7 @@ export default function ListingPageMenu(props: { listing: Listing }) {
     <OpaqueView style={styles().containerAlt}>
       {
         itemsToShow.map((item, key) => (
-          <MenuItem key={key} item={item} />
+          <ListMenuItem key={key} item={item} />
         ))
       }
     </OpaqueView>

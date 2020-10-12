@@ -7,12 +7,13 @@ const styles = (theme: any) => StyleSheet.create({
     paddingBottom: 10,
     height: '100%'
   },
+  contentContainer: {
+    padding: 15
+  },
   pageMenuHeaderContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#373737',
-    padding: 15
   },
   pageMenuHeaderContainerAlt: {
     flexDirection: 'row',

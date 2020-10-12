@@ -1,19 +1,20 @@
 import * as React from 'react';
-
-import { useTheme } from '../../../config/ThemeManager';
-import { SecondaryText, OpaqueView, PrimaryHighlightText, ScrollView, Text, Button } from '../../../components/Themed';
-import styles from './FeedListingScreen.style';
-
-import { share } from '../../../utils/share'; 
-
-import { Listing } from '../../../models';
 import { Dimensions, Image } from 'react-native';
 import { NavigationState, RouteProp, useNavigation } from '@react-navigation/native';
+import { FontAwesome5 } from '@expo/vector-icons';
+
+import { useTheme } from '../../../config/ThemeManager';
+import { SecondaryText, OpaqueView, InnerView, PrimaryHighlightText, ScrollView, Text, Button } from '../../../components/Themed';
+import styles from './FeedListingScreen.style';
+
+import { ListingContext } from '../../../config/ListingProvider';
+import { share } from '../../../utils/share'; 
+import { Listing } from '../../../models';
+import { FeedParamList } from '../../../types';
+
 import ListingPageMenu from './components/ListingPageMenu/ListingPageMenu';
 import ListingPageActionButtonsBar from './components/ListingPageActionButtonsBar/ListingPageActionButtonsBar';
-import { FontAwesome5 } from '@expo/vector-icons';
 import { ScreenLoadingComponent } from '../../../components/ScreenLoadingComponent/ScreenLoadingComponent';
-import { FeedParamList } from '../../../types';
 
 function getFeedListing(id: number, listingType: string) {
   return fetch(`https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Profile.php?action=getListings&_listingId=${id}&listingType=${listingType}&_profileId=2`)
@@ -37,6 +38,7 @@ const mainHeaderShareButton = () => (
 );
 
 export default function FeedListingScreen(props: FeedListingScreenProps) {
+  const { selectedListing } = React.useContext(ListingContext);
   const { id, listingType, listingName } = props.route.params;
   const { theme } = useTheme();
   const nav = useNavigation();
@@ -89,13 +91,13 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
       {!loaded &&
         <ScreenLoadingComponent />}
       {!!loaded &&
-        <React.Fragment>
+        <InnerView>
           <Image
             resizeMode='cover'
             source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${listing.currentCoverPhotoName}` }}
             style={{ width: imgWidth, height: imgHeight }} />
           <ListingPageActionButtonsBar listing={listing} />
-          <OpaqueView style={styles(theme).pageMenuHeaderContainer}>
+          <OpaqueView style={[styles(theme).pageMenuHeaderContainer, styles(theme).contentContainer]}>
             <OpaqueView style={{ flexDirection: 'column', alignItems: 'flex-start', maxWidth: '80%' }}>
               <SecondaryText>{listing.name}</SecondaryText>
               <PrimaryHighlightText>{listing.listingType1} in {listing.town}</PrimaryHighlightText>
@@ -110,11 +112,11 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
           <OpaqueView style={{ backgroundColor: theme.primaryActiveBackground, padding: 15 }}>
             <SecondaryText>Info / About</SecondaryText>
           </OpaqueView>
-          <OpaqueView style={{ padding: 15 }}>
+          <OpaqueView style={styles(theme).contentContainer}>
             <SecondaryText>Something about Listing ... blah blah blah</SecondaryText>
             <Text>Something else about Listing ... blah blah blah</Text>
           </OpaqueView>
-        </React.Fragment>
+        </InnerView>
       }
     </ScrollView>
   );

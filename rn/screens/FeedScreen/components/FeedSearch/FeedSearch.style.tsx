@@ -1,12 +1,15 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = (theme: any) => StyleSheet.create({
+export const stylesObjects = (theme: any) => ({
     container: {
         overflow: 'hidden',
         backgroundColor: theme.searchPanelHeaderBg,
         flex: 1,
         width: '100%',
     },
+});
+
+export const styles = (theme: any) => StyleSheet.create({
     searchPanelHeader: {
         paddingTop: 20,
         paddingBottom: 20,

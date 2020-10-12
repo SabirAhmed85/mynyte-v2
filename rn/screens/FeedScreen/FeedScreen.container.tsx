@@ -4,6 +4,7 @@ import { Dimensions } from 'react-native';
 import { useMediaQuery } from 'react-responsive';
 
 import FeedScreen from './FeedScreen';
+import { ListingContext } from '../../config/ListingProvider';
 
 export default function FeedScreenContainer(props: { route: any }) {
   const { theme } = useTheme();
