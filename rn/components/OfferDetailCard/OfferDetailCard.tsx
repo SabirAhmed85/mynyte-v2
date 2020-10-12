@@ -63,8 +63,8 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
           resizeMode='cover'
           source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${offer.currentCoverPhotoName}` }}
           style={{ maxWidth: '100%', width: imgWidth, height: imgHeight }} />
-        <OpaqueView style={{ position: 'absolute', top: 0, left: 0, width: '100%', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
-          <OpaqueView style={{ backgroundColor: 'rgba(30, 30, 30, 0.4)', paddingTop: 10, paddingBottom: 10, paddingLeft: 15, paddingRight: 15 }}>
+        <OpaqueView style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', flexDirection: 'row', flex: 1, }}>
+          <OpaqueView style={{ backgroundColor: 'rgba(30, 30, 30, 0.5)', flex: 1, borderRadius: 30, alignSelf: 'flex-end', paddingTop: 10, paddingBottom: 10, margin: 10, paddingLeft: 15, paddingRight: 15 }}>
             <SecondaryText>Offer now on! What are you waiting for?</SecondaryText>
           </OpaqueView>
         </OpaqueView>

@@ -36,16 +36,17 @@ function getListingsForFoodFeed() {
 
 type FeedContainerProps = {
   screenWidth: number;
+  feedTypeToggle: (feedType: string) => void;
+  feedType: string;
 };
 
 export default function FeedContainer(props: FeedContainerProps) {
   const { theme } = useTheme();
-  const { screenWidth } = props;
+  const { screenWidth, feedTypeToggle, feedType } = props;
   const [tonightsListings, dispatchTonightsListings] = React.useReducer(reducer, [{}, {}, {}] as Listing[]);
   const [loaded, setLoaded] = React.useState(false);
   const [listings, dispatchListings] = React.useReducer(reducer, [{}, {}, {}] as Listing[]);
   const [listingsLoaded, setListingsLoaded] = React.useState(false);
-  const [feedType, setFeedType] = React.useState('tonight');
   let mountedRef = React.useRef(true);
 
   React.useEffect(() => {
@@ -62,22 +63,22 @@ export default function FeedContainer(props: FeedContainerProps) {
     }
   }, []);
 
-  const feedTypeToggle = (feedType: string) => {
-    if (feedType === 'main' && !listingsLoaded) {
-      loadListingsForMainFeed();
-    }
-    else {
-      setFeedType(feedType);
-    }
-  }
-
   const loadListingsForMainFeed = () => {
     getListingsForMainFeed().then((listings: Listing[]) => {
       if (!mountedRef.current) return null;
       dispatchListings({ type: 'add', item: listings });
       setListingsLoaded(true);
-      setFeedType('main');
+      feedTypeToggle('main');
     });
+  }
+
+  const feedTypeToggleInner = (feedType: string) => {
+    if (feedType === 'main' && !listingsLoaded) {
+      loadListingsForMainFeed();
+    }
+    else {
+      feedTypeToggle(feedType);
+    }
   }
 
   return (
@@ -89,6 +90,6 @@ export default function FeedContainer(props: FeedContainerProps) {
       listingsLoaded={listingsLoaded}
       screenWidth={screenWidth}
       feedType={feedType}
-      feedTypeToggle={feedTypeToggle} />
+      feedTypeToggleInner={feedTypeToggleInner} />
   )
 }
