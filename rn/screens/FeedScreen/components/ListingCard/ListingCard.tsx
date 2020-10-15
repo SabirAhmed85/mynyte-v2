@@ -17,7 +17,6 @@ export default function ListingCard(props: { listing: Listing, screenWidth: numb
   const { theme } = useTheme();
   const nav = useNavigation();
   const onPress = () => {
-    console.log(listing.listingType, listing.relListingId, listing.name);
     const params = { listingType: listing.listingType, id: listing.relListingId, listingName: listing.name };
     selectListing(listing); 
     nav.navigate('Feed', { screen: 'FeedListingScreen', params: params });

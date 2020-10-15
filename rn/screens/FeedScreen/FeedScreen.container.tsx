@@ -27,7 +27,6 @@ export default function FeedScreenContainer(props: { route: any }) {
   }, []);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    console.log(event.nativeEvent.contentOffset.y);
     setShowFilter(event.nativeEvent.contentOffset.y > 100 ? true: false);
   };
 

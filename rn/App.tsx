@@ -50,7 +50,6 @@ export default function App() {
   const screenWidth = Dimensions.get('window').width;
   const screenHeight = Dimensions.get('window').height;
 
-  console.log(isLoadingComplete);
   if (!isLoadingComplete) {
     return (
       <View style={{ position: 'absolute', top: 0, left: 0, zIndex: 3, backgroundColor: '#323232', width: screenWidth, height: screenHeight }}>

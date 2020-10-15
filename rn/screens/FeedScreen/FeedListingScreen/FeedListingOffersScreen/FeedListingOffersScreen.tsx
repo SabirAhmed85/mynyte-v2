@@ -36,7 +36,7 @@ export default function FeedListingOffersScreen(props: FeedListingScreenProps) {
   const { id, listingType } = props.route.params;
   const { theme } = useTheme();
   const nav = useNavigation();
-  console.log(props.route.params.id, id);
+  
   const [listing, setListing] = React.useState({} as Listing);
   const [screenWidth, setScreenWidth] = React.useState(Dimensions.get('window').width);
   const [isLoaded, setLoaded] = React.useState(false);

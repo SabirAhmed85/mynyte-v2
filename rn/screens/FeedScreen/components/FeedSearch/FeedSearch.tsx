@@ -54,8 +54,6 @@ export default function FeedSearch() {
     const [visibleFeedCategoryIndex, setVisibleFeedCategoryIndex] = React.useState(0);
     const [searchCollapsed, setSearchCollapsed] = React.useState(true);
     const feedSearchCategories = FEED_SEARCH_CATEGORIES;
-    console.log(feedSearchCategories, FEED_SEARCH_CATEGORIES);
-    // let icon = (state.expanded) ? icons['up'] : icons['down'];
 
     React.useEffect(() => {
         dispatchCategories({ item: feedSearchCategories });

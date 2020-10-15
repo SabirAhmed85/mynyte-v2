@@ -50,7 +50,7 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
   const dimensionsWidth = Dimensions.get('window').width;
   const imgHeight = Math.round((dimensionsWidth / 960) * 640);
   const imgWidth = dimensionsWidth;
-  console.log('NAAAV', nav.dangerouslyGetState());
+  
   React.useEffect(() => {
     Dimensions.addEventListener('change', (dimensions) => {
       if (!mountedRef.current) return null;
@@ -81,7 +81,7 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
         alert(errorMsg);
       }
       else {
-        console.log('good', result);
+        // console.log('good', result);
       }
     });
   };

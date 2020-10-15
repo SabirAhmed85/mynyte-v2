@@ -25,6 +25,8 @@ export const SearchActionButtonsBar = (props: { theme: any, categories: FeedCate
         setMinLeft(categories ? (categories.length - 2) * itemWidthWithPadding * -1 : 0);
     }, [categories]);
 
+    /*
+
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => false,
         onMoveShouldSetPanResponder: (evt, gestureState) => !(gestureState.dx < 4 && gestureState.dx > -4),
@@ -34,11 +36,9 @@ export const SearchActionButtonsBar = (props: { theme: any, categories: FeedCate
             setPanResponderMoving(true);
             const val = panelLeft + gestureState.dx;
             panelLeftValue.setValue(val);
-            console.log('hey');
         },
 
         onPanResponderEnd: (evt, gestureState) => {
-            console.log('release', gestureState.dx);
             if (
                 gestureState.dx < 30 &&
                 gestureState.dx > -30
@@ -77,7 +77,6 @@ export const SearchActionButtonsBar = (props: { theme: any, categories: FeedCate
                 useNativeDriver: false
             }
         ).start(() => {
-            console.log('done'); setPanResponderMoving(false);
             let newVisibleFeedCategoryIndex = visibleFeedCategoryIndex + ((direction === 'left') ? 1: -1);
 
             categories.forEach((thisCategory: FeedCategory, index: number) => {
@@ -88,18 +87,17 @@ export const SearchActionButtonsBar = (props: { theme: any, categories: FeedCate
             if (direction === 'left') {
                 const replace = categories.shift() as FeedCategory;
                 categories.push(replace);
-                // visibleFeedCategoryIndex -= 1;
             }
             else if (direction === 'right') {
                 const replace = categories.pop() as FeedCategory;
                 categories.unshift(replace);
-                // visibleFeedCategoryIndex += 1;
             }
-            console.log('direction', direction, localCategories, visibleFeedCategoryIndex);
+            
             dispatchLocalCategories({item: categories });
-            console.log(localCategories);
         });
     }
+
+    */
 
     return (
         <OpaqueView style={{ flexDirection: 'row', paddingLeft: 11, paddingRight: 11, height: 68 }}>

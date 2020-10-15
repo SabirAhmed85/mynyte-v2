@@ -51,7 +51,7 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
         alert(errorMsg);
       }
       else {
-        console.log('good', result);
+        // console.log('good', result);
       }
     });
   };

@@ -63,7 +63,6 @@ export default function SearchPanelContainer(props: SearchPanelProps) {
       if (!whatsOpenListingsLoaded) {
         getListingsForMainFeed().then((openListings: Listing[]) => {
           if (!mountedRef.current) return null;
-          console.log(openListings);
           dispatchWhatsOpenListings({ type: 'add', item: openListings });
           setWhatsOpenListingsLoaded(true);
         });
@@ -71,7 +70,6 @@ export default function SearchPanelContainer(props: SearchPanelProps) {
       setSearchType('whats-open');
     }
     
-    console.log(props);
   }, [props]);
 
   return (
