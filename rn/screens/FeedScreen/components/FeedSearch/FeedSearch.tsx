@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animated } from 'react-native';
+import { Animated, View as DefaultView } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import { Picker } from '@react-native-community/picker';
@@ -8,7 +8,6 @@ import { PrimaryText, TertiaryText } from '../../../../components/Themed';
 import { styles, stylesObjects } from './FeedSearch.style';
 
 import { useTheme } from '../../../../config/ThemeManager';
-import { OpaqueView } from '../../../../components/Themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FadeInPanel } from '../../../../components/FadeInPanel/FadeInPanel';
 import { FeedCategory } from '../../../../types/feed';
@@ -62,13 +61,13 @@ export default function FeedSearch() {
     return (
         <FadeInPanel style={stylesObjects(theme).container} duration={150} >
             <TouchableOpacity activeOpacity={0.6} onPress={() => setSearchCollapsed(!searchCollapsed)}>
-                <OpaqueView style={styles(theme).searchPanelHeader}>
-                    <OpaqueView style={{ flexDirection: 'row', alignSelf: 'flex-start' }}>
+                <DefaultView style={styles(theme).searchPanelHeader}>
+                    <DefaultView style={{ flexDirection: 'row', alignSelf: 'flex-start' }}>
                         <PrimaryText style={styles(theme).searchPanelHeaderText}>Find your Night in</PrimaryText>
                         <PrimaryText style={[{ color: theme.primaryActiveColorHighlight, marginLeft: 5 }, styles(theme).searchPanelHeaderText]}>Bedford</PrimaryText>
-                    </OpaqueView>
+                    </DefaultView>
                     <FontAwesome5 style={styles(theme).searchPanelHeaderIcon} name={!!searchCollapsed ? 'chevron-up' : 'search'} />
-                </OpaqueView>
+                </DefaultView>
             </TouchableOpacity>
             <ExpandingContent searchCollapsed={searchCollapsed}>
                 <TertiaryText style={{ paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 10, fontSize: 15 }}>Plan something fun...</TertiaryText>
@@ -84,9 +83,9 @@ export default function FeedSearch() {
                 
             </ExpandingContent>
             {/*
-                    <OpaqueView style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5, padding: 10, borderTopWidth: 1, borderTopColor: theme.searchPanelInnerBorderColor }}>
+                    <DefaultView style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5, padding: 10, borderTopWidth: 1, borderTopColor: theme.searchPanelInnerBorderColor }}>
 
-                        <OpaqueView style={{ flexDirection: 'column', width: '49%' }}>
+                        <DefaultView style={{ flexDirection: 'column', width: '49%' }}>
                             <Text style={{ marginBottom: 8 }}>My Town</Text>
                             <Picker
                                 style={styles(theme).mainSearchPicker}
@@ -97,8 +96,8 @@ export default function FeedSearch() {
                                 <Picker.Item label='Java' value='java' />
                                 <Picker.Item label='JavaScript' value='js' />
                             </Picker>
-                        </OpaqueView>
-                        <OpaqueView style={{ flexDirection: 'column', width: '49%' }}>
+                        </DefaultView>
+                        <DefaultView style={{ flexDirection: 'column', width: '49%' }}>
                             <Text style={{ marginBottom: 8 }}>My Music</Text>
                             <Picker
                                 mode='dropdown'
@@ -114,8 +113,8 @@ export default function FeedSearch() {
                                 <Picker.Item label='Dance/Electronic' value='jsc' />
                                 <Picker.Item label='Something' value='jsd' />
                             </Picker>
-                        </OpaqueView>
-                    </OpaqueView>
+                        </DefaultView>
+                    </DefaultView>
                     <PrimaryButton containerStyle={{ paddingLeft: 10, paddingRight: 10, paddingBottom: 10 }} title='Find my Night'></PrimaryButton>
                             */}
         </FadeInPanel>

@@ -7,7 +7,7 @@ const nativeElemsStyles = (theme: any) => ({
     paddingBottom: 5,
     marginTop: 0,
     marginLeft: 0,
-    marginBottom: 0,
+    marginBottom: 25,
     backgroundColor: theme.cardBackground,
     borderColor: theme.cardBorderColor,
     borderRadius: 4,

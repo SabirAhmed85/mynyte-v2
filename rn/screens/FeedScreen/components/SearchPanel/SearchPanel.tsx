@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 
-import { OpaqueView } from '../../../../components/Themed';
 import { styles } from './SearchPanel.style';
 
 import { Listing } from '../../../../models';
@@ -22,7 +22,7 @@ export default function SearchPanel(props: SearchPanelProps) {
   const { screenWidth, showSearch, searchType, searchListings, searchListingsLoaded, whatsOpenListings, whatsOpenListingsLoaded } = props;
 
   return !!showSearch ? (
-    <OpaqueView style={styles.panel}>
+    <DefaultView style={styles.panel}>
       {searchType === 'search' &&
         <SearchContainer
           screenWidth={screenWidth}
@@ -35,7 +35,7 @@ export default function SearchPanel(props: SearchPanelProps) {
           whatsOpenListings={whatsOpenListings}
           whatsOpenListingsLoaded={whatsOpenListingsLoaded} />
       }
-    </OpaqueView>
+    </DefaultView>
   ) :
   (null)
 }

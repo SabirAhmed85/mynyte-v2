@@ -1,9 +1,8 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 import { RouteProp } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { TextInput } from "react-native-gesture-handler";
-
-import { OpaqueView } from "../../../../components/Themed";
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
 import { FeedParamList } from "../../../../types";
 
@@ -31,7 +30,7 @@ export const HeaderTitle = (
     return !!hideSearchInput ?
         null :
         (
-            <OpaqueView style={{ width: '100%', flex: 1, borderBottomColor: '#000', borderBottomWidth: 1 }}>
+            <DefaultView style={{ width: '100%', flex: 1, borderBottomColor: '#000', borderBottomWidth: 1 }}>
                 <TextInput
                     onFocus={() => {
                         props.navigation.setParams({ search: '' })
@@ -46,7 +45,7 @@ export const HeaderTitle = (
                         color: props.theme.secondaryText,
                     }}
                 />
-            </OpaqueView>
+            </DefaultView>
         )
 };
 
@@ -73,13 +72,18 @@ export const HeaderLeftButton = (
     return !!hideButton ?
         null :
         (
-            <FontAwesome5
-                name='smile-beam'
-                size={24}
-                style={{ marginLeft: 15 }}
-                onPress={() => props.navigation.setParams({ 'show-guide': '' })}
-                color='#fff'
-            />
+            <TouchableOpacity
+                activeOpacity={0.5}
+                containerStyle={{ height: '100%' }}
+                style={{ width: 50, height: '100%', flexDirection: 'row', alignItems: 'center', paddingLeft: 8 }}
+                onPress={() => props.navigation.setParams({ 'show-guide': '' })}>
+                <FontAwesome5
+                    name='smile-beam'
+                    size={24}
+                    style={{ marginLeft: 15 }}
+                    color='#fff'
+                />
+            </TouchableOpacity>
         )
 }
 
@@ -105,10 +109,10 @@ export const HeaderRightButton = (
     }, [props]);
 
     return (
-        <FontAwesome5
-            name={name}
-            size={24}
-            style={{ marginRight: 15 }}
+        <TouchableOpacity
+            activeOpacity={0.5}
+            containerStyle={{ height: '100%' }}
+            style={{ width: 50, height: '100%', flexDirection: 'row', alignItems: 'center', paddingLeft: 8 }}
             onPress={() => {
                 if (props.route.params !== undefined && (
                     (props.route.params as any).search !== undefined ||
@@ -120,8 +124,13 @@ export const HeaderRightButton = (
                 else {
                     props.navigation.setParams({ 'whats-open': '' });
                 }
-            }}
-            color='#fff'
-        />
+            }}>
+            <FontAwesome5
+                name={name}
+                size={24}
+                style={{ marginRight: 15 }}
+                color='#fff'
+            />
+        </TouchableOpacity>
     )
 }

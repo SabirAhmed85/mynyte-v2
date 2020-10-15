@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-import { Button, OpaqueView } from '../Themed';
+import { Button } from '../Themed';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { StretchBar } from '../../components/StretchBar/StretchBar';
 
@@ -50,7 +51,7 @@ const ButtonIcon = (props: { iconProps: ActionButtonIconProps, buttonProps: Acti
 );
 
 export const ActionButton = (props: ActionButtonProps) => (
-  <OpaqueView style={{ flexDirection: 'column', flex: 1, minHeight: 60, padding: 0 }}>
+  <DefaultView style={{ flexDirection: 'column', flex: 1, minHeight: 60, padding: 0 }}>
     <Button
       buttonStyle={{ flexDirection: 'column', paddingTop: 12, paddingBottom: 12 }}
       containerStyle={[{ flex: 1 }, { borderRadius: 0 }, props.containerStyle]}
@@ -62,7 +63,7 @@ export const ActionButton = (props: ActionButtonProps) => (
     {!!props.withIndicator &&
     <StretchBar showBar={props.active} style={{ backgroundColor: props.indicatorColor, height: 2, width: '100%' }} />
     }
-  </OpaqueView>
+  </DefaultView>
 );
 
 ActionButton.defaultProps = {

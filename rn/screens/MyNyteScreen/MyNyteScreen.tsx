@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 
 import { useTheme } from '../../config/ThemeManager';
@@ -7,7 +8,7 @@ import styles from './MyNyteScreen.style';
 import { Offer, OfferCategory } from '../../models';
 
 import OfferCard from '../../components/OfferCard/OfferCard';
-import { Text, OpaqueView, ScrollView, View } from '../../components/Themed';
+import { Text, ScrollView, View } from '../../components/Themed';
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 
 const reducer = (offerCategories: OfferCategory[], action: React.ReducerAction<React.Reducer<any, any>>) => {
@@ -65,17 +66,17 @@ export default function MyNyteScreen() {
           Showing upcoming offers in Bedford
         </Text>
       </View>
-      <OpaqueView style={{ paddingTop: 8, paddingLeft: 15, paddingRight: 15, paddingBottom: 15 }}>
+      <DefaultView style={{ paddingTop: 8, paddingLeft: 15, paddingRight: 15, paddingBottom: 15 }}>
         {
           offerCategories.map((category: OfferCategory, key: number) => (
             <Collapse key={key} onToggle={(expanded: boolean) => {
               dispatchOfferCategories({ type: 'replace', item: { name: category.name, expanded: expanded } });
             }}>
               <CollapseHeader>
-                <OpaqueView style={styles(theme).categoryHeader}>
+                <DefaultView style={styles(theme).categoryHeader}>
                   <Text style={{ justifyContent: 'flex-start' }}>{category.name}</Text>
                   <FontAwesome5 size={15} style={{ marginTop: 4, justifyContent: 'flex-end', color: theme.shadedColor }} name={!!category.expanded ? 'chevron-up' : 'chevron-down'}></FontAwesome5>
-                </OpaqueView>
+                </DefaultView>
               </CollapseHeader>
               <CollapseBody isCollapsed={!category.expanded}>
                 {
@@ -88,7 +89,7 @@ export default function MyNyteScreen() {
             </Collapse>
           ))
         }
-      </OpaqueView>
+      </DefaultView>
     </ScrollView>
   );
 }

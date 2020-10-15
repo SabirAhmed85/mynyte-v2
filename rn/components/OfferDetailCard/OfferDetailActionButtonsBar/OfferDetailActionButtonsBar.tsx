@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '../../../config/ThemeManager';
@@ -15,7 +16,7 @@ export default function OfferDetailActionButtonsBar(props: { offer: Offer }) {
   const [offer, setOffer] = React.useState(props.offer as Offer);
 
   return (
-    <OpaqueView
+    <DefaultView
       style={{ flexDirection: 'row', width: '100%', display: 'flex', backgroundColor: theme.primaryActiveBackground, borderBottomColor: theme.primaryActiveBorderColorFeint, borderBottomWidth: 1 }}>
       <ActionButton
         icon='comment-dots'
@@ -45,6 +46,6 @@ export default function OfferDetailActionButtonsBar(props: { offer: Offer }) {
         disabledColor={theme.disabledText}
         title='Claim'
         onPress={() => {}} />
-    </OpaqueView>
+    </DefaultView>
   );
 }

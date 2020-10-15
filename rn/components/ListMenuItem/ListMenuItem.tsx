@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 
 import { useTheme } from '../../config/ThemeManager';
-import { OpaqueView, TertiaryText, Button, DisabledText, SecondaryText } from '../Themed';
+import { TertiaryText, Button, DisabledText, SecondaryText } from '../Themed';
 import styles from './ListMenuItem.style';
 
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -32,32 +33,32 @@ const MenuItemShareButton = (color: string) => (
 );
 
 const ItemMainContent = (item: ItemMainContentProps) => (
-  <OpaqueView style={{ alignItems: 'center', height: '100%', alignSelf: 'flex-start', flexDirection: 'row' }}>
-    <OpaqueView style={{width: 30, marginRight: 15, alignItems: 'center'}}>
+  <DefaultView style={{ alignItems: 'center', height: '100%', alignSelf: 'flex-start', flexDirection: 'row' }}>
+    <DefaultView style={{width: 30, marginRight: 15, alignItems: 'center'}}>
       <FontAwesome5 name={item.icon} color={item.iconColor} size={22}></FontAwesome5>
-    </OpaqueView>
+    </DefaultView>
     {!!item.clickable &&
-      <OpaqueView>
-        <OpaqueView style={{ flexDirection: 'row' }}>
+      <DefaultView>
+        <DefaultView style={{ flexDirection: 'row' }}>
           <SecondaryText style={{fontSize: 15}}>{item.title}</SecondaryText>
           {item.itemCount && item.itemCount > 0 &&
             <SecondaryText style={{ fontSize: 15, marginLeft: 5 }}>({item.itemCount})</SecondaryText>
           }
-        </OpaqueView>
+        </DefaultView>
         {item.note &&
           <TertiaryText style={{fontSize: 13}}>{item.note}</TertiaryText>
         }
-      </OpaqueView>
+      </DefaultView>
     }
     {!item.clickable &&
-      <OpaqueView>
+      <DefaultView>
         <DisabledText style={{ fontSize: 15 }}>{item.title}</DisabledText>
         {item.disabledNote &&
           <DisabledText style={{fontSize: 13}}>{item.disabledNote}</DisabledText>
         }
-      </OpaqueView>
+      </DefaultView>
     }
-  </OpaqueView>
+  </DefaultView>
 );
 
 export default function ListMenuItem(props: { item: MenuItemProps }) {
@@ -68,7 +69,7 @@ export default function ListMenuItem(props: { item: MenuItemProps }) {
   item.iconColor = !!item.clickable ? theme.secondaryText : theme.disabledText;
   
   return (
-    <OpaqueView style={styles().container}>
+    <DefaultView style={styles().container}>
       {!!item.clickable && item.clickNavigation ?
         (
           <TouchableHighlight
@@ -80,14 +81,14 @@ export default function ListMenuItem(props: { item: MenuItemProps }) {
           </TouchableHighlight>
         ) :
         (
-          <OpaqueView style={{ flexDirection: 'row', alignItems: 'center', flex: 1, paddingLeft: 15 }}>
+          <DefaultView style={{ flexDirection: 'row', alignItems: 'center', flex: 1, paddingLeft: 15 }}>
             <ItemMainContent {...item}></ItemMainContent>
-          </OpaqueView>
+          </DefaultView>
         )
       }
       {!!props.item.shareable && !!props.item.clickable &&
         <Button type='clear' icon={MenuItemShareButton(theme.secondaryText)} containerStyle={{ alignItems: 'flex-end', marginRight: 11, marginLeft: 11, borderRadius: 16 }}></Button>
       }
-    </OpaqueView>
+    </DefaultView>
   )
 }

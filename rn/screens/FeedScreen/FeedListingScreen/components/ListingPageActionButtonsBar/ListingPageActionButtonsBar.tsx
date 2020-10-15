@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '../../../../../config/ThemeManager';
-import { OpaqueView } from '../../../../../components/Themed';
 import { styles } from './ListingPageActionButtonsBar.style';
 
 import { ActionButton } from '../../../../../components/ActionButton/ActionButton';
@@ -18,7 +18,7 @@ export default function ListingPageActionButtonsBar(props: { listing: Listing })
   const [listing, setListing] = React.useState(props.listing as Listing);
 
   return (
-    <OpaqueView
+    <DefaultView
       style={{ flexDirection: 'row', width: '100%', display: 'flex', backgroundColor: theme.primaryActiveBackground, borderBottomColor: theme.primaryActiveBorderColorFeint, borderBottomWidth: 1 }}>
       <ActionButton
         icon='comment-dots'
@@ -48,6 +48,6 @@ export default function ListingPageActionButtonsBar(props: { listing: Listing })
         disabledColor={theme.disabledText}
         title='Photos'
         onPress={() => {}} />
-    </OpaqueView>
+    </DefaultView>
   );
 }

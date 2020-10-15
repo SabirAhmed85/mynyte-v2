@@ -2,45 +2,64 @@ import * as React from 'react';
 import { Animated, Easing } from "react-native";
 
 type FadeInPanelState = {
-    children: React.ReactChild[];
+    children: React.ReactChild | React.ReactChild[] | Element | Element[] | boolean | false;
     showPanel?: boolean;
     duration?: number;
     delay?: number;
     style?: any;
-    withScaling?: boolean;
+    withXScaling?: boolean;
+    withYScaling?: boolean;
 };
 
 export const FadeInPanel = (props: FadeInPanelState) => {
     const contentWidthMax = 100;
     const contentWidthMin = 92;
+    const contentMarginTopMax = 10;
+    const contentMarginTopMin = 0;
     const contentWidth = React.useRef(new Animated.Value(92)).current;
+    const contentMarginTop = React.useRef(new Animated.Value(0)).current;
     const contentOpacity = React.useRef(new Animated.Value(0.5)).current;
     const [display, setDisplay] = React.useState('none');
     const { delay, duration } = props;
-    const transform = !!props.withScaling ? [
-        {
+    let transform = [];
+    if (!!props.withXScaling) {
+        transform.push({
             scaleX: contentWidth.interpolate({
                 inputRange: [0, 100],
                 outputRange: [0.75, 1]
             }),
-        },
-        {
+        });
+    }
+    if (!!props.withYScaling) {
+        transform.push({
             scaleY: contentWidth.interpolate({
                 inputRange: [0, 100],
                 outputRange: [0.98, 1]
             })
-        }
-    ] : [];
+        });
+    }
 
     React.useEffect(() => {
         if (!!props.showPanel) {
             setTimeout(() => setDisplay('flex'), delay);
         }
-        if (!!props.withScaling) {
+        if (!!props.withXScaling) {
             Animated.timing(
                 contentWidth,
                 {
                     toValue: !props.showPanel ? contentWidthMin : contentWidthMax,
+                    duration: duration,
+                    delay: delay,
+                    easing: Easing.linear,
+                    useNativeDriver: false,
+                }
+            ).start();
+        }
+        if (!!props.withYScaling) {
+            Animated.timing(
+                contentMarginTop,
+                {
+                    toValue: !props.showPanel ? contentMarginTopMax : contentMarginTopMin,
                     duration: duration,
                     delay: delay,
                     easing: Easing.linear,
@@ -59,15 +78,16 @@ export const FadeInPanel = (props: FadeInPanelState) => {
         ).start(() => {
             if (!props.showPanel) { setDisplay('none') };
         });
-    }, [contentWidth, contentOpacity, props])
+    }, [contentWidth, contentOpacity, contentMarginTop, props])
 
     return (
         <Animated.View
             style={{
                 ...props.style,
-                display: display,
-                transform: transform,
+                display,
+                transform,
                 overflow: 'hidden',
+                marginTop: contentMarginTop,
                 opacity: contentOpacity,
             }}
         >

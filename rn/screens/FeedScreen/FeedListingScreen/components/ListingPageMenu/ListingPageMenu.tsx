@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '../../../../../config/ThemeManager';
-import { OpaqueView } from '../../../../../components/Themed';
 import styles from './ListingPageMenu.style';
 
 import { Listing } from '../../../../../models';
@@ -143,12 +143,12 @@ export default function ListingPageMenu(props: { listing: Listing }) {
   });
 
   return (
-    <OpaqueView style={styles().containerAlt}>
+    <DefaultView style={styles().containerAlt}>
       {
         itemsToShow.map((item, key) => (
           <ListMenuItem key={key} item={item} />
         ))
       }
-    </OpaqueView>
+    </DefaultView>
   );
 }

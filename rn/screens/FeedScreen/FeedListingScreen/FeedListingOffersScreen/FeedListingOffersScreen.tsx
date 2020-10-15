@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 
 import { useTheme } from '../../../../config/ThemeManager';
-import { SecondaryText, OpaqueView, PrimaryHighlightText, ScrollView, Text, Button } from '../../../../components/Themed';
+import { SecondaryText, PrimaryHighlightText, ScrollView, Text, Button } from '../../../../components/Themed';
 import styles from './FeedListingOffersScreen.style';
 
 import { Listing } from '../../../../models';
@@ -64,21 +65,21 @@ export default function FeedListingOffersScreen(props: FeedListingScreenProps) {
             source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${listing.currentCoverPhotoName}` }}
             style={{ width: imgWidth, height: imgHeight }} />
           <ListingPageActionButtonsBar listing={listing} />
-          <OpaqueView style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: theme.primaryActiveBackground, padding: 15 }}>
-            <OpaqueView style={{ flexDirection: 'column', alignItems: 'flex-start', maxWidth: '80%' }}>
+          <DefaultView style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: theme.primaryActiveBackground, padding: 15 }}>
+            <DefaultView style={{ flexDirection: 'column', alignItems: 'flex-start', maxWidth: '80%' }}>
               <SecondaryText>{listing.name}</SecondaryText>
               <PrimaryHighlightText>{listing.listingType1} in {listing.town}</PrimaryHighlightText>
-            </OpaqueView>
+            </DefaultView>
             <Button type='clear' icon={mainHeaderShareButton()} buttonStyle={{borderRadius: 24}}></Button>
-          </OpaqueView>
+          </DefaultView>
           <ListingPageMenu listing={listing}/>
-          <OpaqueView style={{ backgroundColor: theme.primaryActiveBackground, padding: 15 }}>
+          <DefaultView style={{ backgroundColor: theme.primaryActiveBackground, padding: 15 }}>
             <SecondaryText>Info / About</SecondaryText>
-          </OpaqueView>
-          <OpaqueView style={{ padding: 15 }}>
+          </DefaultView>
+          <DefaultView style={{ padding: 15 }}>
             <SecondaryText>Something about Listing ... blah blah blah</SecondaryText>
             <Text>Something else about Listing ... blah blah blah</Text>
-          </OpaqueView>
+          </DefaultView>
         </React.Fragment>
       }
     </ScrollView>

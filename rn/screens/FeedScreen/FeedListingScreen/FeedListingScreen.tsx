@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { Dimensions, Image } from 'react-native';
+import { Dimensions, Image, View as DefaultView } from 'react-native';
 import { NavigationState, RouteProp, useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import { useTheme } from '../../../config/ThemeManager';
-import { SecondaryText, OpaqueView, InnerView, PrimaryHighlightText, ScrollView, Text, Button } from '../../../components/Themed';
+import { SecondaryText, InnerView, PrimaryHighlightText, ScrollView, Text, Button } from '../../../components/Themed';
 import styles from './FeedListingScreen.style';
 
 import { ListingContext } from '../../../config/ListingProvider';
-import { share } from '../../../utils/share'; 
+import { share } from '../../../utils/share';
 import { Listing } from '../../../models';
 import { FeedParamList } from '../../../types';
 
 import ListingPageMenu from './components/ListingPageMenu/ListingPageMenu';
 import ListingPageActionButtonsBar from './components/ListingPageActionButtonsBar/ListingPageActionButtonsBar';
-import { ScreenLoadingComponent } from '../../../components/ScreenLoadingComponent/ScreenLoadingComponent';
+import { FadeInPanel } from '../../../components/FadeInPanel/FadeInPanel';
+import ListingPageActionButtonsBarDummy from './components/ListingPageActionButtonsBar/ListingPageActionButtonsBarDummy';
+import ListingPageMenuDummy from './components/ListingPageMenu/ListingPageMenuDummy';
 
 function getFeedListing(id: number, listingType: string) {
   return fetch(`https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Profile.php?action=getListings&_listingId=${id}&listingType=${listingType}&_profileId=2`)
@@ -33,7 +35,14 @@ type FeedListingScreenProps = {
   navigation: NavigationState;
 };
 
-const mainHeaderShareButton = () => (
+const MainListingImage = (props: { imageName: string, imgWidth: number, imgHeight: number }) => (
+  <Image
+    resizeMode='cover'
+    source={{ uri: props.imageName }}
+    style={{ width: props.imgWidth, height: props.imgHeight }} />
+);
+
+const MainHeaderShareButton = () => (
   <FontAwesome5 name='share' color='#eeeeee' size={20} style={{ alignItems: 'flex-end' }} />
 );
 
@@ -50,7 +59,7 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
   const dimensionsWidth = Dimensions.get('window').width;
   const imgHeight = Math.round((dimensionsWidth / 960) * 640);
   const imgWidth = dimensionsWidth;
-  
+
   React.useEffect(() => {
     Dimensions.addEventListener('change', (dimensions) => {
       if (!mountedRef.current) return null;
@@ -88,36 +97,58 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
 
   return (
     <ScrollView style={styles(theme).container}>
-      {!loaded &&
-        <ScreenLoadingComponent />}
-      {!!loaded &&
-        <InnerView>
-          <Image
-            resizeMode='cover'
-            source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${listing.currentCoverPhotoName}` }}
-            style={{ width: imgWidth, height: imgHeight }} />
+      <InnerView>
+        <DefaultView style={{ width: imgWidth, height: imgHeight, minHeight: imgHeight }}>
+          {!loaded &&
+            <MainListingImage
+              imageName={`https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/default.jpg`}
+              imgWidth={imgWidth}
+              imgHeight={imgHeight} />
+          }
+          {!!loaded &&
+            <FadeInPanel duration={300}>
+              <MainListingImage
+                imageName={`https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${listing.currentCoverPhotoName}`}
+                imgWidth={imgWidth}
+                imgHeight={imgHeight} />
+            </FadeInPanel>
+          }
+        </DefaultView>
+
+        {!loaded &&
+          <ListingPageActionButtonsBarDummy />
+        }
+        {!!loaded &&
           <ListingPageActionButtonsBar listing={listing} />
-          <OpaqueView style={[styles(theme).pageMenuHeaderContainer, styles(theme).contentContainer]}>
-            <OpaqueView style={{ flexDirection: 'column', alignItems: 'flex-start', maxWidth: '80%' }}>
-              <SecondaryText>{listing.name}</SecondaryText>
-              <PrimaryHighlightText>{listing.listingType1} in {listing.town}</PrimaryHighlightText>
-            </OpaqueView>
-            <Button type='clear'
-              icon={mainHeaderShareButton()}
-              onPress={startShare}
-              titleStyle={{ color: '#fff' }}
-              buttonStyle={{ borderRadius: 24 }}></Button>
-          </OpaqueView>
+        }
+        <DefaultView style={[styles(theme).pageMenuHeaderContainer, styles(theme).contentContainer]}>
+          <DefaultView style={{ flexDirection: 'column', alignItems: 'flex-start', maxWidth: '80%' }}>
+            <SecondaryText>{listing.name}</SecondaryText>
+            <PrimaryHighlightText>{listing.listingType1} in {listing.town}</PrimaryHighlightText>
+          </DefaultView>
+          <Button type='clear'
+            icon={MainHeaderShareButton()}
+            onPress={startShare}
+            titleStyle={{ color: '#fff' }}
+            buttonStyle={{ borderRadius: 24 }}></Button>
+        </DefaultView>
+        {!loaded &&
+          <ListingPageMenuDummy />
+        }
+        {!!loaded &&
           <ListingPageMenu listing={listing} />
-          <OpaqueView style={{ backgroundColor: theme.primaryActiveBackground, padding: 15 }}>
-            <SecondaryText>Info / About</SecondaryText>
-          </OpaqueView>
-          <OpaqueView style={styles(theme).contentContainer}>
+        }
+        <DefaultView style={{ backgroundColor: theme.primaryActiveBackground, padding: 15 }}>
+          <SecondaryText>Info / About</SecondaryText>
+        </DefaultView>
+        {!!loaded &&
+          <DefaultView style={styles(theme).contentContainer}>
             <SecondaryText>Something about Listing ... blah blah blah</SecondaryText>
             <Text>Something else about Listing ... blah blah blah</Text>
-          </OpaqueView>
-        </InnerView>
-      }
+          </DefaultView>
+        }
+      </InnerView>
+
     </ScrollView>
   );
 }

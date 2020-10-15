@@ -1,12 +1,9 @@
 import * as React from 'react';
 
-import { OpaqueView } from '../../../../components/Themed';
 import { styles } from './SearchPanel.style';
 
 import { Listing } from '../../../../models';
 
-import SearchContainer from './Search/Search.container';
-import WhatsOpenContainer from './WhatsOpen/WhatsOpen.container';
 import SearchPanel from './SearchPanel';
 
 const reducer = (listings: Listing[], action: React.ReducerAction<React.Reducer<any, any>>) => {

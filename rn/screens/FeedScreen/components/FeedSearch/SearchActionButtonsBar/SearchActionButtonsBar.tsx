@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Animated, Dimensions, PanResponder, View as DefaultView } from 'react-native';
-
-import { OpaqueView } from "../../../../../components/Themed";
+import { Animated, Dimensions, View as DefaultView } from 'react-native';
 
 import { ActionButton } from '../../../../../components/ActionButton/ActionButton';
 import { FeedCategory } from '../../../../../types/feed';
@@ -100,7 +98,7 @@ export const SearchActionButtonsBar = (props: { theme: any, categories: FeedCate
     */
 
     return (
-        <OpaqueView style={{ flexDirection: 'row', paddingLeft: 11, paddingRight: 11, height: 68 }}>
+        <DefaultView style={{ flexDirection: 'row', paddingLeft: 11, paddingRight: 11, height: 68 }}>
             {/*<Animated.View {...panResponder.panHandlers} style={{ left: 11, flexDirection: 'row', alignContent: 'space-around', position: 'absolute', transform: [{ translateX: panelLeftValue }] }}> */}
                 {localCategories.map((category: FeedCategory, key: number) => (
                     <ActionButton key={key}
@@ -126,6 +124,6 @@ export const SearchActionButtonsBar = (props: { theme: any, categories: FeedCate
                         containerStyle={{ position: 'relative', borderRadius: 0, }} />
                 ))}
             {/*</Animated.View>*/}
-        </OpaqueView>
+        </DefaultView>
     )
 };

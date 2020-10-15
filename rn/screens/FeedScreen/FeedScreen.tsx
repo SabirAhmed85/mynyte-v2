@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 
 import { styles } from './FeedScreen.style';
-import { Button, OpaqueView, ScrollView, Text } from '../../components/Themed';
+import { Button, ScrollView, Text } from '../../components/Themed';
 
 import FeedSearch from './components/FeedSearch/FeedSearch';
 import SearchPanelContainer from './components/SearchPanel/SearchPanel.container';
@@ -28,14 +29,14 @@ export default function FeedScreen(props: FeedScreenProps) {
 
   return (
     <React.Fragment>
-      <ScrollView showsHorizontalScrollIndicator={true} style={{ padding: 0 }} contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+      <ScrollView showsHorizontalScrollIndicator={false} style={{ padding: 0 }} contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
 
         {/*<Animated.View style={[{ backgroundColor: '#fff', zIndex: zIndex, width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }, { opacity: splashScreenOpacity }]}><Text>askfnksndafkn</Text></Animated.View>*/}
         <ScrollView showsHorizontalScrollIndicator={false} scrollEventThrottle={96} onScroll={handleScroll} style={{ flex: 1, maxWidth: 800, padding: 0, width: '100%' }}>
-          <OpaqueView style={{ flex: 1, padding: 0 }}>
+          <DefaultView style={{ flex: 1, padding: 0 }}>
             <FeedSearch />
             <FeedContainer screenWidth={screenWidth} feedType={feedType} feedTypeToggle={feedTypeToggle} />
-          </OpaqueView>
+          </DefaultView>
 
           <SearchPanelContainer
             screenWidth={screenWidth}
@@ -44,9 +45,9 @@ export default function FeedScreen(props: FeedScreenProps) {
         </ScrollView>
         {/* NEED BETTER WAY TO DETECT MOBILE OR DESKTOP, THIS METHOD DIDN'T WORK ON EXPO HOSTED APP */}
         {!!isDesktop &&
-          <OpaqueView style={{ maxWidth: 300, alignSelf: 'flex-start' }}>
+          <DefaultView style={{ maxWidth: 300, alignSelf: 'flex-start' }}>
             <Text>Hey</Text>
-          </OpaqueView>
+          </DefaultView>
         }
 
       </ScrollView>

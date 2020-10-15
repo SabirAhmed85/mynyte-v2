@@ -101,13 +101,6 @@ export function SafeAreaView(props: ViewProps) {
   return <DefaultSafeAreaView style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
-export function OpaqueView(props: ViewProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const backgroundColor = 'transparent';
-
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
-}
-
 export function ScrollView(props: ScrollViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');

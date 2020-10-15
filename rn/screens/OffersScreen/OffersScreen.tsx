@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { View as DefaultView } from 'react-native';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 
 import { useTheme } from '../../config/ThemeManager';
 import styles from './OffersScreen.style';
-import { Text, OpaqueView, ScrollView, View, SafeAreaView } from '../../components/Themed';
+import { Text, ScrollView, View, SafeAreaView } from '../../components/Themed';
 
 import { Offer, OfferCategory } from '../../models';
 
@@ -89,7 +90,7 @@ export default function OffersScreen() {
                       Showing upcoming offers in Bedford
                       </Text>
                   </View>
-                  <OpaqueView style={{ marginTop: 8, marginLeft: 15, marginRight: 15, flexDirection: 'row', borderBottomColor: theme.listItemBorderColor, borderBottomWidth: 1, marginBottom: 10 }}>
+                  <DefaultView style={{ marginTop: 8, marginLeft: 15, marginRight: 15, flexDirection: 'row', borderBottomColor: theme.listItemBorderColor, borderBottomWidth: 1, marginBottom: 10 }}>
                     {offerCategories.map((category: OfferCategory, key: number) => (
                       <ActionButton key={key}
                         containerStyle={{ borderBottomColor: theme.primaryActiveBackground }}
@@ -108,7 +109,7 @@ export default function OffersScreen() {
                           };
                         }} />
                     ))}
-                  </OpaqueView>
+                  </DefaultView>
                 </React.Fragment>
               }
               style={{ display: (visibleOfferCategory === category.name) ? 'flex' : 'none' }}

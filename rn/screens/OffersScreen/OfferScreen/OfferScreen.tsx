@@ -46,10 +46,7 @@ export default function OfferScreen(props: OfferScreenProps) {
   
   return (
     <ScrollView style={styles.container}>
-      {!loaded ?
-        (<ScreenLoadingComponent />) :
-        (<OfferDetailCard offer={offer} />)
-      }
+      <OfferDetailCard offer={offer} loaded={loaded} />
     </ScrollView>
   );
 }
