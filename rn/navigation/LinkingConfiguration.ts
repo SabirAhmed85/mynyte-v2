@@ -19,13 +19,13 @@ export default {
                 path: 'offers'
               },
               OfferScreen: {
-                path: 'offers/:id/:offerName',
+                path: 'offers/:offerId/:offerName',
                 parse: {
-                  id: (id: string) => `${id}`,
+                  offerId: (offerId: string) => `${offerId}`,
                   offerName: (offerName: string) => `${offerName}`,
                 },
                 stringify: {
-                  id: (id: string) => id,
+                  offerId: (offerId: string) => offerId,
                   offerName: (offerName: string) => offerName,
                 },
               }
@@ -51,6 +51,41 @@ export default {
                   listingType: (listingType: string) => listingType,
                   id: (id: string) => id,
                   listingName: (listingName: string) => listingName.replace(/ & /g, '~and~').replace(/ /g, '-'),
+                },
+              },
+              FeedListingOfferScreen: {
+                path: 'feed/:listingType/:id/:listingName/offers/:offerId/:offerName',
+                stringify: {
+                  listingType: (listingType: string) => listingType,
+                  id: (id: string) => id,
+                  listingName: (listingName: string) => listingName.replace(/ & /g, '~and~').replace(/ /g, '-'),
+                  offerId: (offerId: string) => offerId,
+                  offerName: (offerName: string) => offerName,
+                },
+              },
+              FeedListingBookTableScreen: {
+                path: 'feed/:listingType/:id/:listingName/book-table',
+                stringify: {
+                  listingType: (listingType: string) => listingType,
+                  id: (id: string) => id,
+                  listingName: (listingName: string) => listingName.replace(/ & /g, '~and~').replace(/ /g, '-'),
+                },
+              },
+              FeedListingBookEventScreen: {
+                path: 'feed/:listingType/:id/:listingName/book-event',
+                stringify: {
+                  listingType: (listingType: string) => listingType,
+                  id: (id: string) => id,
+                  listingName: (listingName: string) => listingName.replace(/ & /g, '~and~').replace(/ /g, '-'),
+                },
+              },
+              FeedListingMenuScreen: {
+                path: 'feed/:listingType/:id/:listingName/menu/:menuType',
+                stringify: {
+                  listingType: (listingType: string) => listingType,
+                  id: (id: string) => id,
+                  listingName: (listingName: string) => listingName.replace(/ & /g, '~and~').replace(/ /g, '-'),
+                  menuType: (menuType: string) => menuType,
                 },
               },
             },

@@ -1,11 +1,17 @@
 export const getFeedSearchImageName = (name: string) => {
   switch (name) {
-    case "italian-food.jpg":
-      return require(`../assets/images/feed-search/italian-food.jpg`);
-    case "indian-food.jpg":
-      return require(`../assets/images/feed-search/indian-food.jpg`);
-    case "chinese-food.jpg":
-      return require(`../assets/images/feed-search/chinese-food.jpg`);
+    case "italian-food.png":
+      return require(`../assets/images/feed-search/italian-food.png`);
+    case "indian-food.png":
+      return require(`../assets/images/feed-search/indian-food.png`);
+    case "chinese-food.png":
+      return require(`../assets/images/feed-search/chinese-food.png`);
+    case "thai-food.png":
+        return require(`../assets/images/feed-search/thai-food.png`);
+    case "mexican-food.png":
+        return require(`../assets/images/feed-search/mexican-food.png`);
+    case "gastropub-food.png":
+        return require(`../assets/images/feed-search/gastropub-food.png`);
     case "action-movie.png":
       return require(`../assets/images/feed-search/action-movie.png`);
     case "scifi-movie.png":

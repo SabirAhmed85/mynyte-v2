@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View as DefaultView } from 'react-native';
+import { View as DefaultView, ScrollView as DefaultScrollView, Text as DefaultText } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+import { Button, ScrollView, TertiaryText, Text } from '../../../../components/Themed';
 import { styles } from './Feed.style';
 
 import { Listing } from '../../../../models';
@@ -9,7 +10,7 @@ import { Listing } from '../../../../models';
 import ListingCard from '../../components/ListingCard/ListingCard';
 import { ScreenLoadingComponent } from '../../../../components/ScreenLoadingComponent/ScreenLoadingComponent';
 import { FadeInPanel } from '../../../../components/FadeInPanel/FadeInPanel';
-import { Button, TertiaryText } from '../../../../components/Themed';
+import SmallListingCard from '../SmallListingCard/SmallListingCard';
 
 type FeedProps = {
   theme: any;
@@ -68,10 +69,31 @@ export default function Feed(props: FeedProps) {
             </DefaultView>
           </DefaultView>
 
-          <FadeInPanel withYScaling={true} delay={feedType === 'tonight' ? 150 : 0} showPanel={feedType === 'tonight'}>
-            {tonightsListings.map((listing: Listing, key: number) => (
-              <ListingCard key={key} listing={listing} screenWidth={screenWidth} />
-            ))}
+          <FadeInPanel style={{ background: theme.searchPanelHeaderBg, paddingBottom: 15, paddingTop: 10, paddingLeft: 10 }} withYScaling={true} delay={feedType === 'tonight' ? 150 : 0} showPanel={feedType === 'tonight'}>
+            <DefaultView>
+              <DefaultText style={{ fontSize: 16, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Restaurants &amp; Takeaways in Bedford</DefaultText>
+              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row', marginBottom: 10 }}>
+                {tonightsListings.map((listing: Listing, key: number) => (
+                  <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />
+                ))}
+              </DefaultScrollView>
+            </DefaultView>
+            <DefaultView>
+              <DefaultText style={{ fontSize: 16, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Movies showing tonight in Bedford</DefaultText>
+              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row'}}>
+                {tonightsListings.map((listing: Listing, key: number) => (
+                  <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />
+                ))}
+              </DefaultScrollView>
+            </DefaultView>
+            <DefaultView>
+              <DefaultText style={{ fontSize: 16, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Watch the game</DefaultText>
+              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row'}}>
+                {tonightsListings.map((listing: Listing, key: number) => (
+                  <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />
+                ))}
+              </DefaultScrollView>
+            </DefaultView>
           </FadeInPanel>
 
           {!!listingsLoaded &&

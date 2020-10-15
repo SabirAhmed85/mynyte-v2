@@ -38,6 +38,29 @@ export type FeedParamList = {
     id: number;
     listingName: string;
   };
+  FeedListingOfferScreen: {
+    listingType: string;
+    id: number;
+    listingName: string;
+    offerId: number;
+    offerName: string;
+  };
+  FeedListingBookTableScreen: {
+    listingType: string;
+    id: number;
+    listingName: string;
+  };
+  FeedListingBookEventScreen: {
+    listingType: string;
+    id: number;
+    listingName: string;
+  };
+  FeedListingMenuScreen: {
+    listingType: string;
+    id: number;
+    listingName: string;
+    menuType: string;
+  };
 };
 
 export type CovidParamList = {

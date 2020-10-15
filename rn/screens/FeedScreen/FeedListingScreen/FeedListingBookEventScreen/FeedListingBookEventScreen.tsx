@@ -3,7 +3,7 @@ import { View as DefaultView } from 'react-native';
 
 import { useTheme } from '../../../../config/ThemeManager';
 import { Text, View } from '../../../../components/Themed';
-import styles from './FeedListingOffersScreen.style';
+import styles from './FeedListingBookEventScreen.style';
 
 import { Offer, OfferCategory } from '../../../../models';
 import { ScreenLoadingComponent } from '../../../../components/ScreenLoadingComponent/ScreenLoadingComponent';
@@ -27,7 +27,7 @@ function getOffers(businessId: number) {
     });
 }
 
-export default function FeedListingOffersScreen(props: { route: any }) {
+export default function FeedListingBookEventScreen(props: { route: any }) {
   const { theme } = useTheme();
   const listingId = props.route.params.id;
   const { listingName, listingType } = props.route.params;

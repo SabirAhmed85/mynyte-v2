@@ -16,18 +16,9 @@ import { ScreenLoadingComponent } from '../../components/ScreenLoadingComponent/
 import { ActionButton } from '../../components/ActionButton/ActionButton';
 import { FlatList } from 'react-native';
 import { FadeInPanel } from '../../components/FadeInPanel/FadeInPanel';
+import { putOffersIntoCategories } from '../../helpers/OffersHelpers';
 
-const reducer = (offerCategories: OfferCategory[], action: React.ReducerAction<React.Reducer<any, any>>) => {
-  switch (action.type) {
-    case 'replace':
-      const categories = offerCategories.map(category => {
-        return category.name === action.item.name ? { ...category, expanded: action.item.expanded } : category
-      });
-      return [...categories];
-    default:
-      return action.item
-  }
-};
+const reducer = (offerCategories: OfferCategory[], action: React.ReducerAction<React.Reducer<any, any>>) => action.item;
 
 function getOffers() {
   return fetch('https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Offer.php?action=getOffers&format=getOffersByTownId&timeScale=present&_townId=1&_profileId=2')
@@ -44,7 +35,7 @@ function getOffers() {
 export default function OffersScreen() {
   const { theme } = useTheme();
   const [offerCategories, dispatchOfferCategories] = React.useReducer(reducer, [{ name: 'Loading...' }, { name: 'Loading...' }, { name: 'Loading' }] as OfferCategory[]);
-  const [visibleOfferCategory, setVisibleOfferCategory] = React.useState('');
+  const [visibleOfferCategoryName, setVisibleOfferCategoryName] = React.useState('');
   const [loaded, setLoaded] = React.useState(false);
   const offerCategoryButtonConfig: { [key: string]: string } = {
     'Restaurant Deals': 'utensils',
@@ -54,21 +45,10 @@ export default function OffersScreen() {
 
   React.useEffect(() => {
     getOffers().then((offers: Offer[]) => {
-      const categories: OfferCategory[] = [];
-
-      offers.forEach((offer: Offer) => {
-        const existingCategory = categories.filter(category => category.name === offer.offerSubCategoryName)[0];
-
-        if (existingCategory) {
-          existingCategory.offers.push(offer);
-        }
-        else {
-          categories.push({ name: offer.offerSubCategoryName, offers: [offer] });
-        }
-      });
+      const categories: OfferCategory[] = putOffersIntoCategories(offers);
 
       dispatchOfferCategories({ type: 'add', item: categories });
-      setVisibleOfferCategory(categories[0].name);
+      setVisibleOfferCategoryName(categories[0].name);
       setLoaded(true);
     });
   }, []);
@@ -97,22 +77,22 @@ export default function OffersScreen() {
                         icon={offerCategoryButtonConfig[category.name]}
                         iconSize='large'
                         color={theme.tertiaryText}
-                        active={visibleOfferCategory === category.name}
+                        active={visibleOfferCategoryName === category.name}
                         activeColor={theme.primaryActiveColorHighlight}
                         disabledColor={theme.disabledText}
                         title={category.name.replace(' Deals', '')}
                         withIndicator={true}
                         indicatorColor={theme.primaryActiveColor}
                         onPress={() => {
-                          if (visibleOfferCategory !== category.name) {  
-                            setVisibleOfferCategory(category.name);
+                          if (visibleOfferCategoryName !== category.name) {  
+                            setVisibleOfferCategoryName(category.name);
                           };
                         }} />
                     ))}
                   </DefaultView>
                 </React.Fragment>
               }
-              style={{ display: (visibleOfferCategory === category.name) ? 'flex' : 'none' }}
+              style={{ display: (visibleOfferCategoryName === category.name) ? 'flex' : 'none' }}
               data={category.offers}
               keyExtractor={(item) => `${item._id}${item.name}`}
               renderItem={(data) =>

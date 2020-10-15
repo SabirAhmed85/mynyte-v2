@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { ScrollView } from '../../../components/Themed';
-import styles from './OfferScreen.style';
+import { ScrollView } from '../../../../../components/Themed';
+import styles from './FeedListingOfferScreen.style';
 
-import { Offer } from '../../../models';
-import { OfferContext } from '../../../config/OfferProvider';
+import { Offer } from '../../../../../models';
+import { OfferContext } from '../../../../../config/OfferProvider';
 
-import { ScreenLoadingComponent } from '../../../components/ScreenLoadingComponent/ScreenLoadingComponent';
-import OfferDetailCard from '../../../components/OfferDetailCard/OfferDetailCard';
+import { ScreenLoadingComponent } from '../../../../../components/ScreenLoadingComponent/ScreenLoadingComponent';
+import OfferDetailCard from '../../../../../components/OfferDetailCard/OfferDetailCard';
 
 
 function getOffer(id: number) {
@@ -22,12 +22,11 @@ function getOffer(id: number) {
     });
 }
 
-type OfferScreenProps = {
+type FeedListingOfferScreen = {
   route: any;
-  navigation: any;
 };
 
-export default function OfferScreen(props: OfferScreenProps) {
+export default function FeedListingOfferScreen(props: FeedListingOfferScreen) {
   const { selectedOffer } = React.useContext(OfferContext);
   const { offerId } = props.route.params;
   const [offer, setOffer] = React.useState({} as Offer);

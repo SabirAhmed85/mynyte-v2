@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { Card } from 'react-native-elements';
+import * as WebBrowser from 'expo-web-browser';
 
 import { useTheme } from '../../../../config/ThemeManager';
-import { Text } from '../../../../components/Themed';
-import { nativeElemsStyles, styles } from './ListingCard.style';
+import { Button, PrimaryButton, Text } from '../../../../components/Themed';
+import { nativeElemsStyles, styles } from './SmallListingCard.style';
 
 import { Listing } from '../../../../models';
-import ListingItemBottomBar from '../../../../components/ListingItemBottomBar/ListingItemBottomBar';
+
 import { Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { ListingContext } from '../../../../config/ListingProvider';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { openBrowserAsync } from 'expo-web-browser';
 
-export default function ListingCard(props: { listing: Listing, screenWidth: number }) {
+export default function SmallListingCard(props: { listing: Listing, screenWidth: number }) {
   const { selectListing } = React.useContext(ListingContext);
   const { theme } = useTheme();
   const nav = useNavigation();
@@ -22,15 +25,19 @@ export default function ListingCard(props: { listing: Listing, screenWidth: numb
     nav.navigate('Feed', { screen: 'FeedListingScreen', params: params });
   };
 
+  async function openBrowser() {
+    let result = await WebBrowser.openBrowserAsync('https://expo.io');
+  };
+
   const listing = props.listing;
-  const dimensionsWidth = props.screenWidth > 800 ? 800 : props.screenWidth;
+  const dimensionsWidth = props.screenWidth > 800 ? 560 : props.screenWidth * 0.7;
   const imgHeight = Math.round((dimensionsWidth / 960) * 640);
   const imgWidth = dimensionsWidth;
 
   return (
     <React.Fragment>
       {listing &&
-        <Card containerStyle={nativeElemsStyles(theme).container}>
+        <Card containerStyle={[nativeElemsStyles(theme).container, { maxWidth: dimensionsWidth }]}>
           <TouchableOpacity onPress={onPress}>
             <React.Fragment>
               <Image
@@ -40,7 +47,7 @@ export default function ListingCard(props: { listing: Listing, screenWidth: numb
               <Text style={styles(theme).offerBody}>{listing.name}</Text>
             </React.Fragment>
           </TouchableOpacity>
-          <ListingItemBottomBar listing={listing} />
+          <PrimaryButton onPress={openBrowser} containerStyle={{ padding: 10 }} titleStyle={{ marginLeft: 20 }} icon={<FontAwesome5 name='utensils' color={theme.secondaryText} size={18} />} title='Book Table' />
         </Card>
       }
     </React.Fragment>

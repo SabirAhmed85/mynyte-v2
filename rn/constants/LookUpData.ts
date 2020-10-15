@@ -8,27 +8,27 @@ const FEED_SEARCH_CATEGORIES: FeedCategory[] = [
         items: [
             {
                 name: 'Italian',
-                image: 'italian-food.jpg'
+                image: 'italian-food.png'
             },
             {
                 name: 'Indian',
-                image: 'indian-food.jpg'
+                image: 'indian-food.png'
             },
             {
                 name: 'Chinese',
-                image: 'chinese-food.jpg'
+                image: 'chinese-food.png'
             },
             {
                 name: 'Thai',
-                image: 'italian-food.jpg'
+                image: 'thai-food.png'
             },
             {
                 name: 'Mexican',
-                image: 'indian-food.jpg'
+                image: 'mexican-food.png'
             },
             {
                 name: 'Gastropub',
-                image: 'chinese-food.jpg'
+                image: 'gastropub-food.png'
             }
         ]
     },

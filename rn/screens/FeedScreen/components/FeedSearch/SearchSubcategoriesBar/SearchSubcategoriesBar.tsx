@@ -17,7 +17,7 @@ export const SearchSubcategoriesBar = (props: { theme: any, category: FeedCatego
             style={{ flexDirection: 'row', overflow: 'hidden', marginLeft: 10, marginTop: 10, display: !!visible ? 'flex' : 'none' }}>
             {category.items &&
                 category.items.map((item, key) => {
-                    if (category.name === 'Cinema') {
+                    if (category.name === 'Restaurant' || category.name === 'Cinema') {
                         return (
                             <TouchableOpacity onPress={() => { alert('nav'); }} activeOpacity={0.8} key={key} style={{ flexDirection: 'column', width: 90, marginRight: 15, marginTop: 12, marginBottom: 10 }}>
                                 <Image

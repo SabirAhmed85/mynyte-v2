@@ -54,7 +54,7 @@ export default function ListingPageMenu(props: { listing: Listing }) {
       disabledNote: 'Not currently accepting event bookings',
       clickable: false,
       clickNavigation: {
-        screen: 'FeedListingBookEventEntryScreen',
+        screen: 'FeedListingBookEventScreen',
         params: { id: listing.relListingId, listingType: listing.listingType, listingName: listing.name }
       }
     },
@@ -66,7 +66,7 @@ export default function ListingPageMenu(props: { listing: Listing }) {
       clickable: false,
       clickNavigation: {
         screen: 'FeedListingMenuScreen',
-        params: { id: listing.relListingId, listingType: listing.listingType, listingName: listing.name }
+        params: { id: listing.relListingId, listingType: listing.listingType, listingName: listing.name, menuType: 'carte' }
       }
     },
     {
@@ -77,7 +77,7 @@ export default function ListingPageMenu(props: { listing: Listing }) {
       clickable: false,
       clickNavigation: {
         screen: 'FeedListingMenuScreen',
-        params: { id: listing.relListingId, listingType: listing.listingType, listingName: listing.name }
+        params: { id: listing.relListingId, listingType: listing.listingType, listingName: listing.name, menuType: 'takeaway' }
       }
     },
     {

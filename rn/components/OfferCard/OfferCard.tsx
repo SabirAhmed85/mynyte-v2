@@ -17,17 +17,23 @@ type OfferCardProps = {
   offer: Offer;
   showBusinessName?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
+  clickScreenTab: string;
+  clickScreenName: string;
+  clickParams?: any
 };
 
 export default function OfferCard(props: OfferCardProps) {
   const { selectOffer } = React.useContext(OfferContext);
   const { theme } = useTheme();
   const nav = useNavigation();
-  const { offer, showBusinessName } = props;
+  const { offer, showBusinessName, clickScreenTab, clickScreenName, clickParams } = props;
   const offerIsExclusive = (Number(offer._id) % 2) === 0;
 
   const offerClick = () => {
-    nav.navigate('Offers', { screen: 'OfferScreen', params: { id: offer._id, offerName: offer.name } });
+    console.log(clickParams, clickScreenName, clickScreenTab);
+    nav.navigate(clickScreenTab, {
+      screen: clickScreenName,
+      params: clickParams? clickParams: { offerId: offer._id, offerName: offer.name } });
   };
 
   return (
@@ -66,5 +72,7 @@ export default function OfferCard(props: OfferCardProps) {
 }
 
 OfferCard.defaultProps = {
-  showBusinessName: true
+  showBusinessName: true,
+  clickScreenTab: 'Offers',
+  clickScreenName: 'OfferScreen'
 };

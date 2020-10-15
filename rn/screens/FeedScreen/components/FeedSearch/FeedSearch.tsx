@@ -80,7 +80,6 @@ export default function FeedSearch() {
                 ))
                 }
                 
-                
             </ExpandingContent>
             {/*
                     <DefaultView style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5, padding: 10, borderTopWidth: 1, borderTopColor: theme.searchPanelInnerBorderColor }}>
