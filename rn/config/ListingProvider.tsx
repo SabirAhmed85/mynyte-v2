@@ -1,25 +1,24 @@
-import { Listing } from '../models';
 import React from 'react';
 
 type ListingProviderState = {
-    selectedListing: Listing | null;
+    selectedListingId: number | null;
 };
 
 export const ListingContext: React.Context<any> = React.createContext({
-    selectedListing: null,
-    selectListing: () => {}
+    selectedListingId: null,
+    selectListing: (id: number) => {}
 });
 
 export const ListingProvider = (props: { children: any }) => {
-    const [state, setState] = React.useState({ selectedListing: null } as ListingProviderState);
+    const [state, setState] = React.useState({ selectedListingId: null } as ListingProviderState);
 
-    const handleSelectListing = async (listing: Listing) => {
-        setState({ ...state, selectedListing: listing});
+    const handleSelectListing = async (listingId: number) => {
+        setState({ ...state, selectedListingId: listingId});
     };
 
     return (
         <ListingContext.Provider value={{
-            selectedListing: state.selectedListing,
+            selectedListingId: state.selectedListingId,
             selectListing: handleSelectListing}}>
             {props.children}
         </ListingContext.Provider>

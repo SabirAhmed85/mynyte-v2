@@ -28,10 +28,10 @@ export default function FeedScreen(props: FeedScreenProps) {
 
   return (
     <React.Fragment>
-      <ScrollView onScroll={handleScroll} scrollEventThrottle={96} style={{ padding: 0 }} contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+      <ScrollView showsHorizontalScrollIndicator={true} style={{ padding: 0 }} contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
 
         {/*<Animated.View style={[{ backgroundColor: '#fff', zIndex: zIndex, width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }, { opacity: splashScreenOpacity }]}><Text>askfnksndafkn</Text></Animated.View>*/}
-        <ScrollView style={{ flex: 1, maxWidth: 800, padding: 0, width: '100%' }}>
+        <ScrollView showsHorizontalScrollIndicator={false} scrollEventThrottle={96} onScroll={handleScroll} style={{ flex: 1, maxWidth: 800, padding: 0, width: '100%' }}>
           <OpaqueView style={{ flex: 1, padding: 0 }}>
             <FeedSearch />
             <FeedContainer screenWidth={screenWidth} feedType={feedType} feedTypeToggle={feedTypeToggle} />

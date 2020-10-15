@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
 import { BackButton } from "../../components/BackButton/BackButton";
 import { useTheme } from "../../config/ThemeManager";
-import { HeaderStylingOptions } from "../../constants/CommonSettings";
+import { CardScreenTransition, HeaderStylingOptions } from "../../constants/CommonSettings";
 import { FeedParamList } from "../../types";
 import { HeaderLeftButton, HeaderRightButton, HeaderTitle } from "../../screens/FeedScreen/components/HeaderElements/HeaderElements";
 import FeedListingOffersScreen from "../../screens/FeedScreen/FeedListingScreen/FeedListingOffersScreen/FeedListingOffersScreen";
@@ -16,7 +16,11 @@ export function FeedNavigator() {
   const { theme } = useTheme();
 
   return (
-    <FeedStack.Navigator screenOptions={headerStyling()}>
+    <FeedStack.Navigator screenOptions={{
+      ...headerStyling(),
+      gestureEnabled: true,
+      ...CardScreenTransition
+    } as StackNavigationOptions}>
       <FeedStack.Screen
         name='FeedScreen'
         component={FeedScreenContainer}
@@ -24,6 +28,7 @@ export function FeedNavigator() {
           headerTitle: () => (
             <HeaderTitle route={route.route} navigation={route.navigation} theme={theme} />
           ),
+          headerTitleStyle: { width: '100%' },
           headerLeft: () => (<HeaderLeftButton route={route.route} navigation={route.navigation} />),
           headerRight: () => (<HeaderRightButton route={route.route} navigation={route.navigation} />)
         })}

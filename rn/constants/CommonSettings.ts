@@ -1,10 +1,9 @@
-import { StackNavigationOptions } from '@react-navigation/stack';
-import { StyleProp, ViewStyle } from 'react-native';
+import { HeaderStyleInterpolators, TransitionSpecs } from '@react-navigation/stack';
 import { useTheme } from '../config/ThemeManager';
 
 export const HeaderStylingOptions = () => {
   const { theme } = useTheme();
-  return () => ({
+  return {
     headerStyle: {
       backgroundColor: theme.headerBackground,
       borderBottomWidth: 0
@@ -14,5 +13,49 @@ export const HeaderStylingOptions = () => {
       color: '#ffffff',
     },
     headerTintColor: theme.headerTint,
-  } as StackNavigationOptions);
+  };
+};
+
+export const CardScreenTransition = {
+  cardOverlayEnabled: true,
+  gestureDirection: 'horizontal',
+  transitionSpec: {
+    open: TransitionSpecs.TransitionIOSSpec,
+    close: TransitionSpecs.TransitionIOSSpec,
+  },
+  headerStyleInterpolator: HeaderStyleInterpolators.forFade,
+  cardStyleInterpolator: ({ current, next, layouts }: any) => {
+    return {
+      cardStyle: {
+        transform: [
+          {
+            translateX: current.progress.interpolate({
+              inputRange: [0, 1],
+              outputRange: [layouts.screen.width * 1.25, 0],
+            }),
+          },
+          {
+            rotate: current.progress.interpolate({
+              inputRange: [0, 1],
+              outputRange: ['15deg', '0deg'],
+            }),
+          },
+          {
+            scale: next
+              ? next.progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: [1, 0.9],
+              })
+              : 1,
+          },
+        ],
+      },
+      overlayStyle: {
+        opacity: current.progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 0.5],
+        }),
+      },
+    };
+  },
 };

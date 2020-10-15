@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
 import { BackButton } from "../../components/BackButton/BackButton";
-import { HeaderStylingOptions } from "../../constants/CommonSettings";
+import { CardScreenTransition, HeaderStylingOptions } from "../../constants/CommonSettings";
 import { OffersParamList } from "../../types";
 import OffersScreen from '../../screens/OffersScreen/OffersScreen';
 import OfferScreen from '../../screens/OffersScreen/OfferScreen/OfferScreen';
@@ -11,7 +11,11 @@ const OffersStack = createStackNavigator<OffersParamList>();
 export function OffersNavigator() {
   const headerStyling = HeaderStylingOptions;
   return (
-    <OffersStack.Navigator screenOptions={headerStyling()}>
+    <OffersStack.Navigator screenOptions={{
+      ...headerStyling(),
+      gestureEnabled: true,
+      ...CardScreenTransition
+    } as StackNavigationOptions}>
       <OffersStack.Screen
         name='OffersScreen'
         component={OffersScreen}

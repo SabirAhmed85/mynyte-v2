@@ -11,6 +11,7 @@ interface ActionButtonProps extends ActionButtonIconProps, ActionButtonSharedPro
   titleStyle?: StyleProp<TextStyle>;
   containerStyle?: StyleProp<ViewStyle>;
   withIndicator?: boolean;
+  indicatorColor?: string;
 }
 
 type ActionButtonSharedProps = {
@@ -59,7 +60,7 @@ export const ActionButton = (props: ActionButtonProps) => (
       title={props.title}
       onPress={props.onPress} />
     {!!props.withIndicator &&
-    <StretchBar showBar={props.active} style={{ backgroundColor: '#ff0000', height: 2, width: '100%' }} />
+    <StretchBar showBar={props.active} style={{ backgroundColor: props.indicatorColor, height: 2, width: '100%' }} />
     }
   </OpaqueView>
 );

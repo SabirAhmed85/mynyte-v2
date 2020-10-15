@@ -31,7 +31,7 @@ export const HeaderTitle = (
     return !!hideSearchInput ?
         null :
         (
-            <OpaqueView style={{ width: '100%' }}>
+            <OpaqueView style={{ width: '100%', flex: 1, borderBottomColor: '#000', borderBottomWidth: 1 }}>
                 <TextInput
                     onFocus={() => {
                         props.navigation.setParams({ search: '' })

@@ -51,7 +51,7 @@ const ExpandingContent = (props: any) => {
 export default function FeedSearch() {
     const { theme } = useTheme();
     const [categories, dispatchCategories] = React.useReducer(reducer, [{}] as FeedCategory[]);
-    const [visibleFeedCategoryName, setVisibleFeedCategoryName] = React.useState('');
+    const [visibleFeedCategoryIndex, setVisibleFeedCategoryIndex] = React.useState(0);
     const [searchCollapsed, setSearchCollapsed] = React.useState(true);
     const feedSearchCategories = FEED_SEARCH_CATEGORIES;
     console.log(feedSearchCategories, FEED_SEARCH_CATEGORIES);
@@ -59,7 +59,6 @@ export default function FeedSearch() {
 
     React.useEffect(() => {
         dispatchCategories({ item: feedSearchCategories });
-        setVisibleFeedCategoryName(feedSearchCategories[0].name);
     }, []);
 
     return (
@@ -70,17 +69,17 @@ export default function FeedSearch() {
                         <PrimaryText style={styles(theme).searchPanelHeaderText}>Find your Night in</PrimaryText>
                         <PrimaryText style={[{ color: theme.primaryActiveColorHighlight, marginLeft: 5 }, styles(theme).searchPanelHeaderText]}>Bedford</PrimaryText>
                     </OpaqueView>
-                    <FontAwesome5 style={styles(theme).searchPanelHeaderIcon} name={!!searchCollapsed ? 'times' : 'search'} />
+                    <FontAwesome5 style={styles(theme).searchPanelHeaderIcon} name={!!searchCollapsed ? 'chevron-up' : 'search'} />
                 </OpaqueView>
             </TouchableOpacity>
             <ExpandingContent searchCollapsed={searchCollapsed}>
                 <TertiaryText style={{ paddingLeft: 10, paddingRight: 10, paddingTop: 5, paddingBottom: 10, fontSize: 15 }}>Plan something fun...</TertiaryText>
                 
-                <SearchActionButtonsBar theme={theme} categories={categories} setVisibleFeedCategoryName={setVisibleFeedCategoryName} />
+                <SearchActionButtonsBar theme={theme} categories={categories} visibleFeedCategoryIndex={visibleFeedCategoryIndex} setVisibleFeedCategoryIndex={setVisibleFeedCategoryIndex} />
 
                 {categories &&
                 categories.map((category: FeedCategory, key: number) => (
-                    <SearchSubcategoriesBar key={key} theme={theme} category={category} visible={visibleFeedCategoryName === category.name} />
+                    <SearchSubcategoriesBar key={key} theme={theme} category={category} visible={visibleFeedCategoryIndex === key} />
                 ))
                 }
                 

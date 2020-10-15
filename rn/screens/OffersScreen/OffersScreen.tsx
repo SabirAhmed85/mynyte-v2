@@ -101,6 +101,7 @@ export default function OffersScreen() {
                         disabledColor={theme.disabledText}
                         title={category.name.replace(' Deals', '')}
                         withIndicator={true}
+                        indicatorColor={theme.primaryActiveColor}
                         onPress={() => {
                           if (visibleOfferCategory !== category.name) {  
                             setVisibleOfferCategory(category.name);
