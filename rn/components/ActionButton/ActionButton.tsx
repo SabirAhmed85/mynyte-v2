@@ -2,16 +2,23 @@ import * as React from 'react';
 import { View as DefaultView } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+import { useTheme } from '../../config/ThemeManager';
 import { Button } from '../Themed';
+import { styles } from './ActionButton.style';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { StretchBar } from '../../components/StretchBar/StretchBar';
 
 interface ActionButtonProps extends ActionButtonIconProps, ActionButtonSharedProps {
   title: string;
   onPress: (props: any) => any;
+
+  minHeight: number;
+  paddingY: number;
+  withIndicator: boolean;
+  fullFlex: boolean;
   titleStyle?: StyleProp<TextStyle>;
+  buttonStyle?: StyleProp<ViewStyle>;
   containerStyle?: StyleProp<ViewStyle>;
-  withIndicator?: boolean;
   indicatorColor?: string;
 }
 
@@ -24,7 +31,7 @@ type ActionButtonSharedProps = {
 };
 
 type ActionButtonIconProps = {
-  icon: string;
+  icon?: string;
   iconSize?: string;
 };
 
@@ -50,26 +57,35 @@ const ButtonIcon = (props: { iconProps: ActionButtonIconProps, buttonProps: Acti
     name={props.iconProps.icon} />
 );
 
-export const ActionButton = (props: ActionButtonProps) => (
-  <DefaultView style={{ flexDirection: 'column', flex: 1, minHeight: 60, padding: 0 }}>
-    <Button
-      buttonStyle={{ flexDirection: 'column', paddingTop: 12, paddingBottom: 12 }}
-      containerStyle={[{ flex: 1 }, { borderRadius: 0 }, props.containerStyle]}
-      titleStyle={[{ fontSize: 13 }, { color: getColor(props) }, props.titleStyle]}
-      icon={ButtonIcon({ iconProps: { icon: props.icon, iconSize: props.iconSize }, buttonProps: { active: props.active, color: props.color, disabled: props.disabled, activeColor: props.activeColor, disabledColor: props.disabledColor } })}
-      type='clear'
-      title={props.title}
-      onPress={props.onPress} />
-    {!!props.withIndicator &&
-    <StretchBar showBar={props.active} style={{ backgroundColor: props.indicatorColor, height: 2, width: '100%' }} />
-    }
-  </DefaultView>
-);
+export const ActionButton = (props: ActionButtonProps) => {
+  const { theme } = useTheme();
+
+  return (
+    <DefaultView style={styles(props, theme).container}>
+      <Button
+        buttonStyle={[styles(props, theme).button, props.buttonStyle]}
+        containerStyle={[ styles(props, theme).buttonContainer, props.containerStyle]}
+        titleStyle={[{ fontSize: 13 }, { color: getColor(props) }, props.titleStyle]}
+        icon={props.icon ? 
+          ButtonIcon({ iconProps: { icon: props.icon, iconSize: props.iconSize }, buttonProps: { active: props.active, color: props.color, disabled: props.disabled, activeColor: props.activeColor, disabledColor: props.disabledColor } }) :
+          false}
+        type='clear'
+        title={props.title}
+        onPress={props.onPress} />
+      {!!props.withIndicator &&
+      <StretchBar showBar={props.active} style={{ backgroundColor: props.indicatorColor }} />
+      }
+    </DefaultView>
+  )
+};
 
 ActionButton.defaultProps = {
   iconSize: 'small',
   color: '#eeeeee',
   active: false,
   disabled: false,
+  minHeight: 60,
+  paddingY: 12,
   withIndicator: false,
+  fullFlex: true,
 };

@@ -45,12 +45,12 @@ export default function OfferCard(props: OfferCardProps) {
             <Card.Title style={styles(theme).title}>{offer.offerFoodStyle}</Card.Title>
           }
 
-          <DefaultView style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <DefaultView style={styles(theme).titleRight}>
             {offerIsExclusive &&
               <PrimaryText style={styles(theme).note}>MyNyte Exclusive</PrimaryText>
             }
 
-            <Image style={{ width: 45, height: 45, borderRadius: 45, borderColor: '#555', borderWidth: 1 }} source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${offer.currentCoverPhotoName}` }} />
+            <Image style={styles(theme).titleImage} source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${offer.currentCoverPhotoName}` }} />
           </DefaultView>
 
         </DefaultView>

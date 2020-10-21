@@ -12,23 +12,13 @@ import { share } from '../../../utils/share';
 import { Listing } from '../../../models';
 import { FeedParamList } from '../../../types';
 
+import { FadeInPanel } from '../../../components/FadeInPanel/FadeInPanel';
+import { PageSectionHeading } from '../../../components/PageSectionHeading/PageSectionHeading';
 import ListingPageMenu from './components/ListingPageMenu/ListingPageMenu';
 import ListingPageActionButtonsBar from './components/ListingPageActionButtonsBar/ListingPageActionButtonsBar';
-import { FadeInPanel } from '../../../components/FadeInPanel/FadeInPanel';
 import ListingPageActionButtonsBarDummy from './components/ListingPageActionButtonsBar/ListingPageActionButtonsBarDummy';
 import ListingPageMenuDummy from './components/ListingPageMenu/ListingPageMenuDummy';
-
-function getFeedListing(id: number, listingType: string) {
-  return fetch(`https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Profile.php?action=getListings&_listingId=${id}&listingType=${listingType}&_profileId=2`)
-    .then(response => response.json())
-    .then(responseJson => {
-      return responseJson[0];
-    })
-    .catch(error => {
-      alert(error);
-      console.error(error);
-    });
-}
+import { getFeedListing } from '../../../api/listing';
 
 type FeedListingScreenProps = {
   route: RouteProp<FeedParamList, 'FeedListingScreen'>;
@@ -77,6 +67,14 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
     };
   }, []);
 
+  React.useEffect(() => {
+    getFeedListing(id, listingType).then((listing: Listing) => {
+      if (!mountedRef.current) return null;
+      setListing(listing);
+      setLoaded(true);
+    });
+  }, [id, listingType, listingName]);
+
   const startShare = () => {
     // const url = `https://www.mynyte.co.uk/feed/${listingType}/${id}/${listingName}`;
     const url = 'https://www.facebook.com';
@@ -122,7 +120,7 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
           <ListingPageActionButtonsBar listing={listing} />
         }
         <DefaultView style={[styles(theme).pageMenuHeaderContainer, styles(theme).contentContainer]}>
-          <DefaultView style={{ flexDirection: 'column', alignItems: 'flex-start', maxWidth: '80%' }}>
+          <DefaultView style={styles(theme).pageMenuHeader}>
             <SecondaryText>{listing.name}</SecondaryText>
             <PrimaryHighlightText>{listing.listingType1} in {listing.town}</PrimaryHighlightText>
           </DefaultView>
@@ -138,9 +136,8 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
         {!!loaded &&
           <ListingPageMenu listing={listing} />
         }
-        <DefaultView style={{ backgroundColor: theme.primaryActiveBackground, padding: 15 }}>
-          <SecondaryText>Info / About</SecondaryText>
-        </DefaultView>
+        
+        <PageSectionHeading theme={theme} content='Info / About' />
         {!!loaded &&
           <DefaultView style={styles(theme).contentContainer}>
             <SecondaryText>Something about Listing ... blah blah blah</SecondaryText>

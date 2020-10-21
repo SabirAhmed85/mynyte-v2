@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Text } from '../../../../../components/Themed';
 
 import { FeedCategory } from '../../../../../types/feed';
-import { getFeedSearchImageName } from '../../../../../helpers/FeedSearchHelpers';
+import { getFeedSearchImageName } from '../../../../../utils/feed-search';
 
 export const SearchSubcategoriesBar = (props: { theme: any, category: FeedCategory, visible: boolean }) => {
     const { theme, category, visible } = props;

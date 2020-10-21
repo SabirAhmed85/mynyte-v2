@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Card } from 'react-native-elements';
-import * as WebBrowser from 'expo-web-browser';
 
 import { useTheme } from '../../../../config/ThemeManager';
 import { Button, PrimaryButton, Text } from '../../../../components/Themed';
@@ -26,7 +25,7 @@ export default function SmallListingCard(props: { listing: Listing, screenWidth:
   };
 
   async function openBrowser() {
-    let result = await WebBrowser.openBrowserAsync('https://expo.io');
+    
   };
 
   const listing = props.listing;

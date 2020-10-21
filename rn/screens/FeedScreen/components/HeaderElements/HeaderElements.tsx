@@ -75,12 +75,12 @@ export const HeaderLeftButton = (
             <TouchableOpacity
                 activeOpacity={0.5}
                 containerStyle={{ height: '100%' }}
-                style={{ width: 50, height: '100%', flexDirection: 'row', alignItems: 'center', paddingLeft: 8 }}
+                style={{ height: '100%', flexDirection: 'row', alignItems: 'center' }}
                 onPress={() => props.navigation.setParams({ 'show-guide': '' })}>
                 <FontAwesome5
                     name='smile-beam'
                     size={24}
-                    style={{ marginLeft: 15 }}
+                    style={{ marginLeft: 18 }}
                     color='#fff'
                 />
             </TouchableOpacity>
@@ -112,7 +112,7 @@ export const HeaderRightButton = (
         <TouchableOpacity
             activeOpacity={0.5}
             containerStyle={{ height: '100%' }}
-            style={{ width: 50, height: '100%', flexDirection: 'row', alignItems: 'center', paddingLeft: 8 }}
+            style={{ height: '100%', flexDirection: 'row', alignItems: 'center' }}
             onPress={() => {
                 if (props.route.params !== undefined && (
                     (props.route.params as any).search !== undefined ||
@@ -128,7 +128,7 @@ export const HeaderRightButton = (
             <FontAwesome5
                 name={name}
                 size={24}
-                style={{ marginRight: 15 }}
+                style={{ marginRight: 18 }}
                 color='#fff'
             />
         </TouchableOpacity>

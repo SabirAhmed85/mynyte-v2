@@ -29,6 +29,7 @@ export const StretchBar = (props: StretchBarState) => {
         <Animated.View
             style={{
                 ...props.style,
+                height: 2,
                 width: contentWidth.interpolate({
                     inputRange: [0, 100],
                     outputRange: ['0%', '100%']

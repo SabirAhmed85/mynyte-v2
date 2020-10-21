@@ -6,21 +6,8 @@ import styles from './FeedListingOfferScreen.style';
 import { Offer } from '../../../../../models';
 import { OfferContext } from '../../../../../config/OfferProvider';
 
-import { ScreenLoadingComponent } from '../../../../../components/ScreenLoadingComponent/ScreenLoadingComponent';
 import OfferDetailCard from '../../../../../components/OfferDetailCard/OfferDetailCard';
-
-
-function getOffer(id: number) {
-  return fetch(`https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Offer.php?action=getOffers&format=getOffer&_offerId=${id}&_profileId=2`)
-    .then(response => response.json())
-    .then(responseJson => {
-      return responseJson[0];
-    })
-    .catch(error => {
-      alert(error);
-      console.error(error);
-    });
-}
+import { getOffer } from '../../../../../api/offer';
 
 type FeedListingOfferScreen = {
   route: any;
@@ -45,7 +32,7 @@ export default function FeedListingOfferScreen(props: FeedListingOfferScreen) {
   
   return (
     <ScrollView style={styles.container}>
-      <OfferDetailCard offer={offer} loaded={loaded} />
+      <OfferDetailCard offer={offer} loaded={loaded} showBusinessDetails={false} />
     </ScrollView>
   );
 }

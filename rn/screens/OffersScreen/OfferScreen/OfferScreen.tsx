@@ -6,21 +6,8 @@ import styles from './OfferScreen.style';
 import { Offer } from '../../../models';
 import { OfferContext } from '../../../config/OfferProvider';
 
-import { ScreenLoadingComponent } from '../../../components/ScreenLoadingComponent/ScreenLoadingComponent';
 import OfferDetailCard from '../../../components/OfferDetailCard/OfferDetailCard';
-
-
-function getOffer(id: number) {
-  return fetch(`https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Offer.php?action=getOffers&format=getOffer&_offerId=${id}&_profileId=2`)
-    .then(response => response.json())
-    .then(responseJson => {
-      return responseJson[0];
-    })
-    .catch(error => {
-      alert(error);
-      console.error(error);
-    });
-}
+import { getOffer } from '../../../api/offer';
 
 type OfferScreenProps = {
   route: any;

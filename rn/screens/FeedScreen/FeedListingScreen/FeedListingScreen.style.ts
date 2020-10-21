@@ -21,7 +21,12 @@ const styles = (theme: any) => StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: theme.primaryActiveBackground,
     padding: 15
-  }
+  },
+  pageMenuHeader: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    maxWidth: '80%'
+  },
 });
 
 export default styles;

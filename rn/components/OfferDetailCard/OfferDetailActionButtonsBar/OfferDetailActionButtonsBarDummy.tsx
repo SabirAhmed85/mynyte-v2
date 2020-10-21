@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View as DefaultView } from 'react-native';
 
 import { useTheme } from '../../../config/ThemeManager';
+import { styles } from './OffeDetailActionButtonsBar.style';
 
 import { ActionButton } from '../../ActionButton/ActionButton';
 
@@ -10,7 +11,7 @@ export default function OfferDetailActionButtonsBarDummy() {
 
   return (
     <DefaultView
-      style={{ flexDirection: 'row', width: '100%', display: 'flex', backgroundColor: theme.primaryActiveBackground, borderBottomColor: theme.primaryActiveBorderColorFeint, borderBottomWidth: 1 }}>
+      style={styles(theme).container}>
       <ActionButton
         icon='comment-dots'
         active={false}

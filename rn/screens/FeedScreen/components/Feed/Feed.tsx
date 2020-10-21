@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { View as DefaultView, ScrollView as DefaultScrollView, Text as DefaultText } from 'react-native';
+import { View as DefaultView, ScrollView as DefaultScrollView } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-import { Button, ScrollView, TertiaryText, Text } from '../../../../components/Themed';
+import { Button, ColorlessText, TertiaryText } from '../../../../components/Themed';
 import { styles } from './Feed.style';
 
 import { Listing } from '../../../../models';
@@ -69,9 +69,9 @@ export default function Feed(props: FeedProps) {
             </DefaultView>
           </DefaultView>
 
-          <FadeInPanel style={{ background: theme.searchPanelHeaderBg, paddingBottom: 15, paddingTop: 10, paddingLeft: 10 }} withYScaling={true} delay={feedType === 'tonight' ? 150 : 0} showPanel={feedType === 'tonight'}>
+          <FadeInPanel style={{ borderTopColor: theme.listItemBorderColor, borderTopWidth: 1, paddingBottom: 15, paddingTop: 10, paddingLeft: 10 }} withYScaling={true} delay={feedType === 'tonight' ? 150 : 0} showPanel={feedType === 'tonight'}>
             <DefaultView>
-              <DefaultText style={{ fontSize: 16, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Restaurants &amp; Takeaways in Bedford</DefaultText>
+              <ColorlessText style={{ fontSize: 15, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Restaurants &amp; Takeaways in Bedford</ColorlessText>
               <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row', marginBottom: 10 }}>
                 {tonightsListings.map((listing: Listing, key: number) => (
                   <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />
@@ -79,7 +79,7 @@ export default function Feed(props: FeedProps) {
               </DefaultScrollView>
             </DefaultView>
             <DefaultView>
-              <DefaultText style={{ fontSize: 16, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Movies showing tonight in Bedford</DefaultText>
+              <ColorlessText style={{ fontSize: 15, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Movies showing tonight in Bedford</ColorlessText>
               <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row'}}>
                 {tonightsListings.map((listing: Listing, key: number) => (
                   <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />
@@ -87,7 +87,7 @@ export default function Feed(props: FeedProps) {
               </DefaultScrollView>
             </DefaultView>
             <DefaultView>
-              <DefaultText style={{ fontSize: 16, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Watch the game</DefaultText>
+              <ColorlessText style={{ fontSize: 15, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Watch the game</ColorlessText>
               <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row'}}>
                 {tonightsListings.map((listing: Listing, key: number) => (
                   <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />

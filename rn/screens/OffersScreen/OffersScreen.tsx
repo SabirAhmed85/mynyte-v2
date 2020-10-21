@@ -1,36 +1,21 @@
 import * as React from 'react';
-import { View as DefaultView } from 'react-native';
-import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
+import { View as DefaultView, FlatList } from 'react-native';
 
 import { useTheme } from '../../config/ThemeManager';
 import styles from './OffersScreen.style';
-import { Text, ScrollView, View, SafeAreaView } from '../../components/Themed';
+import { Text, View } from '../../components/Themed';
 
 import { Offer, OfferCategory } from '../../models';
 
 import OfferCard from '../../components/OfferCard/OfferCard';
-import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { AppLoading } from 'expo';
 import { ScreenLoadingComponent } from '../../components/ScreenLoadingComponent/ScreenLoadingComponent';
 import { ActionButton } from '../../components/ActionButton/ActionButton';
-import { FlatList } from 'react-native';
 import { FadeInPanel } from '../../components/FadeInPanel/FadeInPanel';
-import { putOffersIntoCategories } from '../../helpers/OffersHelpers';
+import { PageInnerHeading } from '../../components/PageInnerHeading/PageInnerHeading';
+import { putOffersIntoCategories } from '../../utils/offers';
+import { getOffersByTown } from '../../api/offer';
 
 const reducer = (offerCategories: OfferCategory[], action: React.ReducerAction<React.Reducer<any, any>>) => action.item;
-
-function getOffers() {
-  return fetch('https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Offer.php?action=getOffers&format=getOffersByTownId&timeScale=present&_townId=1&_profileId=2')
-    .then(response => response.json())
-    .then(responseJson => {
-      return responseJson;
-    })
-    .catch(error => {
-      alert(error);
-      console.error(error);
-    });
-}
 
 export default function OffersScreen() {
   const { theme } = useTheme();
@@ -44,7 +29,7 @@ export default function OffersScreen() {
   };
 
   React.useEffect(() => {
-    getOffers().then((offers: Offer[]) => {
+    getOffersByTown().then((offers: Offer[]) => {
       const categories: OfferCategory[] = putOffersIntoCategories(offers);
 
       dispatchOfferCategories({ type: 'add', item: categories });
@@ -54,7 +39,7 @@ export default function OffersScreen() {
   }, []);
 
   return (
-    <View style={{ flex: 1, padding: 0 }}>
+    <View style={styles(theme).container}>
       {!loaded &&
         <ScreenLoadingComponent />
       }
@@ -65,12 +50,9 @@ export default function OffersScreen() {
               contentInset={{ top: 15, right: 15, bottom: 15, left: 15 }}
               ListHeaderComponent={
                 <React.Fragment>
-                  <View style={{ width: '100%', paddingLeft: 15, paddingTop: 7, paddingBottom: 8, backgroundColor: theme.headerNotificationBg }}>
-                    <Text>
-                      Showing upcoming offers in Bedford
-                      </Text>
-                  </View>
-                  <DefaultView style={{ marginTop: 8, marginLeft: 15, marginRight: 15, flexDirection: 'row', borderBottomColor: theme.listItemBorderColor, borderBottomWidth: 1, marginBottom: 10 }}>
+                  <PageInnerHeading theme={theme} content='Showing upcoming offers in Bedford' />
+                  
+                  <DefaultView style={styles(theme).actionButtonsRow}>
                     {offerCategories.map((category: OfferCategory, key: number) => (
                       <ActionButton key={key}
                         containerStyle={{ borderBottomColor: theme.primaryActiveBackground }}
@@ -84,7 +66,7 @@ export default function OffersScreen() {
                         withIndicator={true}
                         indicatorColor={theme.primaryActiveColor}
                         onPress={() => {
-                          if (visibleOfferCategoryName !== category.name) {  
+                          if (visibleOfferCategoryName !== category.name) {
                             setVisibleOfferCategoryName(category.name);
                           };
                         }} />

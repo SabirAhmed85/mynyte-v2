@@ -19,7 +19,7 @@ import { FadeInPanel } from '../../components/FadeInPanel/FadeInPanel';
 type OfferDetailCardProps = {
   offer: Offer;
   loaded: boolean;
-  showBusinessName?: boolean;
+  showBusinessDetails?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
 };
 
@@ -37,7 +37,7 @@ const MainListingImage = (props: { imageName: string, imgWidth: number, imgHeigh
 export default function OfferDetailCard(props: OfferDetailCardProps) {
   const { theme } = useTheme();
   const nav = useNavigation();
-  const { offer, showBusinessName, loaded } = props;
+  const { offer, showBusinessDetails, loaded } = props;
   const offerIsExclusive = (Number(offer._id) % 2) === 0;
   const dimensionsWidth = Dimensions.get('window').width - 30;
   const imgHeight = Math.round((dimensionsWidth / 960) * 640);
@@ -80,8 +80,8 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
               imageName={`https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${offer.currentCoverPhotoName}`}
               imgWidth={imgWidth}
               imgHeight={imgHeight} />
-            <DefaultView style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', flexDirection: 'row', flex: 1, }}>
-              <DefaultView style={{ backgroundColor: 'rgba(30, 30, 30, 0.5)', flex: 1, borderRadius: 30, alignSelf: 'flex-end', paddingTop: 10, paddingBottom: 10, margin: 10, paddingLeft: 15, paddingRight: 15 }}>
+            <DefaultView style={styles(theme).offerHeaderNoteContainer}>
+              <DefaultView style={styles(theme).offerHeaderNote}>
                 <SecondaryText>Offer now on! What are you waiting for?</SecondaryText>
               </DefaultView>
             </DefaultView>
@@ -97,10 +97,12 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
         <DefaultView>
           <OfferDetailActionButtonsBar offer={offer} />
 
-          <DefaultView style={styles(theme).pageMenuHeaderContainer}>
-            <DefaultView style={{ flexDirection: 'column', alignItems: 'flex-start', maxWidth: '80%' }}>
+          <DefaultView style={styles(theme).pageHeaderContainer}>
+            <DefaultView style={styles(theme).pageHeader}>
               <SecondaryText style={{ marginBottom: 5 }}>{offer.name}</SecondaryText>
-              <PrimaryHighlightText>At: {offer.businessName}</PrimaryHighlightText>
+              {!!showBusinessDetails &&
+                <PrimaryHighlightText>At: {offer.businessName}</PrimaryHighlightText>
+              }
             </DefaultView>
             <Button type='clear'
               icon={MainHeaderShareButton()}
@@ -115,11 +117,19 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
               <SecondaryText style={styles(theme).title}>Category: {offer.offerFoodStyle}</SecondaryText>
             }
           </DefaultView>
-
-          <ListMenuItem item={{ title: `See all ${offer.businessName} offers`, icon: 'pound-sign', clickable: true }} />
-          <ListMenuItem item={{ title: `See ${offer.businessName}'s page`, icon: 'address-book', clickable: true }} />
+          
+          {!!showBusinessDetails &&
+            <DefaultView>
+              <ListMenuItem item={{ title: `See all ${offer.businessName} offers`, icon: 'pound-sign', clickable: true, clickNavigation: { screen: 'FeedListingOffersScreen', params: { id: offer._createdByBusinessId, listingName: offer.businessName, listingType: 'Business' } } }} />
+              <ListMenuItem item={{ title: `See ${offer.businessName}'s page`, icon: 'address-book', clickable: true, clickNavigation: { screen: 'FeedListingScreen', params: { id: offer._createdByBusinessId, listingName: offer.businessName, listingType: 'Business' } } }} />
+            </DefaultView>
+          }
         </DefaultView>
       }
     </Card>
   );
 }
+
+OfferDetailCard.defaultProps = {
+  showBusinessDetails: true,
+};

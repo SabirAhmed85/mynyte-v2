@@ -5,33 +5,10 @@ import { useTheme } from '../../../../config/ThemeManager';
 import { Listing } from '../../../../models';
 
 import Feed from './Feed';
+import { getListingsForMainFeed, getListingsForFoodFeed } from '../../../../api/listing';
 
 const reducer = (listings: Listing[], action: React.ReducerAction<React.Reducer<any, any>>) => {
   return action.item;
-}
-
-function getListingsForMainFeed() {
-  return fetch('https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Listing.php?action=getListingsForFeed&_userId=2&_townId=1')
-    .then(response => response.json())
-    .then(responseJson => {
-      return responseJson;
-    })
-    .catch(error => {
-      alert(error);
-      console.error(error);
-    });
-}
-
-function getListingsForFoodFeed() {
-  return fetch('https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Listing.php?action=getListingsForFoodFeed&_userId=2&_townId=1')
-    .then(response => response.json())
-    .then(responseJson => {
-      return responseJson;
-    })
-    .catch(error => {
-      alert(error);
-      console.error(error);
-    });
 }
 
 type FeedContainerProps = {

@@ -8,7 +8,7 @@ import { nativeElemsStyles, styles } from './ListingCard.style';
 import { Listing } from '../../../../models';
 import ListingItemBottomBar from '../../../../components/ListingItemBottomBar/ListingItemBottomBar';
 import { Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { ListingContext } from '../../../../config/ListingProvider';
 
@@ -31,7 +31,7 @@ export default function ListingCard(props: { listing: Listing, screenWidth: numb
     <React.Fragment>
       {listing &&
         <Card containerStyle={nativeElemsStyles(theme).container}>
-          <TouchableOpacity onPress={onPress}>
+          <TouchableWithoutFeedback onPress={onPress}>
             <React.Fragment>
               <Image
                 resizeMode='cover'
@@ -39,7 +39,7 @@ export default function ListingCard(props: { listing: Listing, screenWidth: numb
                 style={{ width: imgWidth, height: imgHeight }} />
               <Text style={styles(theme).offerBody}>{listing.name}</Text>
             </React.Fragment>
-          </TouchableOpacity>
+          </TouchableWithoutFeedback>
           <ListingItemBottomBar listing={listing} />
         </Card>
       }

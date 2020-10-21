@@ -92,12 +92,12 @@ export default {
           },
           Covid: {
             screens: {
-              Covid: 'covid',
+              CovidScreen: 'covid',
             },
           },
           More: {
             screens: {
-              More: 'more',
+              MoreScreen: 'more',
             },
           },
         },

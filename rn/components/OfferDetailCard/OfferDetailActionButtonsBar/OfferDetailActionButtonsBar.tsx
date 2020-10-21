@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { View as DefaultView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '../../../config/ThemeManager';
-import { OpaqueView } from '../../Themed';
 import { styles } from './OffeDetailActionButtonsBar.style';
 
 import { ActionButton } from '../../ActionButton/ActionButton';
@@ -11,13 +9,12 @@ import { Offer } from '../../../models';
 
 export default function OfferDetailActionButtonsBar(props: { offer: Offer }) {
   const { theme } = useTheme();
-  const nav = useNavigation();
 
   const [offer, setOffer] = React.useState(props.offer as Offer);
 
   return (
     <DefaultView
-      style={{ flexDirection: 'row', width: '100%', display: 'flex', backgroundColor: theme.primaryActiveBackground, borderBottomColor: theme.primaryActiveBorderColorFeint, borderBottomWidth: 1 }}>
+      style={styles(theme).container}>
       <ActionButton
         icon='comment-dots'
         titleStyle={{color: '#ebebeb'}}

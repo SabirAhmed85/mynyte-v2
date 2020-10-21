@@ -17,16 +17,16 @@ const nativeElemsStyles = (theme: any) => ({
 
 const styles = (theme: any) =>
   StyleSheet.create({
-    titleContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      padding: 0,
-    },
-    pageMenuHeaderContainer: {
+    pageHeaderContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: 15,
+    },
+    pageHeader: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      maxWidth: '80%'
     },
     title: {
       fontWeight: 'normal',
@@ -36,11 +36,25 @@ const styles = (theme: any) =>
       color: theme.primaryColor,
       fontFamily: 'titillium',
     },
-    note: {
-      textAlign: 'right',
-      padding: 5,
-      marginBottom: 5,
-      color: '#ff0000',
+    offerHeaderNoteContainer: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      flexDirection: 'row',
+      flex: 1,
+    },
+    offerHeaderNote: {
+      backgroundColor: 'rgba(30, 30, 30, 0.5)',
+      flex: 1,
+      borderRadius: 30,
+      alignSelf: 'flex-end',
+      paddingTop: 10,
+      paddingBottom: 10,
+      margin: 10,
+      paddingLeft: 15,
+      paddingRight: 15
     },
     offerBody: {
       paddingTop: 0,

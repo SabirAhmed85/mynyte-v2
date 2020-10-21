@@ -11,21 +11,10 @@ import { FadeInPanel } from '../../../../components/FadeInPanel/FadeInPanel';
 import { FlatList } from 'react-native-gesture-handler';
 import { ActionButton } from '../../../../components/ActionButton/ActionButton';
 import OfferCard from '../../../../components/OfferCard/OfferCard';
-import { putOffersIntoCategories } from '../../../../helpers/OffersHelpers';
+import { putOffersIntoCategories } from '../../../../utils/offers';
+import { getOffersByBusiness } from '../../../../api/offer';
 
 const reducer = (offerCategories: OfferCategory[], action: React.ReducerAction<React.Reducer<any, any>>) => action.item;
-
-function getOffers(businessId: number) {
-  return fetch(`https://www.mynyte.co.uk/staging/sneak-preview/data/sp/Offer.php?action=getOffers&format=getOffersByTownId&timeScale=present&_businessId=${businessId}&_profileId=2`)
-    .then(response => response.json())
-    .then(responseJson => {
-      return responseJson;
-    })
-    .catch(error => {
-      alert(error);
-      console.error(error);
-    });
-}
 
 export default function FeedListingOffersScreen(props: { route: any }) {
   const { theme } = useTheme();
@@ -41,7 +30,7 @@ export default function FeedListingOffersScreen(props: { route: any }) {
   };
 
   React.useEffect(() => {
-    getOffers(listingId).then((offers: Offer[]) => {
+    getOffersByBusiness(listingId).then((offers: Offer[]) => {
       if (!offers) {
         return false;
       }
@@ -66,11 +55,6 @@ export default function FeedListingOffersScreen(props: { route: any }) {
               contentInset={{ top: 15, right: 15, bottom: 15, left: 15 }}
               ListHeaderComponent={
                 <React.Fragment>
-                  <View style={{ width: '100%', paddingLeft: 15, paddingTop: 7, paddingBottom: 8, backgroundColor: theme.headerNotificationBg }}>
-                    <Text>
-                      Showing upcoming offers in Bedford
-                      </Text>
-                  </View>
                   {offerCategories.length > 1 &&
                     <DefaultView style={{ marginTop: 8, marginLeft: 15, marginRight: 15, flexDirection: 'row', borderBottomColor: theme.listItemBorderColor, borderBottomWidth: 1, marginBottom: 10 }}>
                       {offerCategories.map((category: OfferCategory, key: number) => (

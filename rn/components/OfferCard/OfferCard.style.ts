@@ -33,6 +33,17 @@ const styles = (theme: any) =>
       fontFamily: 'titillium',
       marginBottom: 0,
     },
+    titleRight: {
+      flexDirection: 'row',
+      alignItems: 'center'
+    },
+    titleImage: {
+      width: 45,
+      height: 45,
+      borderRadius: 45,
+      borderColor: '#555',
+      borderWidth: 1
+    },
     note: {
       textAlign: 'right',
       marginRight: 10,

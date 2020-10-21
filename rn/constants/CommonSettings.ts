@@ -11,6 +11,7 @@ export const HeaderStylingOptions = () => {
     headerTitleStyle: {
       fontFamily: 'titillium',
       color: '#ffffff',
+      fontSize: 17,
     },
     headerTintColor: theme.headerTint,
   };

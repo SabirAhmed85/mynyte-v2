@@ -1,12 +1,14 @@
 import { FontAwesome5 } from '@expo/vector-icons';
 import * as React from 'react';
-import { View as NativeView } from 'react-native';
+import { View as DefaultView } from 'react-native';
 import { Card } from 'react-native-elements';
+
+import { useTheme } from '../../config/ThemeManager';
 import { Button } from '../../components/Themed';
+import { barStyles, nativeElemsButtonStyles, buttonStyles } from './ListingItemBottomBar.style';
 
 import { Listing, Offer } from '../../models';
 
-import { barStyles, nativeElemsButtonStyles, buttonStyles } from './ListingItemBottomBar.style';
 
 type BottomBarButtonProps = {
   icon: string;
@@ -33,6 +35,7 @@ BottomBarButton.defaultProps = {
 };
 
 const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boolean }) => {
+  const { theme } = useTheme();
   const { listing, borderTop } = props;
   const [state, setState] = React.useState(listing as Listing | Offer);
   const watchableListings = ['Offer', 'Event', 'Movie'];
@@ -62,12 +65,12 @@ const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boo
   );
 
   return (
-    <NativeView>
+    <React.Fragment>
       {!!borderTop &&
-        <Card.Divider style={barStyles.cardDivider} />
+        <Card.Divider style={barStyles(theme).cardDivider} />
       }
-      <NativeView style={{ flexDirection: 'row', alignItems: 'flex-start', paddingLeft: 5, paddingRight: 5 }}>
-        <NativeView style={{ width: '50%', alignItems: 'flex-start' }}>
+      <DefaultView style={barStyles(theme).container}>
+        <DefaultView style={barStyles(theme).leftButtons}>
           {watchableListings.includes(listing.listingType) &&
             <BottomBarButton
               active={(state as Offer).watch}
@@ -82,8 +85,8 @@ const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boo
               onPress={likeListing}
               text={getLikeText()} />
           }
-        </NativeView>
-        <NativeView style={{ width: '50%', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'flex-end' }}>
+        </DefaultView>
+        <DefaultView style={barStyles(theme).rightButtons}>
           <BottomBarButton
             icon='share-square'
             onPress={shareListing}
@@ -92,9 +95,9 @@ const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boo
             icon='envelope'
             onPress={sendListing}
             text='Send' />
-        </NativeView>
-      </NativeView>
-    </NativeView>
+        </DefaultView>
+      </DefaultView>
+    </React.Fragment>
   )
 };
 
