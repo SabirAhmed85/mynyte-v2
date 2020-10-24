@@ -63,10 +63,8 @@ export default function App() {
         <AppearanceProvider>
           <ThemeManager>
             <ListingProvider>
-              <OfferProvider>
-                <Navigation colorScheme={colorScheme} />
-                <StatusBar />
-              </OfferProvider>
+              <Navigation colorScheme={colorScheme} />
+              <StatusBar />
             </ListingProvider>
           </ThemeManager>
         </AppearanceProvider>

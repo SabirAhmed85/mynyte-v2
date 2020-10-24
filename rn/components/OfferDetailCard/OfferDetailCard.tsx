@@ -38,14 +38,9 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
   const { theme } = useTheme();
   const nav = useNavigation();
   const { offer, showBusinessDetails, loaded } = props;
-  const offerIsExclusive = (Number(offer._id) % 2) === 0;
   const dimensionsWidth = Dimensions.get('window').width - 30;
   const imgHeight = Math.round((dimensionsWidth / 960) * 640);
   const imgWidth = dimensionsWidth;
-
-  const offerClick = () => {
-    nav.navigate('Offers', { screen: 'OfferScreen', params: { id: offer._id, offerName: offer.name } });
-  };
 
   const startShare = () => {
     // const url = `https://www.mynyte.co.uk/feed/${listingType}/${id}/${listingName}`;
