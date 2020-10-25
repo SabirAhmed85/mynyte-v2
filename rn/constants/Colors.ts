@@ -3,7 +3,7 @@ const tintColorDark = '#fd465e'; //  #fd465e or #f35469
 
 export const ThemeColors: any = {
   text: {
-    light: '#9a9a9a',
+    light: '#6a6a6a',
     dark: '#b5b5b5',
   },
   secondaryText: {
@@ -11,15 +11,15 @@ export const ThemeColors: any = {
     dark: '#f4f4f4',
   },
   tertiaryText: {
-    light: '#6f6f6f',
+    light: '#3b3b3b',
     dark: '#afafaf'
   },
   disabledText: {
-    light: '#9f9f9f',
+    light: '#6a6a6a',
     dark: '#828282'
   },
   background: {
-    light: '#fcfcfc',
+    light: '#fefefe',
     dark: '#323232',
   },
   tint: {
@@ -39,7 +39,7 @@ export const ThemeColors: any = {
     dark: '#bbb',
   },
   headerBackground: {
-    light: tintColorDark,
+    light: '#ff4059',
     dark: tintColorDark, // or #fd465e? 
   },
   headerBorderColor: {
@@ -51,7 +51,7 @@ export const ThemeColors: any = {
     dark: '#eeeeee',
   },
   headerNotificationBg: {
-    light: '#ebf3fb',
+    light: '#fbf3eb',
     dark: '#3c3b3b'
   },
   tabBarBackground: {
@@ -67,7 +67,7 @@ export const ThemeColors: any = {
     dark: '#3c3a3a'
   },
   primaryColor: {
-    light: '#d5d5d5',
+    light: '#151515',
     dark: '#d5d5d5'
   },
   primaryColorInverse: {
@@ -95,7 +95,7 @@ export const ThemeColors: any = {
     dark: '#818181'
   },
   primaryActiveColorHighlight: {
-    light: '#ea9999',
+    light: '#f57979',
     dark: '#f5abab'
   },
   primaryActiveBackgroundHighlight: {
@@ -123,7 +123,7 @@ export const ThemeColors: any = {
     dark: '#eeeeee'
   },
   cardBorderColor: {
-    light: '#e5e5e5',
+    light: '#ffffff',
     dark: '#4c4a4a'
   },
   colors: {
@@ -135,13 +135,17 @@ export const ThemeColors: any = {
     }
   },
   searchPanelHeaderBg: {
-    light: '#f5f5f5',
+    light: '#fef9f5',
     dark: '#3c3b3b'
   },
   searchPanelInnerBorderColor: {
-    light: '#fafafa',
+    light: '#f8f8f8',
     dark: '#424242'
-  }
+  },
+  feedHeaderButtonBackground: {
+    light: '#fefefe',
+    dark: '#3c3b3b'
+  },
 };
 
 export const getTheme = (mode: string) => {

@@ -48,12 +48,12 @@ export default function Feed(props: FeedProps) {
                 <React.Fragment>
                   <Button type='clear'
                     titleStyle={{ color: theme.disabledText }}
-                    buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.searchPanelHeaderBg }}
+                    buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.feedHeaderButtonBackground }}
                     icon={<FontAwesome5 name='filter' size={17} color={theme.disabledText} />}></Button>
                   <Button type='clear'
                     titleStyle={{ color: theme.disabledText }}
                     containerStyle={{ marginLeft: 8 }}
-                    buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.searchPanelHeaderBg }}
+                    buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.feedHeaderButtonBackground }}
                     icon={<FontAwesome5 name='times' size={17} color={theme.disabledText} />}
                     onPress={() => feedTypeToggleInner('main')}></Button>
                 </React.Fragment>
@@ -61,7 +61,7 @@ export default function Feed(props: FeedProps) {
               {feedType !== 'tonight' &&
                 <Button
                   type='clear'
-                  buttonStyle={{ height: 36, paddingTop: 5, borderRadius: 32, backgroundColor: theme.searchPanelHeaderBg }}
+                  buttonStyle={{ height: 36, paddingTop: 5, borderRadius: 32, backgroundColor: theme.feedHeaderButtonBackground }}
                   title='Show Tonight'
                   titleStyle={{ fontSize: 13, color: theme.disabledText }}
                   onPress={() => feedTypeToggleInner('tonight')}></Button>
