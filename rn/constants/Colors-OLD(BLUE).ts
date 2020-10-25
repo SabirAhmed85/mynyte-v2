@@ -1,4 +1,4 @@
-const tintColorLight = '#fd465e';
+const tintColorLight = '#2f95dc';
 const tintColorDark = '#fd465e'; //  #fd465e or #f35469
 
 export const ThemeColors: any = {
@@ -39,11 +39,11 @@ export const ThemeColors: any = {
     dark: '#bbb',
   },
   headerBackground: {
-    light: tintColorDark,
+    light: '#6bbbff',
     dark: tintColorDark, // or #fd465e? 
   },
   headerBorderColor: {
-    light: '#ea7b8a',
+    light: '#ffffff',
     dark: '#ea7b8a',
   },
   headerTint: {
@@ -54,20 +54,12 @@ export const ThemeColors: any = {
     light: '#ebf3fb',
     dark: '#3c3b3b'
   },
-  tabBarBackground: {
-    light: '#ffffff',
-    dark: '#2f2f2f',
-  },
-  tabBarBorderColor: {
-    light: '#dddddd',
-    dark: '#565555',
-  },
   listItemBorderColor: {
     light: '#f2f2f2',
     dark: '#3c3a3a'
   },
   primaryColor: {
-    light: '#d5d5d5',
+    light: '#565656',
     dark: '#d5d5d5'
   },
   primaryColorInverse: {
@@ -83,11 +75,11 @@ export const ThemeColors: any = {
     dark: tintColorDark
   },
   primaryActiveBorderColor: {
-    light: '#e44f63',
+    light: '#6db1ea',
     dark: '#e44f63'
   },
   primaryActiveBorderColorFeint: {
-    light: '#f74159',
+    light: '#6db1ea',
     dark: '#f74159'
   },
   shadedColor: {
@@ -95,15 +87,15 @@ export const ThemeColors: any = {
     dark: '#818181'
   },
   primaryActiveColorHighlight: {
-    light: '#ea9999',
+    light: tintColorLight,
     dark: '#f5abab'
   },
   primaryActiveBackgroundHighlight: {
-    light: '#fd546a',
+    light: tintColorLight,
     dark: '#fd546a'
   },
   primaryActiveBorderColorHighlight: {
-    light: '#f55268',
+    light: tintColorLight,
     dark: '#f55268'
   },
   primaryActiveBackgroundShaded: {
@@ -111,7 +103,7 @@ export const ThemeColors: any = {
     dark: '#de4d60'
   },
   primaryActiveColorShaded: {
-    light: '#9e1628',
+    light: '#de4d60',
     dark: '#9e1628'
   },
   cardBackground: {

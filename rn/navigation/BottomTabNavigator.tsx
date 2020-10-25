@@ -21,8 +21,8 @@ export default function BottomTabNavigator() {
       tabBarOptions={{
         activeTintColor: theme.tint,
         style: {
-          backgroundColor: '#2f2f2f',
-          borderTopColor: '#565555',
+          backgroundColor: theme.tabBarBackground,
+          borderTopColor: theme.tabBarBorderColor,
         }
       }}>
       <BottomTab.Screen

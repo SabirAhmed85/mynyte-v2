@@ -4,6 +4,7 @@ import { RouteProp } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
+import layout from '../../../../constants/Layout';
 import { FeedParamList } from "../../../../types";
 
 export const HeaderTitle = (
@@ -30,7 +31,7 @@ export const HeaderTitle = (
     return !!hideSearchInput ?
         null :
         (
-            <DefaultView style={{ width: '100%', flex: 1, borderBottomColor: '#000', borderBottomWidth: 1 }}>
+            <DefaultView style={{ width: layout.window.width - 140, flex: 1 }}>
                 <TextInput
                     onFocus={() => {
                         props.navigation.setParams({ search: '' })
