@@ -15,7 +15,7 @@ export default function OfferDetailActionButtonsBarDummy() {
       <ActionButton
         icon='comment-dots'
         active={false}
-        activeColor={theme.secondaryText}
+        activeColor={theme.lightText}
         disabledColor={theme.disabledText}
         disabled={true}
         title='Enquire'
@@ -31,7 +31,7 @@ export default function OfferDetailActionButtonsBarDummy() {
       <ActionButton
         icon='user-tag'
         active={false}
-        activeColor={theme.secondaryText}
+        activeColor={theme.lightText}
         disabledColor={theme.disabledText}
         title='Claim'
         disabled={true}

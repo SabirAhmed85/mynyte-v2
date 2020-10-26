@@ -19,7 +19,7 @@ export default function OfferDetailActionButtonsBar(props: { offer: Offer }) {
         icon='comment-dots'
         titleStyle={{color: '#ebebeb'}}
         active={true}
-        activeColor={theme.secondaryText}
+        activeColor={theme.lightText}
         disabledColor={theme.disabledText}
         title='Enquire'
         onPress={() => {
@@ -27,7 +27,7 @@ export default function OfferDetailActionButtonsBar(props: { offer: Offer }) {
         }} />
       <ActionButton
         icon='eye'
-        color={theme.secondaryText}
+        color={theme.lightText}
         active={!!offer.watch}
         activeColor={theme.primaryActiveColorShaded}
         disabledColor={theme.disabledText}
@@ -39,7 +39,7 @@ export default function OfferDetailActionButtonsBar(props: { offer: Offer }) {
         icon='user-tag'
         titleStyle={{color: '#ebebeb'}}
         active={true}
-        activeColor={theme.secondaryText}
+        activeColor={theme.lightText}
         disabledColor={theme.disabledText}
         title='Claim'
         onPress={() => {}} />

@@ -24,7 +24,7 @@ export default function ListingPageActionButtonsBar(props: { listing: Listing })
         icon='comment-dots'
         titleStyle={{color: '#ebebeb'}}
         active={true}
-        activeColor={theme.secondaryText}
+        activeColor={theme.lightText}
         disabledColor={theme.disabledText}
         title='Enquiry'
         onPress={() => {
@@ -32,7 +32,7 @@ export default function ListingPageActionButtonsBar(props: { listing: Listing })
         }} />
       <ActionButton
         icon='eye'
-        color={theme.secondaryText}
+        color={theme.lightText}
         active={!!listing.watch}
         activeColor={theme.primaryActiveColorShaded}
         disabledColor={theme.disabledText}
@@ -44,7 +44,7 @@ export default function ListingPageActionButtonsBar(props: { listing: Listing })
         icon='images'
         titleStyle={{color: '#ebebeb'}}
         active={true}
-        activeColor={theme.secondaryText}
+        activeColor={theme.lightText}
         disabledColor={theme.disabledText}
         title='Photos'
         onPress={() => {}} />

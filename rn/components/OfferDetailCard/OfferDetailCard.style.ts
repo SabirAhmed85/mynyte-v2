@@ -10,6 +10,7 @@ const nativeElemsStyles = (theme: any) => ({
     marginBottom: 25,
     backgroundColor: theme.cardBackground,
     borderColor: theme.cardBorderColor,
+    borderWidth: 1,
     borderRadius: 4,
     overflow: "hidden" as "hidden",
   },

@@ -32,8 +32,8 @@ const MainListingImage = (props: { imageName: string, imgWidth: number, imgHeigh
     style={{ width: props.imgWidth, height: props.imgHeight }} />
 );
 
-const MainHeaderShareButton = () => (
-  <FontAwesome5 name='share' color='#eeeeee' size={20} style={{ alignItems: 'flex-end' }} />
+const MainHeaderShareButton = (theme: any) => (
+  <FontAwesome5 name='share' color={theme.secondaryText} size={20} style={{ alignItems: 'flex-end' }} />
 );
 
 export default function FeedListingScreen(props: FeedListingScreenProps) {
@@ -125,7 +125,7 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
             <PrimaryHighlightText>{listing.listingType1} in {listing.town}</PrimaryHighlightText>
           </DefaultView>
           <Button type='clear'
-            icon={MainHeaderShareButton()}
+            icon={MainHeaderShareButton(theme)}
             onPress={startShare}
             titleStyle={{ color: '#fff' }}
             buttonStyle={{ borderRadius: 24 }}></Button>

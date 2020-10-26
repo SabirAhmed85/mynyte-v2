@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-elements';
 
 import { useTheme } from '../../config/ThemeManager';
-import { SecondaryText, PrimaryHighlightText, Button, TertiaryText } from '../Themed';
+import { SecondaryText, PrimaryHighlightText, Button, TertiaryText, LightText } from '../Themed';
 import { nativeElemsStyles, styles } from './OfferDetailCard.style';
 
 import { Offer } from '../../models';
@@ -23,8 +23,8 @@ type OfferDetailCardProps = {
   containerStyle?: StyleProp<ViewStyle>;
 };
 
-const MainHeaderShareButton = () => (
-  <FontAwesome5 name='share' color='#eeeeee' size={20} style={{ alignItems: 'flex-end' }} />
+const MainHeaderShareButton = (theme: any) => (
+  <FontAwesome5 name='share' color={theme.secondaryText} size={20} style={{ alignItems: 'flex-end' }} />
 );
 
 const MainListingImage = (props: { imageName: string, imgWidth: number, imgHeight: number }) => (
@@ -77,7 +77,7 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
               imgHeight={imgHeight} />
             <DefaultView style={styles(theme).offerHeaderNoteContainer}>
               <DefaultView style={styles(theme).offerHeaderNote}>
-                <SecondaryText>Offer now on! What are you waiting for?</SecondaryText>
+                <LightText>Offer now on! What are you waiting for?</LightText>
               </DefaultView>
             </DefaultView>
           </FadeInPanel>
@@ -100,7 +100,7 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
               }
             </DefaultView>
             <Button type='clear'
-              icon={MainHeaderShareButton()}
+              icon={MainHeaderShareButton(theme)}
               onPress={startShare}
               titleStyle={{ color: '#fff' }}
               buttonStyle={{ borderRadius: 24 }}></Button>

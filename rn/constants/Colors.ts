@@ -7,7 +7,7 @@ export const ThemeColors: any = {
     dark: '#b5b5b5',
   },
   secondaryText: {
-    light: '#ebebeb',
+    light: '#1b1b1b',
     dark: '#f4f4f4',
   },
   tertiaryText: {
@@ -15,11 +15,15 @@ export const ThemeColors: any = {
     dark: '#afafaf'
   },
   disabledText: {
-    light: '#6a6a6a',
+    light: '#7b7b7b',
     dark: '#828282'
   },
+  lightText: {
+    light: '#f5f5f5',
+    dark: '#f4f4f4',
+  },
   background: {
-    light: '#fefefe',
+    light: '#fcfcfc',
     dark: '#323232',
   },
   tint: {
@@ -62,6 +66,10 @@ export const ThemeColors: any = {
     light: '#dddddd',
     dark: '#565555',
   },
+  listItemBackground: {
+    light: '#f9f9f9',
+    dark: '#494949',
+  },
   listItemBorderColor: {
     light: '#f2f2f2',
     dark: '#3c3a3a'
@@ -71,7 +79,7 @@ export const ThemeColors: any = {
     dark: '#d5d5d5'
   },
   primaryColorInverse: {
-    light: '#838383',
+    light: '#fdfdfd',
     dark: '#666666'
   },
   primaryActiveColor: {
@@ -95,7 +103,7 @@ export const ThemeColors: any = {
     dark: '#818181'
   },
   primaryActiveColorHighlight: {
-    light: '#f57979',
+    light: '#f79a9a',
     dark: '#f5abab'
   },
   primaryActiveBackgroundHighlight: {
@@ -123,7 +131,7 @@ export const ThemeColors: any = {
     dark: '#eeeeee'
   },
   cardBorderColor: {
-    light: '#ffffff',
+    light: '#f4f4f4',
     dark: '#4c4a4a'
   },
   colors: {

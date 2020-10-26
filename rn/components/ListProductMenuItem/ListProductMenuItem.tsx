@@ -24,30 +24,34 @@ type ProductItemMainContentProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-const ItemMainContent = React.memo((item: ProductItemMainContentProps) => (
-  <DefaultView style={styles().itemLeftContent}>
-    <DefaultView style={styles().itemMainContent}>
-      <DefaultView style={styles().itemHeadingContainer}>
-        <SecondaryText style={styles().itemName}>{item.Name}</SecondaryText>
-        <SecondaryText style={styles().itemPrice}>({item.Price})</SecondaryText>
+const ItemMainContent = React.memo((item: ProductItemMainContentProps) => {
+  const { theme } = useTheme();
+
+  return (
+    <DefaultView style={styles(theme).itemLeftContent}>
+      <DefaultView style={styles(theme).itemMainContent}>
+        <DefaultView style={styles(theme).itemHeadingContainer}>
+          <SecondaryText style={styles(theme).itemName}>{item.Name}</SecondaryText>
+          <SecondaryText style={styles(theme).itemPrice}>({item.Price})</SecondaryText>
+        </DefaultView>
+        {!!item.Description &&
+          <TertiaryText style={styles(theme).itemDescription}>{item.Description}</TertiaryText>
+        }
       </DefaultView>
-      {!!item.Description &&
-        <TertiaryText style={styles().itemDescription}>{item.Description}</TertiaryText>
-      }
     </DefaultView>
-  </DefaultView>
-));
+  )
+});
 
 const ListProductMenuItem = React.memo((props: { item: MenuItemProps, showMenu: boolean }) => {
   const { theme } = useTheme();
   const { item, showMenu } = props;
 
   return (
-    <DefaultView style={styles().container}>
+    <DefaultView style={styles(theme).container}>
       <ItemMainContent {...item}></ItemMainContent>
-        {!!showMenu &&
-          <Button containerStyle={{ marginLeft: 15, borderRadius: 16 }} icon={<FontAwesome5 name='bars' size={17} color={theme.secondaryText} />} type='clear'></Button>
-        }
+      {!!showMenu &&
+        <Button containerStyle={{ marginLeft: 15, borderRadius: 16 }} icon={<FontAwesome5 name='bars' size={17} color={theme.secondaryText} />} type='clear'></Button>
+      }
     </DefaultView>
   )
 });

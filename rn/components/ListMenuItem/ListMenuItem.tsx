@@ -69,7 +69,7 @@ export default function ListMenuItem(props: { item: MenuItemProps }) {
   item.iconColor = !!item.clickable ? theme.secondaryText : theme.disabledText;
   
   return (
-    <DefaultView style={styles().container}>
+    <DefaultView style={styles(theme).container}>
       {!!item.clickable && item.clickNavigation ?
         (
           <TouchableHighlight

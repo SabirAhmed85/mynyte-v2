@@ -46,7 +46,7 @@ export default function SmallListingCard(props: { listing: Listing, screenWidth:
               <Text style={styles(theme).offerBody}>{listing.name}</Text>
             </React.Fragment>
           </TouchableOpacity>
-          <PrimaryButton onPress={openBrowser} containerStyle={{ padding: 10 }} titleStyle={{ marginLeft: 20 }} icon={<FontAwesome5 name='utensils' color={theme.secondaryText} size={18} />} title='Book Table' />
+          <PrimaryButton onPress={openBrowser} containerStyle={{ padding: 10 }} titleStyle={{ marginLeft: 20 }} icon={<FontAwesome5 name='utensils' color={theme.lightText} size={18} />} title='Book Table' />
         </Card>
       }
     </React.Fragment>

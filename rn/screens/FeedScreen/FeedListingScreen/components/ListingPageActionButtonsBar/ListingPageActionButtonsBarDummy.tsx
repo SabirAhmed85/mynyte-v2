@@ -15,14 +15,14 @@ export default function ListingPageActionButtonsBarDummy() {
         icon='comment-dots'
         titleStyle={{color: '#ebebeb'}}
         active={false}
-        activeColor={theme.secondaryText}
+        activeColor={theme.lightText}
         disabledColor={theme.primaryActiveColorHighlight}
         title='Enquiry'
         disabled={true}
         onPress={() => {}} />
       <ActionButton
         icon='eye'
-        color={theme.secondaryText}
+        color={theme.lightText}
         active={false}
         activeColor={theme.primaryActiveColorHighlight}
         disabledColor={theme.primaryActiveColorHighlight}
@@ -33,7 +33,7 @@ export default function ListingPageActionButtonsBarDummy() {
         icon='images'
         titleStyle={{color: '#ebebeb'}}
         active={false}
-        activeColor={theme.secondaryText}
+        activeColor={theme.lightText}
         disabledColor={theme.primaryActiveColorHighlight}
         title='Photos'
         disabled={true}

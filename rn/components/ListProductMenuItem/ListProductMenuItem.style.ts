@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-const styles = () =>
+const styles = (theme?: any) =>
   StyleSheet.create({
     container: {
       marginTop: 2,
       marginLeft: 8,
       marginRight: 8,
       marginBottom: 5,
-      backgroundColor: '#494949',
+      backgroundColor: theme.background,
       borderRadius: 5,
       flexDirection: 'row',
       alignItems: 'center',

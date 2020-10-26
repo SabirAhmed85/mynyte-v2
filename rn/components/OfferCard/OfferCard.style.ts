@@ -7,6 +7,7 @@ const nativeElemsStyles = (theme: any) => ({
     marginLeft: 15,
     marginBottom: 15,
     backgroundColor: theme.cardBackground,
+    borderWidth: 0,
     borderColor: theme.cardBorderColor,
     borderRadius: 4,
     overflow: "hidden" as "hidden",
@@ -41,7 +42,7 @@ const styles = (theme: any) =>
       width: 45,
       height: 45,
       borderRadius: 45,
-      borderColor: '#555',
+      borderColor: theme.primaryColorInverse,
       borderWidth: 1
     },
     note: {
@@ -50,13 +51,13 @@ const styles = (theme: any) =>
       color: '#ff0000',
     },
     offerBody: {
-      paddingTop: 10,
+      paddingTop: 15,
       paddingBottom: 10,
       paddingLeft: 13,
       paddingRight: 13,
     },
     description: {
-      paddingBottom: 10,
+      paddingBottom: 15,
     },
   });
 

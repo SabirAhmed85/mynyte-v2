@@ -5,7 +5,7 @@ const styles = (theme: any) => StyleSheet.create({
     flex: 1,
     padding: 0,
     paddingBottom: 10,
-    height: '100%'
+    height: '100%',
   },
   contentContainer: {
     padding: 15

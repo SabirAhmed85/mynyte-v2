@@ -67,6 +67,12 @@ export function DisabledText(props: TextProps) {
   return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
 }
 
+export function LightText(props: TextProps) {
+  const { style, lightColor, darkColor, ...otherProps } = props;
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'lightText');
+  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+}
+
 export function ColorlessText(props: TextProps) {
   const { style, ...otherProps } = props;
   return <DefaultText style={[props.style, {fontFamily: 'titillium'}]} {...otherProps} />;
