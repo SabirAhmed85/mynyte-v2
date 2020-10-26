@@ -33,7 +33,7 @@ const MainListingImage = (props: { imageName: string, imgWidth: number, imgHeigh
 );
 
 const MainHeaderShareButton = (theme: any) => (
-  <FontAwesome5 name='share' color={theme.secondaryText} size={20} style={{ alignItems: 'flex-end' }} />
+  <FontAwesome5 name='share' color={theme.tertiaryText} size={20} style={{ alignItems: 'flex-end' }} />
 );
 
 export default function FeedListingScreen(props: FeedListingScreenProps) {

@@ -24,7 +24,7 @@ type OfferDetailCardProps = {
 };
 
 const MainHeaderShareButton = (theme: any) => (
-  <FontAwesome5 name='share' color={theme.secondaryText} size={20} style={{ alignItems: 'flex-end' }} />
+  <FontAwesome5 name='share' color={theme.tertiaryText} size={20} style={{ alignItems: 'flex-end' }} />
 );
 
 const MainListingImage = (props: { imageName: string, imgWidth: number, imgHeight: number }) => (

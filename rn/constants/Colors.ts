@@ -23,7 +23,7 @@ export const ThemeColors: any = {
     dark: '#f4f4f4',
   },
   background: {
-    light: '#fcfcfc',
+    light: '#fefefe',
     dark: '#323232',
   },
   tint: {
@@ -31,8 +31,8 @@ export const ThemeColors: any = {
     dark: tintColorDark,
   },
   tabIconDefault: {
-    light: '#aeaeae',
-    dark: '#ccc',
+    light: '#3b3b3b',
+    dark: '#8e8e8f',
   },
   tabIconSelected: {
     light: tintColorLight,
@@ -63,8 +63,8 @@ export const ThemeColors: any = {
     dark: '#2f2f2f',
   },
   tabBarBorderColor: {
-    light: '#dddddd',
-    dark: '#565555',
+    light: '#eeeeee',
+    dark: '#454444',
   },
   listItemBackground: {
     light: '#f9f9f9',
@@ -103,7 +103,7 @@ export const ThemeColors: any = {
     dark: '#818181'
   },
   primaryActiveColorHighlight: {
-    light: '#f79a9a',
+    light: '#ff9292',
     dark: '#f5abab'
   },
   primaryActiveBackgroundHighlight: {
@@ -143,7 +143,7 @@ export const ThemeColors: any = {
     }
   },
   searchPanelHeaderBg: {
-    light: '#fef9f5',
+    light: '#fdf9f6',
     dark: '#3c3b3b'
   },
   searchPanelInnerBorderColor: {
