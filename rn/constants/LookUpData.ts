@@ -70,15 +70,15 @@ const FEED_SEARCH_CATEGORIES: FeedCategory[] = [
         items: [
             {
                 name: 'Pizza',
-                image: 'pizza-takeaway.jpg'
+                image: 'italian-food.png'
             },
             {
                 name: 'Indian',
-                image: 'indian-takeaway.jpg'
+                image: 'indian-food.png'
             },
             {
                 name: 'Chinese',
-                image: 'chinese-takeaway.jpg'
+                image: 'chinese-food.png'
             }
         ]
     },
@@ -89,15 +89,19 @@ const FEED_SEARCH_CATEGORIES: FeedCategory[] = [
         items: [
             {
                 name: 'Football',
-                image: 'football-sport.jpg'
+                image: 'football-sport.png'
             },
             {
                 name: 'Rugby',
-                image: 'rugby-sport.jpg'
+                image: 'rugby-sport.png'
             },
             {
                 name: 'Boxing',
-                image: 'boxing-sport.jpeg'
+                image: 'boxing-sport.png'
+            },
+            {
+                name: 'Tennis',
+                image: 'tennis-sport.png'
             }
         ]
     },

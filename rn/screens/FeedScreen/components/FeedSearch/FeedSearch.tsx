@@ -4,7 +4,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import { Picker } from '@react-native-community/picker';
 
-import { PrimaryText, TertiaryText } from '../../../../components/Themed';
+import { PrimaryActiveText, TertiaryText } from '../../../../components/Themed';
 import { styles, stylesObjects } from './FeedSearch.style';
 
 import { useTheme } from '../../../../config/ThemeManager';
@@ -63,8 +63,8 @@ export default function FeedSearch() {
             <TouchableOpacity activeOpacity={0.6} onPress={() => setSearchCollapsed(!searchCollapsed)}>
                 <DefaultView style={styles(theme).searchPanelHeader}>
                     <DefaultView style={{ flexDirection: 'row', alignSelf: 'flex-start' }}>
-                        <PrimaryText style={styles(theme).searchPanelHeaderText}>Find your Night in</PrimaryText>
-                        <PrimaryText style={[{ color: theme.primaryActiveColorHighlight, marginLeft: 5 }, styles(theme).searchPanelHeaderText]}>Bedford</PrimaryText>
+                        <PrimaryActiveText style={styles(theme).searchPanelHeaderText}>Find your Night in</PrimaryActiveText>
+                        <PrimaryActiveText style={[{ color: theme.primaryActiveColorHighlight, marginLeft: 5 }, styles(theme).searchPanelHeaderText]}>Bedford</PrimaryActiveText>
                     </DefaultView>
                     <FontAwesome5 style={styles(theme).searchPanelHeaderIcon} name={!!searchCollapsed ? 'chevron-up' : 'search'} />
                 </DefaultView>

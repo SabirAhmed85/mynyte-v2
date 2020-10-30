@@ -30,11 +30,13 @@ export const getFeedSearchImageName = (name: string) => {
       return require(`../assets/images/feed-search/chinese-takeaway.jpg`);
     case "pizza-takeaway.jpg":
       return require(`../assets/images/feed-search/pizza-takeaway.jpg`);
-    case "football-sport.jpg":
-      return require(`../assets/images/feed-search/football-sport.jpg`);
-    case "rugby-sport.jpg":
-      return require(`../assets/images/feed-search/rugby-sport.jpg`);
-    case "boxing-sport.jpeg":
-      return require(`../assets/images/feed-search/boxing-sport.jpeg`);
+    case "football-sport.png":
+      return require(`../assets/images/feed-search/football-sport.png`);
+    case "rugby-sport.png":
+      return require(`../assets/images/feed-search/rugby-sport.png`);
+    case "boxing-sport.png":
+      return require(`../assets/images/feed-search/boxing-sport.png`);
+      case "tennis-sport.png":
+        return require(`../assets/images/feed-search/tennis-sport.png`);
   }
 };

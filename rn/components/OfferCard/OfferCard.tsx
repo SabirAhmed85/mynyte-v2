@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-elements';
 
 import { useTheme } from '../../config/ThemeManager';
-import { Text, PrimaryText } from '../../components/Themed';
+import { Text, PrimaryActiveText, PrimaryText } from '../../components/Themed';
 import { nativeElemsStyles, styles } from './OfferCard.style';
 
 import { Offer } from '../../models';
@@ -39,7 +39,7 @@ export default function OfferCard(props: OfferCardProps) {
   return (
     <Card containerStyle={[nativeElemsStyles(theme).container, props.containerStyle]}>
       <TouchableOpacity activeOpacity={0.5} onPress={offerClick}>
-        <DefaultView style={styles(theme).titleContainer}>
+        <DefaultView style={styles(theme, offerIsExclusive).titleContainer}>
 
           {offer.offerFoodStyle &&
             <Card.Title style={styles(theme).title}>{offer.offerFoodStyle}</Card.Title>
@@ -47,7 +47,7 @@ export default function OfferCard(props: OfferCardProps) {
 
           <DefaultView style={styles(theme).titleRight}>
             {offerIsExclusive &&
-              <PrimaryText style={styles(theme).note}>MyNyte Exclusive</PrimaryText>
+              <PrimaryActiveText style={styles(theme).note}>MyNyte Exclusive</PrimaryActiveText>
             }
 
             <Image style={styles(theme).titleImage} source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${offer.currentCoverPhotoName}` }} />
@@ -57,7 +57,7 @@ export default function OfferCard(props: OfferCardProps) {
         <DefaultView style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
           <DefaultView style={styles(theme).offerBody}>
-            <Text style={styles(theme).description}>{offer.description}</Text>
+            <PrimaryText style={styles(theme).description}>{offer.description}</PrimaryText>
 
             {!!showBusinessName &&
               <Text>At: {offer.businessName}</Text>

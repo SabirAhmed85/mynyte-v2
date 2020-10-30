@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Text, View } from '../../components/Themed';
+import { PrimaryButton, Text, View } from '../../components/Themed';
 import { useTheme } from '../../config/ThemeManager';
 import { styles } from './MoreScreen.style';
 
@@ -12,11 +12,7 @@ export default function MoreScreen () {
             <Text style={styles(theme).text}>
                 Current Theme: {mode}
             </Text>
-            <Text
-                style={styles(theme).text}
-                onPress={() => toggle()}>
-                Toggle Theme
-            </Text>
+            <PrimaryButton onPress={() => toggle()} title='Toggle Theme'/>
         </View>
     );
 }

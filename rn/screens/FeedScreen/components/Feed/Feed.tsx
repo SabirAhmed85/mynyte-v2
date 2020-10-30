@@ -30,12 +30,12 @@ export default function Feed(props: FeedProps) {
     <DefaultView style={{ position: 'relative' }}>
 
       {!loaded &&
-        <ScreenLoadingComponent/>
+        <ScreenLoadingComponent />
       }
 
       {!!loaded &&
         <DefaultView>
-          <DefaultView style={{ flexDirection: 'row', height: 63, justifyContent: 'space-between', alignItems: 'center', paddingLeft: 10, paddingRight: 10 }}>
+          <DefaultView style={{ flexDirection: 'row', height: 63, justifyContent: 'space-between', alignItems: 'center', paddingLeft: 10, paddingRight: 10, backgroundColor: theme.feedHeaderBackgroundColor, borderBottomWidth: 1, borderBottomColor: theme.feedHeaderBorderColor }}>
             {feedType === 'tonight' &&
               <TertiaryText style={{ fontSize: 15 }}>What's on Tonight...</TertiaryText>
             }
@@ -49,12 +49,12 @@ export default function Feed(props: FeedProps) {
                   <Button type='clear'
                     titleStyle={{ color: theme.disabledText }}
                     buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.feedHeaderButtonBackground }}
-                    icon={<FontAwesome5 name='filter' size={17} color={theme.disabledText} />}></Button>
+                    icon={<FontAwesome5 name='filter' size={17} color={theme.feedHeaderButtonColor} />}></Button>
                   <Button type='clear'
                     titleStyle={{ color: theme.disabledText }}
                     containerStyle={{ marginLeft: 8 }}
                     buttonStyle={{ width: 36, height: 36, borderRadius: 32, backgroundColor: theme.feedHeaderButtonBackground }}
-                    icon={<FontAwesome5 name='times' size={17} color={theme.disabledText} />}
+                    icon={<FontAwesome5 name='times' size={17} color={theme.feedHeaderButtonColor} />}
                     onPress={() => feedTypeToggleInner('main')}></Button>
                 </React.Fragment>
               }
@@ -63,32 +63,36 @@ export default function Feed(props: FeedProps) {
                   type='clear'
                   buttonStyle={{ height: 36, paddingTop: 5, borderRadius: 32, backgroundColor: theme.feedHeaderButtonBackground }}
                   title='Show Tonight'
-                  titleStyle={{ fontSize: 13, color: theme.disabledText }}
+                  titleStyle={{ fontSize: 13, color: theme.feedHeaderButtonColor }}
                   onPress={() => feedTypeToggleInner('tonight')}></Button>
               }
             </DefaultView>
           </DefaultView>
 
-          <FadeInPanel style={{ borderTopColor: theme.listItemBorderColor, borderTopWidth: 1, paddingBottom: 15, paddingTop: 10, paddingLeft: 10 }} withYScaling={true} delay={feedType === 'tonight' ? 150 : 0} showPanel={feedType === 'tonight'}>
-            <DefaultView>
-              <ColorlessText style={{ fontSize: 15, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Restaurants &amp; Takeaways in Bedford</ColorlessText>
-              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row', marginBottom: 10 }}>
+          <FadeInPanel style={{ borderTopColor: theme.listItemBorderColor, borderTopWidth: 0, paddingBottom: 15 }} withYScaling={true} delay={feedType === 'tonight' ? 150 : 0} showPanel={feedType === 'tonight'}>
+            <DefaultView style={{
+              backgroundColor: theme.feedSectionBackground, paddingLeft: 10, paddingBottom: 10, paddingTop: 10, borderBottomWidth: 1, borderBottomColor: theme.feedSectionBorderColor }}>
+              <ColorlessText style={{ fontSize: 15, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColor }}>Restaurants &amp; Takeaways in Bedford</ColorlessText>
+              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} alwaysBounceVertical={false} style={{ flexDirection: 'row', marginBottom: 10 }}>
                 {tonightsListings.map((listing: Listing, key: number) => (
                   <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />
                 ))}
               </DefaultScrollView>
             </DefaultView>
-            <DefaultView>
+            <DefaultView style={{
+              backgroundColor: theme.feedSectionBackground, paddingLeft: 10, paddingBottom: 10, marginTop: 5, borderBottomWidth: 1, borderBottomColor: theme.feedSectionBorderColor
+            }}>
               <ColorlessText style={{ fontSize: 15, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Movies showing tonight in Bedford</ColorlessText>
-              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row'}}>
+              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} alwaysBounceVertical={false} style={{ flexDirection: 'row', marginBottom: 10 }}>
                 {tonightsListings.map((listing: Listing, key: number) => (
                   <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />
                 ))}
               </DefaultScrollView>
             </DefaultView>
-            <DefaultView>
+            <DefaultView style={{
+              backgroundColor: theme.feedSectionBackground, paddingLeft: 10, marginTop: 5 }}>
               <ColorlessText style={{ fontSize: 15, paddingBottom: 20, paddingTop: 10, color: theme.primaryActiveColorHighlight }}>Watch the game</ColorlessText>
-              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection: 'row'}}>
+              <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} alwaysBounceVertical={false} style={{ flexDirection: 'row', marginBottom: 10 }}>
                 {tonightsListings.map((listing: Listing, key: number) => (
                   <SmallListingCard key={key} listing={listing} screenWidth={screenWidth} />
                 ))}

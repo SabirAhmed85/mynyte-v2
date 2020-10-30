@@ -10,10 +10,10 @@ type ThemeManagerState = {
 const osTheme = Appearance.getColorScheme();
 const setMode = (theme: string, action: string) => {
   if (action === 'set') {
-    return theme === 'light' ? 'light' : 'dark';
+    return theme === 'dark' ? 'dark' : 'light';
   }
   else {
-    return theme === 'light' ? 'dark' : 'light';
+    return theme === 'dark' ? 'light' : 'dark';
   }
 }
 

@@ -39,6 +39,13 @@ export function Text(props: TextProps) {
 
 export function PrimaryText(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'primaryColor');
+  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+}
+
+
+export function PrimaryActiveText(props: TextProps) {
+  const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'primaryActiveColor');
   return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
 }

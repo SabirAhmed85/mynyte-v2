@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5, Ionicons } from '@expo/vector-icons';
 
 import { useTheme } from '../config/ThemeManager';
-import { PrimaryText, Text } from '../components/Themed';
+import { PrimaryActiveText, Text } from '../components/Themed';
 import { BottomTabParamList } from '../types';
 import { FeedNavigator } from './StackNavigators/FeedStackNavigator';
 import { OffersNavigator } from './StackNavigators/OffersStackNavigator';
@@ -17,23 +17,26 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const icons = {
   'MyNyte': {
     name: 'user',
-    iconSet: 'fa5'
+    iconSet: 'fa5',
+    iconSize: 19
   },
   'Offers': {
     name: 'pound-sign',
-    iconSet: 'fa5'
+    iconSet: 'fa5',
+    iconSize: 21
   },
   'Feed': {
     name: 'star',
-    iconSet: 'fa5'
+    iconSet: 'fa5',
+    iconSize: 19,
   },
   'Covid': {
     name: 'briefcase-medical',
-    iconSet: 'fa5'
+    iconSet: 'fa5',
   },
   'More': {
     name: 'ellipsis-h',
-    iconSet: 'fa5'
+    iconSet: 'fa5',
   },
 };
 

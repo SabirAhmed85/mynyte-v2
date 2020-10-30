@@ -17,6 +17,7 @@ const styles = (theme?: any) =>
       paddingLeft: 15,
       paddingRight: 10,
       minHeight: 60,
+      elevation: 1,
     },
     itemLeftContent: {
       flex: 1,

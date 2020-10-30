@@ -69,11 +69,11 @@ export default function ListMenuItem(props: { item: MenuItemProps }) {
   item.iconColor = !!item.clickable ? theme.secondaryText : theme.disabledText;
   
   return (
-    <DefaultView style={styles(theme).container}>
+    <DefaultView style={styles(theme, item.clickable).container}>
       {!!item.clickable && item.clickNavigation ?
         (
           <TouchableHighlight
-            underlayColor='#4d4d4d'
+            underlayColor={theme.listItemActiveBackground}
             onPress={() => {nav.navigate('Feed', { ...item.clickNavigation })}}
             style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 15, height: '100%' }}
             containerStyle={{ height: '100%', flex: 1 }}>

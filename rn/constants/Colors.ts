@@ -70,6 +70,10 @@ export const ThemeColors: any = {
     light: '#f9f9f9',
     dark: '#494949',
   },
+  listItemActiveBackground: {
+    light: '#f2f2f2',
+    dark: '#4d4d4d',
+  },
   listItemBorderColor: {
     light: '#f2f2f2',
     dark: '#3c3a3a'
@@ -143,16 +147,32 @@ export const ThemeColors: any = {
     }
   },
   searchPanelHeaderBg: {
-    light: '#fdf9f6',
+    light: '#ffffff',
     dark: '#3c3b3b'
   },
-  searchPanelInnerBorderColor: {
+  feedHeaderBackgroundColor: {
+    light: '#ffffff',
+    dark: '#323232',
+  },
+  feedHeaderBorderColor: {
     light: '#f8f8f8',
-    dark: '#424242'
+    dark: '#373737'
   },
   feedHeaderButtonBackground: {
     light: '#fefefe',
     dark: '#3c3b3b'
+  },
+  feedHeaderButtonColor: {
+    light: '#1b1b1b',
+    dark: '#828282'
+  },
+  feedSectionBackground: {
+    light: '#ffffff',
+    dark: '#323232'
+  },
+  feedSectionBorderColor: {
+    light: '#f9f9f9',
+    dark: '#323232'
   },
 };
 

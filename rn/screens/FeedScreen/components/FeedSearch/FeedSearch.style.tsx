@@ -6,6 +6,11 @@ export const stylesObjects = (theme: any) => ({
         backgroundColor: theme.searchPanelHeaderBg,
         flex: 1,
         width: '100%',
+        shadowColor: '#ddd',
+        elevation: 2,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
     },
 });
 

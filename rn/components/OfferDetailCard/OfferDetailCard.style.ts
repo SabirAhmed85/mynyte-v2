@@ -9,10 +9,14 @@ const nativeElemsStyles = (theme: any) => ({
     marginLeft: 0,
     marginBottom: 25,
     backgroundColor: theme.cardBackground,
-    borderColor: theme.cardBorderColor,
     borderWidth: 1,
     borderRadius: 4,
     overflow: "hidden" as "hidden",
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
   },
 });
 

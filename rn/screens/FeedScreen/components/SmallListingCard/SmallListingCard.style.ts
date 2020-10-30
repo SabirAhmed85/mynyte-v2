@@ -8,7 +8,11 @@ const nativeElemsStyles = (theme: any) => ({
     marginRight: 20,
     marginBottom: 5,
     backgroundColor: theme.cardBackground,
-    borderColor: theme.cardBorderColor,
+    borderWidth: 0,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 3,
   },
 });
 

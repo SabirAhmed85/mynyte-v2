@@ -8,19 +8,23 @@ const nativeElemsStyles = (theme: any) => ({
     marginBottom: 15,
     backgroundColor: theme.cardBackground,
     borderWidth: 0,
-    borderColor: theme.cardBorderColor,
     borderRadius: 4,
     overflow: "hidden" as "hidden",
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 2,
   },
 });
 
-const styles = (theme: any) =>
+const styles = (theme: any, offerIsExclusive?: boolean) =>
   StyleSheet.create({
     titleContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      borderBottomColor: '#4c4a4a',
+      borderBottomColor: !!offerIsExclusive ? theme.primaryActiveColor : '#4c4a4a',
       borderBottomWidth: 2,
       paddingTop: 5,
       paddingLeft: 13,
