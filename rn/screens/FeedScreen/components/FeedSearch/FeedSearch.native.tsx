@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Animated, View as DefaultView, Image } from 'react-native';
+import { Animated, View as DefaultView } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { SliderBox } from 'react-native-image-slider-box';
 
-import { useTheme } from '../../../../config/ThemeManager';
-import { PrimaryActiveText, TertiaryText, Text } from '../../../../components/Themed';
+import { PrimaryActiveText, TertiaryText } from '../../../../components/Themed';
 import { styles, stylesObjects } from './FeedSearch.style';
 
+import { useTheme } from '../../../../config/ThemeManager';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FadeInPanel } from '../../../../components/FadeInPanel/FadeInPanel';
 import { FeedCategory } from '../../../../types/feed';
@@ -22,22 +23,26 @@ const ExpandingContent = (props: any) => {
     const contentHeightMax = 500;
     const contentHeightMin = 0;
     const contentHeight = React.useRef(new Animated.Value(500)).current;
+    const [overflow, setOverflow] = React.useState('visible');
 
     React.useEffect(() => {
         Animated.timing(
             contentHeight,
             {
                 toValue: !props.searchCollapsed ? contentHeightMin : contentHeightMax,
-                duration: 300,
+                duration: 500,
                 useNativeDriver: false,
             }
-        ).start();
+        ).start(() => {
+            setOverflow(!props.searchCollapsed ? 'hidden' : 'visible');
+        });
     }, [contentHeight, props])
 
     return (
         <Animated.View
             style={{
                 ...props.style,
+                overflow,
                 maxHeight: contentHeight,
             }}
         >
@@ -71,10 +76,12 @@ export default function FeedSearch() {
                         </DefaultView>
                     </TouchableOpacity>
                     <ExpandingContent searchCollapsed={searchCollapsed}>
-                        <Image
-                            source={getFeedSearchImageName('3.jpg')}
-                            style={{ width: '100%', height: 150 }} />
-                        <TertiaryText style={{ paddingLeft: 13, paddingRight: 10, marginTop: 10, paddingTop: 5, paddingBottom: 10, fontSize: 15 }}>Plan something fun...</TertiaryText>
+                        <SliderBox autoplay={!!searchCollapsed} sliderBoxHeight={180} circleLoop images={[
+                            getFeedSearchImageName('3.jpg'),
+                            getFeedSearchImageName('1.png'),
+                            getFeedSearchImageName('2.png')
+                        ]} />
+                        <TertiaryText style={{ paddingLeft: 13, paddingRight: 10, marginTop: 10, paddingTop: 5, paddingBottom: 10, fontSize: 15 }}>Treat yourself to something fun...</TertiaryText>
 
                         <SearchActionButtonsBar theme={theme} categories={categories} visibleFeedCategoryIndex={visibleFeedCategoryIndex} setVisibleFeedCategoryIndex={setVisibleFeedCategoryIndex} />
 

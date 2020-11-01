@@ -1,5 +1,13 @@
 import { StyleSheet } from 'react-native';
 
+const containerShadow = (theme: any, clickable?: boolean) => !!clickable ? ({
+  elevation: 1,
+  shadowColor: theme.shadowColor,
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.8,
+  shadowRadius: 2,
+}) : ({});
+
 const styles = (theme?: any, clickable?: boolean) =>
   StyleSheet.create({
     container: {
@@ -13,15 +21,7 @@ const styles = (theme?: any, clickable?: boolean) =>
       height: 68,
       alignItems: 'center',
       justifyContent: 'space-between',
-      elevation: !!clickable ? 1 : 0,
-    },
-    containerAlt: {
-      flexDirection: 'row',
-      height: 68,
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      borderBottomColor: '#484444',
-      borderBottomWidth: 1
+      ...containerShadow(theme, clickable)
     },
   });
 

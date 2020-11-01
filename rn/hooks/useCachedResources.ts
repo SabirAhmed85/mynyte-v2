@@ -17,6 +17,8 @@ export default function useCachedResources() {
           ...Ionicons.font,
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
           'titillium': require('../assets/fonts/titillium-web/TitilliumWeb-Regular.ttf'),
+          'titillium-semibold': require('../assets/fonts/titillium-web/TitilliumWeb-SemiBold.ttf'),
+          'titillium-bold': require('../assets/fonts/titillium-web/TitilliumWeb-Bold.ttf'),
         });
 
         await Promise.all([fonts]);

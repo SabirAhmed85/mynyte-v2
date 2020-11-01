@@ -15,16 +15,19 @@ type BottomBarButtonProps = {
   onPress: () => any;
   text: string;
   active?: boolean;
+  solid?: boolean;
 };
 
 const ButtonIcon = (props: BottomBarButtonProps) => (
-  <FontAwesome5 active={props.active} style={buttonStyles(props).buttonIcon} name={props.icon} />
+  <FontAwesome5 active={props.active} solid={props.active} style={buttonStyles(props).buttonIcon} name={props.icon} />
 );
 
 const BottomBarButton = (props: BottomBarButtonProps) => (
   <Button
     type='clear'
     titleStyle={nativeElemsButtonStyles(props).buttonTitle}
+    buttonStyle={{ flexDirection: 'row', alignItems: 'center' }}
+    containerStyle={{ flexDirection: 'row', alignItems: 'center' }}
     icon={ButtonIcon(props)}
     onPress={props.onPress}
     title={props.text} />
@@ -34,9 +37,9 @@ BottomBarButton.defaultProps = {
   active: false,
 };
 
-const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boolean }) => {
+const ListingItemBottomBar = (props: { listing: Listing | Offer }) => {
   const { theme } = useTheme();
-  const { listing, borderTop } = props;
+  const { listing } = props;
   const [state, setState] = React.useState(listing as Listing | Offer);
   const watchableListings = ['Offer', 'Event', 'Movie'];
 
@@ -57,7 +60,7 @@ const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boo
   };
 
   const getWatchText = (): string => (
-    !!(state as Offer).watch ? 'Unwatch' : 'Watch'
+    !!(state as Offer).watch ? 'Unsave' : 'Save'
   );
 
   const getLikeText = (): string => (
@@ -66,15 +69,13 @@ const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boo
 
   return (
     <React.Fragment>
-      {!!borderTop &&
-        <Card.Divider style={barStyles(theme).cardDivider} />
-      }
       <DefaultView style={barStyles(theme).container}>
         <DefaultView style={barStyles(theme).leftButtons}>
           {watchableListings.includes(listing.listingType) &&
             <BottomBarButton
               active={(state as Offer).watch}
-              icon='eye'
+              icon='heart'
+              solid={true}
               onPress={watchListing}
               text={getWatchText()} />
           }
@@ -82,6 +83,7 @@ const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boo
             <BottomBarButton
               active={(state as Listing).like}
               icon='thumbs-up'
+              solid={true}
               onPress={likeListing}
               text={getLikeText()} />
           }
@@ -99,10 +101,6 @@ const ListingItemBottomBar = (props: { listing: Listing | Offer, borderTop?: boo
       </DefaultView>
     </React.Fragment>
   )
-};
-
-ListingItemBottomBar.defaultProps = {
-  borderTop: true
 };
 
 export default ListingItemBottomBar;

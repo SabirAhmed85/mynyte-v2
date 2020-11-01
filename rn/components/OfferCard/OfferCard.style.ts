@@ -3,14 +3,14 @@ import { StyleSheet } from 'react-native';
 const nativeElemsStyles = (theme: any) => ({
   container: {
     padding: 0,
+    paddingBottom: 5,
     marginTop: 0,
     marginLeft: 15,
     marginBottom: 15,
     backgroundColor: theme.cardBackground,
     borderWidth: 0,
     borderRadius: 4,
-    overflow: "hidden" as "hidden",
-    shadowColor: '#000',
+    shadowColor: theme.shadowColor,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
@@ -34,8 +34,6 @@ const styles = (theme: any, offerIsExclusive?: boolean) =>
     title: {
       fontWeight: 'normal',
       textAlign: 'left',
-      color: theme.primaryColor,
-      fontFamily: 'titillium',
       marginBottom: 0,
     },
     titleRight: {
@@ -51,17 +49,17 @@ const styles = (theme: any, offerIsExclusive?: boolean) =>
     },
     note: {
       textAlign: 'right',
-      marginRight: 10,
-      color: '#ff0000',
+      fontSize: 12,
     },
     offerBody: {
-      paddingTop: 15,
-      paddingBottom: 10,
+      paddingTop: 10,
+      paddingBottom: 5,
       paddingLeft: 13,
       paddingRight: 13,
+      flex: 1,
     },
     description: {
-      paddingBottom: 15,
+      paddingBottom: 5,
     },
   });
 

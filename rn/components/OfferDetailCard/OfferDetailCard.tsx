@@ -94,7 +94,7 @@ export default function OfferDetailCard(props: OfferDetailCardProps) {
 
           <DefaultView style={styles(theme).pageHeaderContainer}>
             <DefaultView style={styles(theme).pageHeader}>
-              <SecondaryText style={{ marginBottom: 5 }}>{offer.name}</SecondaryText>
+              <SecondaryText bold style={{ marginBottom: 5 }}>{offer.name}</SecondaryText>
               {!!showBusinessDetails &&
                 <PrimaryHighlightText>At: {offer.businessName}</PrimaryHighlightText>
               }

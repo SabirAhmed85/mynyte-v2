@@ -2,15 +2,18 @@ import { StyleSheet } from 'react-native';
 
 export const stylesObjects = (theme: any) => ({
     container: {
-        overflow: 'hidden',
         backgroundColor: theme.searchPanelHeaderBg,
         flex: 1,
         width: '100%',
-        shadowColor: '#ddd',
-        elevation: 2,
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
+        borderWidth: 0,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 3,
     },
 });
 
@@ -18,7 +21,7 @@ export const styles = (theme: any) => StyleSheet.create({
     searchPanelHeader: {
         paddingTop: 20,
         paddingBottom: 20,
-        paddingLeft: 10,
+        paddingLeft: 13,
         paddingRight: 15,
         flexDirection: 'row',
         justifyContent: 'space-between',

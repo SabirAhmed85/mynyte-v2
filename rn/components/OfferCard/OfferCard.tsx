@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-elements';
 
 import { useTheme } from '../../config/ThemeManager';
-import { Text, PrimaryActiveText, PrimaryText } from '../../components/Themed';
+import { PrimaryActiveText, PrimaryText, PrimaryBoldText } from '../../components/Themed';
 import { nativeElemsStyles, styles } from './OfferCard.style';
 
 import { Offer } from '../../models';
@@ -30,43 +30,44 @@ export default function OfferCard(props: OfferCardProps) {
   const offerIsExclusive = (Number(offer._id) % 2) === 0;
 
   const offerClick = () => {
-    console.log(clickParams, clickScreenName, clickScreenTab);
     nav.navigate(clickScreenTab, {
       screen: clickScreenName,
-      params: clickParams? clickParams: { offerId: offer._id, offerName: offer.name } });
+      params: clickParams ? clickParams : { offerId: offer._id, offerName: offer.name }
+    });
   };
 
   return (
     <Card containerStyle={[nativeElemsStyles(theme).container, props.containerStyle]}>
       <TouchableOpacity activeOpacity={0.5} onPress={offerClick}>
         <DefaultView style={styles(theme, offerIsExclusive).titleContainer}>
-
-          {offer.offerFoodStyle &&
-            <Card.Title style={styles(theme).title}>{offer.offerFoodStyle}</Card.Title>
-          }
+          <Card.Title style={styles(theme).title}>
+            {offer.offerFoodStyle &&
+              <PrimaryText bold>{offer.offerFoodStyle}</PrimaryText>
+            }
+          </Card.Title>
 
           <DefaultView style={styles(theme).titleRight}>
-            {offerIsExclusive &&
-              <PrimaryActiveText style={styles(theme).note}>MyNyte Exclusive</PrimaryActiveText>
-            }
-
             <Image style={styles(theme).titleImage} source={{ uri: `https://www.mynyte.co.uk/staging/sneak-preview/img/user_images/cover_photo/${offer.currentCoverPhotoName}` }} />
           </DefaultView>
 
         </DefaultView>
-        <DefaultView style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
-          <DefaultView style={styles(theme).offerBody}>
-            <PrimaryText style={styles(theme).description}>{offer.description}</PrimaryText>
-
-            {!!showBusinessName &&
-              <Text>At: {offer.businessName}</Text>
-            }
-          </DefaultView>
+        <DefaultView style={styles(theme).offerBody}>
+          {(!!showBusinessName || !!offerIsExclusive) &&
+            <DefaultView style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1, marginBottom: 20, }}>
+              {!!showBusinessName &&
+                <PrimaryText style={{ fontSize: 12, alignSelf: 'flex-start', flex: 1 }}>{offer.businessName}</PrimaryText>
+              }
+              {!!offerIsExclusive &&
+                <PrimaryActiveText bold style={styles(theme).note}>MyNyte Exclusive</PrimaryActiveText>
+              }
+            </DefaultView>
+          }
+          <PrimaryText style={styles(theme).description}>{offer.description}</PrimaryText>
         </DefaultView>
 
       </TouchableOpacity>
-      <ListingItemBottomBar listing={offer} borderTop={false} />
+      <ListingItemBottomBar listing={offer} />
     </Card>
   );
 }

@@ -1,5 +1,11 @@
 export const getFeedSearchImageName = (name: string) => {
   switch (name) {
+    case "1.png":
+      return require(`../assets/images/feed-search/headline/1.png`);
+    case "2.png":
+      return require(`../assets/images/feed-search/headline/2.png`);
+    case "3.jpg":
+      return require(`../assets/images/feed-search/headline/3.jpg`);
     case "italian-food.png":
       return require(`../assets/images/feed-search/italian-food.png`);
     case "indian-food.png":
@@ -7,11 +13,11 @@ export const getFeedSearchImageName = (name: string) => {
     case "chinese-food.png":
       return require(`../assets/images/feed-search/chinese-food.png`);
     case "thai-food.png":
-        return require(`../assets/images/feed-search/thai-food.png`);
+      return require(`../assets/images/feed-search/thai-food.png`);
     case "mexican-food.png":
-        return require(`../assets/images/feed-search/mexican-food.png`);
+      return require(`../assets/images/feed-search/mexican-food.png`);
     case "gastropub-food.png":
-        return require(`../assets/images/feed-search/gastropub-food.png`);
+      return require(`../assets/images/feed-search/gastropub-food.png`);
     case "action-movie.png":
       return require(`../assets/images/feed-search/action-movie.png`);
     case "scifi-movie.png":
@@ -36,7 +42,7 @@ export const getFeedSearchImageName = (name: string) => {
       return require(`../assets/images/feed-search/rugby-sport.png`);
     case "boxing-sport.png":
       return require(`../assets/images/feed-search/boxing-sport.png`);
-      case "tennis-sport.png":
-        return require(`../assets/images/feed-search/tennis-sport.png`);
+    case "tennis-sport.png":
+      return require(`../assets/images/feed-search/tennis-sport.png`);
   }
 };

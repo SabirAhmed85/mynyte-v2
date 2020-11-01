@@ -98,7 +98,7 @@ export const SearchActionButtonsBar = (props: { theme: any, categories: FeedCate
     */
 
     return (
-        <DefaultView style={{ flexDirection: 'row', paddingLeft: 11, paddingRight: 11, height: 68 }}>
+        <DefaultView style={{ flexDirection: 'row', paddingLeft: 13, paddingRight: 13, height: 68 }}>
             {/*<Animated.View {...panResponder.panHandlers} style={{ left: 11, flexDirection: 'row', alignContent: 'space-around', position: 'absolute', transform: [{ translateX: panelLeftValue }] }}> */}
                 {localCategories.map((category: FeedCategory, key: number) => (
                     <ActionButton key={key}

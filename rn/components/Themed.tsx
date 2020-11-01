@@ -21,9 +21,27 @@ export function useThemeColor(
   }
 }
 
+export function useAppFont(bold?: boolean) {
+  return { fontFamily : !!bold ? 'titillium-semibold' : 'titillium' }
+}
+
+export function useThemeColorAndAppFont(
+  props: { light?: string; dark?: string },
+  colorProperty: keyof typeof ThemeColors,
+  bold?: boolean) {
+    return {
+      color: { color: useThemeColor(props, colorProperty) },
+      fontFamily: useAppFont(bold)
+    }
+}
+
 type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
+};
+
+type ThemeTextProps = {
+  bold?: boolean;
 };
 
 export type TextProps = ThemeProps & DefaultText['props'];
@@ -31,58 +49,58 @@ export type ButtonProps = ThemeProps & DefaultButton['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 export type ScrollViewProps = ThemeProps & DefaultScrollView['props'];
 
-export function Text(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
-  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function Text(props: TextProps & ThemeTextProps) {
+  const { style, lightColor, darkColor, bold, ...otherProps } = props;
+  const colorAndFont = useThemeColorAndAppFont({ light: lightColor, dark: darkColor }, 'text', bold);
+  return <DefaultText style={[props.style, colorAndFont.color, colorAndFont.fontFamily]} {...otherProps} />;
 }
 
-export function PrimaryText(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'primaryColor');
-  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function PrimaryText(props: TextProps & ThemeTextProps) {
+  const { style, lightColor, darkColor, bold, ...otherProps } = props;
+  const colorAndFont = useThemeColorAndAppFont({ light: lightColor, dark: darkColor }, 'primaryColor', bold);
+  return <DefaultText style={[props.style, colorAndFont.color, colorAndFont.fontFamily]} {...otherProps} />;
 }
 
-
-export function PrimaryActiveText(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'primaryActiveColor');
-  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function PrimaryActiveText(props: TextProps & ThemeTextProps) {
+  const { style, lightColor, darkColor, bold, ...otherProps } = props;
+  const colorAndFont = useThemeColorAndAppFont({ light: lightColor, dark: darkColor }, 'primaryActiveColor', bold);
+  return <DefaultText style={[props.style, colorAndFont.color, colorAndFont.fontFamily]} {...otherProps} />;
 }
 
-export function PrimaryHighlightText(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'primaryActiveColorHighlight');
-  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function PrimaryHighlightText(props: TextProps & ThemeTextProps) {
+  const { style, lightColor, darkColor, bold, ...otherProps } = props;
+  const colorAndFont = useThemeColorAndAppFont({ light: lightColor, dark: darkColor }, 'primaryActiveColorHighlight', bold);
+  return <DefaultText style={[props.style, colorAndFont.color, colorAndFont.fontFamily]} {...otherProps} />;
 }
 
-export function SecondaryText(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'secondaryText');
-  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function SecondaryText(props: TextProps & ThemeTextProps) {
+  const { style, lightColor, darkColor, bold, ...otherProps } = props;
+  const colorAndFont = useThemeColorAndAppFont({ light: lightColor, dark: darkColor }, 'secondaryText', bold);
+  return <DefaultText style={[props.style, colorAndFont.color, colorAndFont.fontFamily]} {...otherProps} />;
 }
 
-export function TertiaryText(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'tertiaryText');
-  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function TertiaryText(props: TextProps & ThemeTextProps) {
+  const { style, lightColor, darkColor, bold, ...otherProps } = props;
+  const colorAndFont = useThemeColorAndAppFont({ light: lightColor, dark: darkColor }, 'tertiaryText', bold);
+  return <DefaultText style={[props.style, colorAndFont.color, colorAndFont.fontFamily]} {...otherProps} />;
 }
 
-export function DisabledText(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'disabledText');
-  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function DisabledText(props: TextProps & ThemeTextProps) {
+  const { style, lightColor, darkColor, bold, ...otherProps } = props;
+  const colorAndFont = useThemeColorAndAppFont({ light: lightColor, dark: darkColor }, 'disabledText', bold);
+  return <DefaultText style={[props.style, colorAndFont.color, colorAndFont.fontFamily]} {...otherProps} />;
 }
 
-export function LightText(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'lightText');
-  return <DefaultText style={[props.style, { color }, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function LightText(props: TextProps & ThemeTextProps) {
+  const { style, lightColor, darkColor, bold, ...otherProps } = props;
+  const colorAndFont = useThemeColorAndAppFont({ light: lightColor, dark: darkColor }, 'lightText', bold);
+  return <DefaultText style={[props.style, colorAndFont.color, colorAndFont.fontFamily]} {...otherProps} />;
 }
 
-export function ColorlessText(props: TextProps) {
-  const { style, ...otherProps } = props;
-  return <DefaultText style={[props.style, {fontFamily: 'titillium'}]} {...otherProps} />;
+export function ColorlessText(props: TextProps & ThemeTextProps) {
+  const { style, bold, ...otherProps } = props;
+  const fontFamily = useAppFont(bold);
+  return <DefaultText style={[props.style, fontFamily]} {...otherProps} />;
 }
 
 export function Button(props: ButtonProps) {

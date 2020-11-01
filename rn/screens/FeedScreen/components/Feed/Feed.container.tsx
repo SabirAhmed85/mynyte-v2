@@ -58,6 +58,10 @@ export default function FeedContainer(props: FeedContainerProps) {
     }
   }
 
+  const feedHeaderText = feedType === 'tonight' ?
+  'See What\'s on Tonight...' :
+  'Your MyNyte Feed';
+
   return (
     <Feed
       theme={theme}
@@ -67,6 +71,7 @@ export default function FeedContainer(props: FeedContainerProps) {
       listingsLoaded={listingsLoaded}
       screenWidth={screenWidth}
       feedType={feedType}
+      feedHeaderText={feedHeaderText}
       feedTypeToggleInner={feedTypeToggleInner} />
   )
 }

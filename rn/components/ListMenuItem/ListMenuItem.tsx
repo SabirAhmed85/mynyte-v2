@@ -76,7 +76,7 @@ export default function ListMenuItem(props: { item: MenuItemProps }) {
             underlayColor={theme.listItemActiveBackground}
             onPress={() => {nav.navigate('Feed', { ...item.clickNavigation })}}
             style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 15, height: '100%' }}
-            containerStyle={{ height: '100%', flex: 1 }}>
+            containerStyle={{ height: '100%', flex: 1, overflow: 'hidden' }}>
             <ItemMainContent {...item}></ItemMainContent>
           </TouchableHighlight>
         ) :

@@ -83,7 +83,7 @@ export default function FeedListingOffersScreen(props: { route: any }) {
               data={category.offers}
               keyExtractor={(item) => `${item._id}${item.name}`}
               renderItem={(data) =>
-                <OfferCard key={data.index} containerStyle={{ marginRight: 15 }} offer={data.item} clickScreenTab='Feed' clickScreenName='FeedListingOfferScreen' clickParams={{ id: listingId, listingType: listingType, listingName: listingName, offerId: data.item._id, offerName: data.item.name}} />
+                <OfferCard key={data.index} showBusinessName={false} containerStyle={{ marginRight: 15 }} offer={data.item} clickScreenTab='Feed' clickScreenName='FeedListingOfferScreen' clickParams={{ id: listingId, listingType: listingType, listingName: listingName, offerId: data.item._id, offerName: data.item.name}} />
               } />
           ))}
         </FadeInPanel>

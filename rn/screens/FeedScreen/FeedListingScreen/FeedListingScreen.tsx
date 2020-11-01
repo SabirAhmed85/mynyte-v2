@@ -121,7 +121,7 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
         }
         <DefaultView style={[styles(theme).pageMenuHeaderContainer, styles(theme).contentContainer]}>
           <DefaultView style={styles(theme).pageMenuHeader}>
-            <SecondaryText>{listing.name}</SecondaryText>
+            <SecondaryText bold>{listing.name}</SecondaryText>
             <PrimaryHighlightText>{listing.listingType1} in {listing.town}</PrimaryHighlightText>
           </DefaultView>
           <Button type='clear'

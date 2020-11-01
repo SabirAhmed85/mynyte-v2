@@ -44,7 +44,7 @@ export default function OffersScreen() {
         <ScreenLoadingComponent />
       }
       {!!loaded &&
-        <FadeInPanel duration={150}>
+        <React.Fragment>
           {offerCategories.map((category: OfferCategory, key: number) => (
             <FlatList key={key}
               contentInset={{ top: 15, right: 15, bottom: 15, left: 15 }}
@@ -81,7 +81,7 @@ export default function OffersScreen() {
                 <OfferCard key={data.index} containerStyle={{ marginRight: 15 }} offer={data.item} />
               } />
           ))}
-        </FadeInPanel>
+        </React.Fragment>
       }
     </View>
   )

@@ -86,7 +86,6 @@ export const FadeInPanel = (props: FadeInPanelState) => {
                 ...props.style,
                 display,
                 transform,
-                overflow: 'hidden',
                 marginTop: contentMarginTop,
                 opacity: contentOpacity,
             }}

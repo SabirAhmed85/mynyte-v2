@@ -10,7 +10,7 @@ export const barStyles = (theme: any) => StyleSheet.create({
   cardDivider: {
     marginTop: 5,
     marginBottom: 5,
-    backgroundColor: '#4e4c4c',
+    backgroundColor: theme.listItemBorderColor,
   },
   container: {
     flexDirection: 'row',
@@ -39,6 +39,9 @@ export const nativeElemsButtonStyles = (props: any) => ({
 
 export const buttonStyles = (props?: any) => StyleSheet.create({
   buttonIcon: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    paddingTop: 2,
     marginRight: 5,
     color: getButtonColor(props.active),
   },

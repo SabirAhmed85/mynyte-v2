@@ -24,7 +24,7 @@ export const SearchSubcategoriesBar = (props: { theme: any, category: FeedCatego
                                 source={getFeedSearchImageName(item.image)}
                                 resizeMode='cover'
                                 style={{ width: 70, height: 70, alignSelf: 'center' }} />
-                            <Text style={{ paddingLeft: 10, paddingRight: 10, paddingTop: 6, paddingBottom: 8, textAlign: 'center' }}>{item.name}</Text>
+                            <Text style={{ fontSize: 13, paddingLeft: 10, paddingRight: 10, paddingTop: 6, paddingBottom: 8, textAlign: 'center' }}>{item.name}</Text>
                         </TouchableOpacity>
                     )
                 }

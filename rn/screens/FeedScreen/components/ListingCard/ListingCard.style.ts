@@ -2,14 +2,16 @@ import { StyleSheet } from 'react-native';
 
 const nativeElemsStyles = (theme: any) => ({
   container: {
-    width: '100%',
     padding: 0,
-    margin: 0,
-    marginBottom: 15,
+    margin: 15,
     backgroundColor: theme.cardBackground,
-    borderColor: theme.cardBorderColor,
-    borderLeftWidth: 0,
-    borderRightWidth: 0,
+    borderWidth: 0,
+    borderRadius: 3,
+    shadowColor: theme.shadowColor,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 2,
   },
 });
 

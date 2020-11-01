@@ -24,7 +24,7 @@ export const ThemeColors: any = {
   },
   background: {
     light: '#fefefe',
-    dark: '#323232',
+    dark: '#353535',
   },
   tint: {
     light: tintColorLight,
@@ -75,8 +75,8 @@ export const ThemeColors: any = {
     dark: '#4d4d4d',
   },
   listItemBorderColor: {
-    light: '#f2f2f2',
-    dark: '#3c3a3a'
+    light: '#f6f6f6',
+    dark: '#4c4a4a'
   },
   primaryColor: {
     light: '#151515',
@@ -126,6 +126,10 @@ export const ThemeColors: any = {
     light: '#9e1628',
     dark: '#9e1628'
   },
+  shadowColor: {
+    light: '#dddddd',
+    dark: '#303030'
+  },
   cardBackground: {
     light: '#ffffff',
     dark: '#414141'
@@ -150,29 +154,21 @@ export const ThemeColors: any = {
     light: '#ffffff',
     dark: '#3c3b3b'
   },
-  feedHeaderBackgroundColor: {
+  feedBackgroundColor: {
     light: '#ffffff',
-    dark: '#323232',
+    dark: '#353535',
   },
   feedHeaderBorderColor: {
-    light: '#f8f8f8',
-    dark: '#373737'
-  },
-  feedHeaderButtonBackground: {
-    light: '#fefefe',
-    dark: '#3c3b3b'
+    light: '#f4f4f4',
+    dark: '#3d3d3d'
   },
   feedHeaderButtonColor: {
     light: '#1b1b1b',
     dark: '#828282'
   },
-  feedSectionBackground: {
-    light: '#ffffff',
-    dark: '#323232'
-  },
   feedSectionBorderColor: {
-    light: '#f9f9f9',
-    dark: '#323232'
+    light: '#f6f6f6',
+    dark: '#3c3c3c'
   },
 };
 
