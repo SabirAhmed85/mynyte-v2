@@ -77,6 +77,7 @@ export default function OffersScreen() {
               style={{ display: (visibleOfferCategoryName === category.name) ? 'flex' : 'none' }}
               data={category.offers}
               keyExtractor={(item) => `${item._id}${item.name}`}
+              initialNumToRender={4}
               renderItem={(data) =>
                 <OfferCard key={data.index} containerStyle={{ marginRight: 15 }} offer={data.item} />
               } />

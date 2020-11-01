@@ -52,6 +52,7 @@ export default function FeedListingOffersScreen(props: { route: any }) {
         <FadeInPanel duration={150}>
           {offerCategories.map((category: OfferCategory, key: number) => (
             <FlatList key={key}
+              initialNumToRender={4}
               contentInset={{ top: 15, right: 15, bottom: 15, left: 15 }}
               ListHeaderComponent={
                 <React.Fragment>

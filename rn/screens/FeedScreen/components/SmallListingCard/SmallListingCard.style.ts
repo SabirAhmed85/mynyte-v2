@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 const nativeElemsStyles = (theme: any) => ({
   container: {
-    width: "70%",
     padding: 0,
     marginTop: 0,
     marginLeft: 2,
@@ -13,16 +12,34 @@ const nativeElemsStyles = (theme: any) => ({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 1,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 8,
+    shadowRadius: 5,
     elevation: 2,
   },
 });
 
 const styles = (theme: any) =>
   StyleSheet.create({
+    container: {
+      width: "70%",
+      padding: 0,
+      marginTop: 0,
+      marginLeft: 2,
+      marginRight: 20,
+      marginBottom: 5,
+      backgroundColor: theme.cardBackground,
+      borderWidth: 0,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 5,
+      elevation: 2,
+    },
     title: {
       fontWeight: "normal",
       textAlign: "left",

@@ -37,7 +37,7 @@ const MainHeaderShareButton = (theme: any) => (
 );
 
 export default function FeedListingScreen(props: FeedListingScreenProps) {
-  const { selectedListing } = React.useContext(ListingContext);
+  const { selectedListing, selectListing } = React.useContext(ListingContext);
   const { id, listingType, listingName } = props.route.params;
   const { theme } = useTheme();
   const nav = useNavigation();
@@ -51,6 +51,8 @@ export default function FeedListingScreen(props: FeedListingScreenProps) {
   const imgWidth = dimensionsWidth;
 
   React.useEffect(() => {
+    // selectListing(id);
+
     Dimensions.addEventListener('change', (dimensions) => {
       if (!mountedRef.current) return null;
       setScreenWidth(dimensions.window.width);

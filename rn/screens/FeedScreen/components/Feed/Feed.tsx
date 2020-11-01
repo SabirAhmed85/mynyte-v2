@@ -72,6 +72,21 @@ export default function Feed(props: FeedProps) {
                 marginLeft: 3, paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: theme.feedSectionBorderColor
               }}>
 
+                <ColorlessText bold style={{ fontSize: 15, marginBottom: 20, marginTop: 15, color: theme.primaryActiveColor, marginRight: 30 }}>Personalised for you & your friends</ColorlessText>
+                <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} alwaysBounceVertical={false} style={{ flexDirection: 'row' }}>
+                  {tonightsListings.map((listing: Listing, key: number) => (
+                    <SmallListingCard key={key} listing={listing} type='personalised' screenWidth={screenWidth} />
+                  ))}
+                </DefaultScrollView>
+              </DefaultView>
+            </DefaultView>
+            <DefaultView style={{
+              marginLeft: 10
+            }}>
+              <DefaultView style={{
+                marginLeft: 3, paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: theme.feedSectionBorderColor
+              }}>
+
                 <ColorlessText bold style={{ fontSize: 15, marginBottom: 20, marginTop: 15, color: theme.primaryActiveColor, marginRight: 30 }}>Restaurants in Bedford you could be booking a table at tonight</ColorlessText>
                 <DefaultScrollView horizontal={true} showsHorizontalScrollIndicator={false} alwaysBounceVertical={false} style={{ flexDirection: 'row' }}>
                   {tonightsListings.map((listing: Listing, key: number) => (
